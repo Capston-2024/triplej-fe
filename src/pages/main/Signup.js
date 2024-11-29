@@ -3,8 +3,11 @@ import Navbar from "../../components/Navbar";
 import styled from "styled-components";
 import logo from "../../assets/PickinLogo.png";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const navigate = useNavigate();
+
   const nationalityOptions = [
     { value: "korea", label: "대한민국" },
     { value: "usa", label: "미국" },
@@ -201,7 +204,12 @@ const Signup = () => {
               />
             </Field>
             <ButtonContainer>
-              <JoinButton type="submit">회원가입</JoinButton>
+              <JoinButton
+                type="submit"
+                onClick={() => navigate("/signupcomplete")}
+              >
+                회원가입
+              </JoinButton>
             </ButtonContainer>
           </div>
         </JoinBox>
