@@ -12,10 +12,10 @@ const Navbar = () => {
           <StyledLink to="/job-postings">채용 공고</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/career-guide">취업 가이드</StyledLink>
+          <StyledLink to="/">취업 가이드</StyledLink>
         </NavItem>
         <NavItem>
-          <StyledLink to="/community">커뮤니티</StyledLink>
+          <StyledLink to="/">커뮤니티</StyledLink>
         </NavItem>
       </NavMenu>
     </NavContainer>
