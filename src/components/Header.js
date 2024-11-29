@@ -1,7 +1,14 @@
 import logo from "../assets/PickinLogo.png";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleSignUpClick = () => {
+    navigate("/signup");
+  };
+
   return (
     <HeaderContainer>
       <LogoContainer>
@@ -10,7 +17,7 @@ const Header = () => {
       </LogoContainer>
       <ButtonContainer>
         <Button>로그인</Button>
-        <Button>회원가입</Button>
+        <Button onClick={handleSignUpClick}>회원가입</Button>
       </ButtonContainer>
     </HeaderContainer>
   );
