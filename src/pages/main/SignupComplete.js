@@ -2,8 +2,11 @@ import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import styled from "styled-components";
 import logo from "../../assets/PickinLogo.png";
+import { useNavigate } from "react-router-dom";
 
 const SignupComplete = () => {
+  const navigate = useNavigate();
+
   return (
     <MainWrapper>
       <Header />
@@ -20,7 +23,9 @@ const SignupComplete = () => {
             </TextContainer>
           </Wrapper>
           <ButtonContainer>
-            <JoinButton type="submit">홈으로</JoinButton>
+            <JoinButton type="submit" onClick={() => navigate("/")}>
+              홈으로
+            </JoinButton>
           </ButtonContainer>
         </JoinBox>
       </Container>
