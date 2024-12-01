@@ -1,9 +1,17 @@
 import logo from "../assets/PickinLogo.png";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const handleSignUpClick = () => {
     navigate("/signup");
@@ -16,8 +24,14 @@ const Header = () => {
         <Logo src={logo} alt="Pickin Logo" />
       </LogoContainer>
       <ButtonContainer>
-        <Button>로그인</Button>
-        <Button onClick={handleSignUpClick}>회원가입</Button>
+        {isLoggedIn ? (
+          <Button>마이페이지</Button>
+        ) : (
+          <>
+            <Button>로그인</Button>
+            <Button onClick={handleSignUpClick}>회원가입</Button>
+          </>
+        )}
       </ButtonContainer>
     </HeaderContainer>
   );
