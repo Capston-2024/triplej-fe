@@ -12,6 +12,7 @@ import {
   visaOptions,
 } from "../../data/options";
 import { useState } from "react";
+import axios from "axios";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -38,15 +39,14 @@ const Signup = () => {
     setFormData((prevData) => ({ ...prevData, [name]: selectedOption }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
+    try {
+      const response = await axios.post("http://localhost:3001/signin", {
         email: formData.email,
         password: formData.password,
         name: formData.name,
@@ -56,8 +56,16 @@ const Signup = () => {
         visa: formData.visa?.value,
         topik: formData.topikLevel?.value,
         interestTags: formData.interestTags,
-      })
-    );
+      });
+
+      if (response.status === 201) {
+        navigate("/signupcomplete");
+      }
+    } catch (error) {
+      console.error("회원가입 중 오류 발생:", error);
+      alert("회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.");
+    }
+
     navigate("/signupcomplete");
   };
 
