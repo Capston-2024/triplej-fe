@@ -45,17 +45,25 @@ const Signup = () => {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
+
+    const userData = {
+      email: formData.email,
+      password: formData.password,
+      name: formData.name,
+      nationality: formData.nationality?.value,
+      education: formData.education?.value,
+      major: formData.major?.value,
+      visa: formData.visa?.value,
+      topik: formData.topikLevel?.value,
+      interestTags: formData.interestTags,
+    };
+
+    // 백엔드로 전송되는 데이터 콘솔 출력
+    console.log("회원가입 데이터:", userData);
+
     try {
-      const response = await axios.post("http://localhost:3001/signin", {
-        email: formData.email,
-        password: formData.password,
-        name: formData.name,
-        nationality: formData.nationality?.value,
-        education: formData.education?.value,
-        major: formData.major?.value,
-        visa: formData.visa?.value,
-        topik: formData.topikLevel?.value,
-        interestTags: formData.interestTags,
+      const response = await axios.get("http://localhost:3001/signin", {
+        params: userData,
       });
 
       if (response.status === 201) {
@@ -65,8 +73,6 @@ const Signup = () => {
       console.error("회원가입 중 오류 발생:", error);
       alert("회원가입 중 오류가 발생했습니다. 다시 시도해 주세요.");
     }
-
-    navigate("/signupcomplete");
   };
 
   return (
@@ -206,6 +212,7 @@ const Container = styled.div`
   padding: 40px 500px;
   background-color: #f9f9f9;
   flex-grow: 1;
+  height: 100%;
   border-radius: 8px;
 `;
 
