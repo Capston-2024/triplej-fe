@@ -4,10 +4,12 @@ import Navbar from "../../components/Navbar";
 import itImg from "../../assets/itImg.jpg";
 import NaverZ from "../../assets/NaverZ.png";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Jobpostings = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 3;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -102,7 +104,10 @@ const Jobpostings = () => {
         </JobPostHeader>
         <JobPostingsBox>
           {jobPostingsData.map((job) => (
-            <JobPostBox key={job.id}>
+            <JobPostBox
+              key={job.id}
+              onClick={() => navigate(`/job-postings/${job.id}`)}
+            >
               <JobImg style={{ backgroundImage: `url(${job.imgSrc})` }} />
               <JobInfoContainer>
                 <JobTitle>{job.title}</JobTitle>
