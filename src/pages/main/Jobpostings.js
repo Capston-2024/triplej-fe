@@ -30,7 +30,7 @@ const Jobpostings = () => {
         .post("http://localhost:3001/jobs", userData)
         .then((response) => {
           console.log("서버 응답:", response.data);
-          setJobPostingsData(response.data);
+          setJobPostingsData(response.data.data);
         })
         .catch((error) => {
           console.error("서버 응답 오류:", error);
