@@ -55,15 +55,15 @@ const Signup = () => {
       major: formData.major?.value,
       visa: formData.visa?.value,
       topik: formData.topikLevel?.value,
-      interestTags: formData.interestTags,
+      interestTags: formData.interestTags.split(",").map((tag) => tag.trim()),
     };
 
     // 백엔드로 전송되는 데이터 콘솔 출력
     console.log("회원가입 데이터:", userData);
 
     try {
-      const response = await axios.get("http://localhost:3001/signin", {
-        params: userData,
+      const response = await axios.post("http://localhost:3001/signin", {
+        userData,
       });
 
       if (response.status === 201) {
