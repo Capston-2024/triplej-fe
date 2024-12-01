@@ -22,8 +22,8 @@ const Jobpostings = () => {
   const jobPostingsData = [
     {
       id: 1,
-      title: "NAVER Z",
-      subTitle: "[NAVER Z] 제페토 글로벌 서비스 운영 체험형 인턴",
+      companyName: "NAVER Z",
+      title: "[NAVER Z] 제페토 글로벌 서비스 운영 체험형 인턴",
       tags: [
         "경기",
         "인턴",
@@ -34,40 +34,50 @@ const Jobpostings = () => {
         "F-2",
         "F-4",
       ],
-      sustainability: "직무 적합도 90%",
+      endAt: "2024.11.26",
+      likelihood: "직무 적합도 90%",
       imgSrc: NaverZ,
+      jobdetail: "",
     },
     {
       id: 2,
-      title: "삼성전자",
-      subTitle: "[삼성전자] 글로벌 서비스 운영",
+      companyName: "삼성전자",
+      title: "[삼성전자] 글로벌 서비스 운영",
       tags: ["서울", "정규직", "영어"],
-      sustainability: "직무 적합도 80%",
+      endAt: "2024.11.26",
+      likelihood: "직무 적합도 80%",
       imgSrc: itImg,
+      jobdetail: "",
     },
     {
       id: 3,
-      title: "LG전자",
-      subTitle: "[LG전자] 글로벌 인턴십 프로그램",
+      companyName: "LG전자",
+      title: "[LG전자] 글로벌 인턴십 프로그램",
       tags: ["경기", "인턴", "중국어 가능자"],
-      sustainability: "직무 적합도 85%",
+      endAt: "2024.11.26",
+      likelihood: "직무 적합도 85%",
       imgSrc: itImg,
+      jobdetail: "",
     },
     {
       id: 4,
-      title: "카카오",
-      subTitle: "[카카오] 글로벌 서비스 운영 팀원 모집",
+      companyName: "카카오",
+      title: "[카카오] 글로벌 서비스 운영 팀원 모집",
       tags: ["제주", "계약직", "일본어", "한국어 가능자"],
-      sustainability: "직무 적합도 75%",
+      endAt: "2024.11.26",
+      likelihood: "직무 적합도 75%",
       imgSrc: itImg,
+      jobdetail: "",
     },
     {
       id: 5,
-      title: "SK하이닉스",
-      subTitle: "[SK하이닉스] 글로벌 인턴십 모집",
+      companyName: "SK하이닉스",
+      title: "[SK하이닉스] 글로벌 인턴십 모집",
       tags: ["경상", "인턴", "한국어 가능자", "영어"],
-      sustainability: "직무 적합도 92%",
+      endAt: "2024.11.26",
+      likelihood: "직무 적합도 92%",
       imgSrc: itImg,
+      jobdetail: "",
     },
   ];
 
@@ -106,19 +116,22 @@ const Jobpostings = () => {
           {jobPostingsData.map((job) => (
             <JobPostBox
               key={job.id}
-              onClick={() => navigate(`/job-postings/${job.id}`)}
+              onClick={() =>
+                navigate(`/job-postings/${job.id}`, { state: { job } })
+              }
             >
               <JobImg style={{ backgroundImage: `url(${job.imgSrc})` }} />
               <JobInfoContainer>
-                <JobTitle>{job.title}</JobTitle>
-                <JobSubTitle>{job.subTitle}</JobSubTitle>
+                <JobTitle>{job.companyName}</JobTitle>
+                <JobSubTitle>{job.title}</JobSubTitle>
                 <DetailTags>
                   {job.tags.map((tag, index) => (
                     <Tag key={index}>{tag}</Tag>
                   ))}
                 </DetailTags>
               </JobInfoContainer>
-              <Sustainability>{job.sustainability}</Sustainability>
+              <Sustainability>{job.likelihood}</Sustainability>
+              <Sustainability>{job.endAt}</Sustainability>
             </JobPostBox>
           ))}
         </JobPostingsBox>

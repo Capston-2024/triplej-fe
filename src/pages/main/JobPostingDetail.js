@@ -2,8 +2,16 @@ import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import styled from "styled-components";
 import NaverZ from "../../assets/NaverZ.png";
+import { useLocation } from "react-router-dom";
 
 const JobPostingDetail = () => {
+  const location = useLocation();
+  const job = location.state?.job;
+
+  if (!job) {
+    return <div>해당 공고를 찾을 수 없습니다.</div>;
+  }
+
   const jobPostingsData = [
     {
       id: 1,
@@ -34,30 +42,25 @@ const JobPostingDetail = () => {
           <ApplyButton>지원하기</ApplyButton>
         </JobDetailHeader>
         <JobPostDetailContainer>
-          <JobPostDeatilHeader>
-            2025년 웅진IT Global Internship
-          </JobPostDeatilHeader>
+          <JobPostDeatilHeader>{job.title}</JobPostDeatilHeader>
           <TextWrapper>
-            <JobPostDeatilHeader>접수 마감일 2024-12-08</JobPostDeatilHeader>
-            <JobPostDeatilHeader>직무 적합도 90%</JobPostDeatilHeader>
+            <JobPostDeatilHeader>접수 마감일 {job.endAt}</JobPostDeatilHeader>
+            <JobPostDeatilHeader>{job.likelihood}</JobPostDeatilHeader>
           </TextWrapper>
         </JobPostDetailContainer>
         <JobPostingInfoContainer>
-          {jobPostingsData.map((job) => (
-            <JobPostBox key={job.id}>
-              <JobImg style={{ backgroundImage: `url(${job.imgSrc})` }} />
-              <JobInfoContainer>
-                <JobTitle>{job.title}</JobTitle>
-                <JobSubTitle>{job.subTitle}</JobSubTitle>
-                <DetailTags>
-                  {job.tags.map((tag, index) => (
-                    <Tag key={index}>{tag}</Tag>
-                  ))}
-                </DetailTags>
-              </JobInfoContainer>
-              <Sustainability>{job.sustainability}</Sustainability>
-            </JobPostBox>
-          ))}
+          <JobPostBox>
+            <JobImg style={{ backgroundImage: `url(${job.imgSrc})` }} />
+            <JobInfoContainer>
+              <JobTitle>{job.companyName}</JobTitle>
+              <JobSubTitle>{job.title}</JobSubTitle>
+              <DetailTags>
+                {job.tags.map((tag, index) => (
+                  <Tag key={index}>{tag}</Tag>
+                ))}
+              </DetailTags>
+            </JobInfoContainer>
+          </JobPostBox>
           <JobInfoDetail>상세 정보</JobInfoDetail>
         </JobPostingInfoContainer>
       </Container>
