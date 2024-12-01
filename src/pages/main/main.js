@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import PickinIntroduce1 from "../../assets/스타트 1차 발표_page-0001.jpg";
@@ -6,7 +7,13 @@ import PickinIntroduce2 from "../../assets/스타트 1차 발표_page-0002.jpg";
 import PickinIntroduce3 from "../../assets/스타트 1차 발표_page-0003.jpg";
 import PickinIntroduce4 from "../../assets/스타트 1차 발표_page-0004.jpg";
 
-const main = () => {
+const Main = () => {
+  const navigate = useNavigate();
+
+  const handleJobPostClick = () => {
+    navigate("/job-postings");
+  };
+
   return (
     <MainWrapper>
       <Header />
@@ -18,7 +25,7 @@ const main = () => {
             맞춤형 채용 공고! <br />
             Pickin'에서 찾아보세요
           </MainText>
-          <Button>채용 공고 보러가기</Button>
+          <Button onClick={handleJobPostClick}>채용 공고 보러가기</Button>
           <StyledImage src={PickinIntroduce1} alt="Pickin Introduce" />
           <StyledImage src={PickinIntroduce2} alt="Pickin Introduce" />
           <StyledImage src={PickinIntroduce3} alt="Pickin Introduce" />
@@ -29,7 +36,7 @@ const main = () => {
   );
 };
 
-export default main;
+export default Main;
 
 const MainWrapper = styled.div`
   display: flex;
