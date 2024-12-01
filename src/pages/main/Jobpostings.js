@@ -24,8 +24,8 @@ const Jobpostings = () => {
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     if (storedUser) {
-      const { nationality, education, topik, work } = storedUser;
-      const userData = { nationality, education, topik, work };
+      const { nationality, education, topik, interestTags } = storedUser;
+      const userData = { nationality, education, topik, interestTags };
       axios
         .post("http://localhost:3001/jobs", userData)
         .then((response) => {

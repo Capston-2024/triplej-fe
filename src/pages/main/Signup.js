@@ -62,18 +62,17 @@ const Signup = () => {
     // 백엔드로 전송되는 데이터 콘솔 출력
     console.log("회원가입 데이터:", userData);
 
+    const { name, email, nationality, education, topik, interestTags } = userData;
+    const storedData = { name, email, nationality, education, topik, interestTags };
+    localStorage.setItem("user", JSON.stringify(storedData));
+    console.log("로컬 스토리지에 저장된 데이터:", storedData);
+
     try {
       const response = await axios.post("http://localhost:3001/signin", {
         userData,
       });
 
       if (response.status === 201) {
-        const { name, email, nationality, education, topik, work } =
-          response.data;
-        localStorage.setItem(
-          "user",
-          JSON.stringify({ name, email, nationality, education, topik, work })
-        );
         navigate("/signupcomplete");
       }
     } catch (error) {
