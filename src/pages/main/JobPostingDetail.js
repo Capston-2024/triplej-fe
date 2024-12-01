@@ -116,7 +116,7 @@ const JobPostDetailContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 30px 10px;
+  padding: 30px 60px;
   background-color: #ffffff;
   margin-bottom: 40px;
 `;
