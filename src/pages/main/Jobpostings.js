@@ -130,8 +130,10 @@ const Jobpostings = () => {
                   ))}
                 </DetailTags>
               </JobInfoContainer>
-              <Sustainability>{job.likelihood}</Sustainability>
-              <Sustainability>{job.endAt}</Sustainability>
+              <JobLikelihoodContainer>
+                <Likelihood>{job.likelihood}</Likelihood>
+                <Likelihood>{job.endAt}</Likelihood>
+              </JobLikelihoodContainer>
             </JobPostBox>
           ))}
         </JobPostingsBox>
@@ -290,8 +292,18 @@ const Tag = styled.span`
   font-weight: 500;
 `;
 
-const Sustainability = styled.div`
+const Likelihood = styled.div`
   font-size: 30px;
   font-weight: 700;
   margin-left: 40px;
+  margin-bottom: 40px;
+`;
+
+const JobLikelihoodContainer = styled.div`
+  font-size: 30px;
+  font-weight: 700;
+  margin-left: 40px;
+  color: #b2efe6;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
+    1px 1px 0 black;
 `;
