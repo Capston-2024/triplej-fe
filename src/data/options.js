@@ -122,3 +122,18 @@ export const majorOptions = [
   { value: "political_science", label: "정치학" },
   { value: "international_relations", label: "국제관계학" },
 ];
+
+export const tagOptions = [
+  { value: "마케팅", label: "마케팅" },
+  { value: "해외영업", label: "해외영업" },
+  { value: "구매", label: "구매" },
+  { value: "전장부품 개발", label: "전장부품 개발" },
+  { value: "지역 전문가", label: "지역 전문가" },
+  { value: "글로벌 인사관리", label: "글로벌 인사관리" },
+  { value: "경영 지원", label: "경영 지원" },
+  { value: "전략", label: "전략" },
+  { value: "해외영업", label: "해외영업" },
+  { value: "마케팅 서포터즈", label: "마케팅 서포터즈" },
+  { value: "사업개발", label: "사업개발" },
+  { value: "연구개발", label: "연구개발" },
+];

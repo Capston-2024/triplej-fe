@@ -8,6 +8,7 @@ import {
   educationOptions,
   majorOptions,
   nationalityOptions,
+  tagOptions,
   topikOptions,
   visaOptions,
 } from "../../data/options";
@@ -55,7 +56,7 @@ const Signup = () => {
       major: formData.major?.value,
       visa: formData.visa?.value,
       topik: formData.topikLevel?.value,
-      interestTags: formData.interestTags.split(",").map((tag) => tag.trim()),
+      interestTags: formData.interestTags?.value,
     };
 
     // 백엔드로 전송되는 데이터 콘솔 출력
@@ -67,6 +68,12 @@ const Signup = () => {
       });
 
       if (response.status === 201) {
+        const { name, email, nationality, education, topik, work } =
+          response.data;
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ name, email, nationality, education, topik, work })
+        );
         navigate("/signupcomplete");
       }
     } catch (error) {
@@ -181,12 +188,12 @@ const Signup = () => {
             </Field>
             <Field>
               <Label>관심 태그</Label>
-              <Input
-                type="text"
+              <Select
                 name="interestTags"
-                placeholder="쉼표로 구분해주세요"
+                options={tagOptions}
+                placeholder="관심 태그"
                 value={formData.interestTags}
-                onChange={handleChange}
+                onChange={handleSelectChange}
               />
             </Field>
             <ButtonContainer>

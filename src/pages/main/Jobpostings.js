@@ -5,11 +5,13 @@ import itImg from "../../assets/itImg.jpg";
 import NaverZ from "../../assets/NaverZ.png";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Jobpostings = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const totalSlides = 3;
   const navigate = useNavigate();
+  const [jobPostingsData, setJobPostingsData] = useState([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,67 +21,22 @@ const Jobpostings = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const jobPostingsData = [
-    {
-      id: 1,
-      companyName: "NAVER Z",
-      title: "[NAVER Z] 제페토 글로벌 서비스 운영 체험형 인턴",
-      tags: [
-        "경기",
-        "인턴",
-        "한국어 가능자",
-        "영어",
-        "인도네시아어",
-        "태국어",
-        "F-2",
-        "F-4",
-      ],
-      endAt: "2024.11.26",
-      likelihood: "직무 적합도 90%",
-      imgSrc: NaverZ,
-      jobdetail: "",
-    },
-    {
-      id: 2,
-      companyName: "삼성전자",
-      title: "[삼성전자] 글로벌 서비스 운영",
-      tags: ["서울", "정규직", "영어"],
-      endAt: "2024.11.26",
-      likelihood: "직무 적합도 80%",
-      imgSrc: itImg,
-      jobdetail: "",
-    },
-    {
-      id: 3,
-      companyName: "LG전자",
-      title: "[LG전자] 글로벌 인턴십 프로그램",
-      tags: ["경기", "인턴", "중국어 가능자"],
-      endAt: "2024.11.26",
-      likelihood: "직무 적합도 85%",
-      imgSrc: itImg,
-      jobdetail: "",
-    },
-    {
-      id: 4,
-      companyName: "카카오",
-      title: "[카카오] 글로벌 서비스 운영 팀원 모집",
-      tags: ["제주", "계약직", "일본어", "한국어 가능자"],
-      endAt: "2024.11.26",
-      likelihood: "직무 적합도 75%",
-      imgSrc: itImg,
-      jobdetail: "",
-    },
-    {
-      id: 5,
-      companyName: "SK하이닉스",
-      title: "[SK하이닉스] 글로벌 인턴십 모집",
-      tags: ["경상", "인턴", "한국어 가능자", "영어"],
-      endAt: "2024.11.26",
-      likelihood: "직무 적합도 92%",
-      imgSrc: itImg,
-      jobdetail: "",
-    },
-  ];
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      const { nationality, education, topik, work } = storedUser;
+      const userData = { nationality, education, topik, work };
+      axios
+        .post("http://localhost:3001/jobs", userData)
+        .then((response) => {
+          console.log("서버 응답:", response.data);
+          setJobPostingsData(response.data);
+        })
+        .catch((error) => {
+          console.error("서버 응답 오류:", error);
+        });
+    }
+  }, []);
 
   return (
     <MainWrapper>
