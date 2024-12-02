@@ -210,7 +210,7 @@ export default Signup;
 const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f9f9f9;
 `;
 
@@ -218,7 +218,6 @@ const Container = styled.div`
   padding: 40px 500px;
   background-color: #f9f9f9;
   flex-grow: 1;
-  height: 100%;
   border-radius: 8px;
 `;
 
@@ -241,7 +240,7 @@ const Label = styled.div`
 `;
 
 const Input = styled.input`
-  width: 650px;
+  width: 93%;
   padding: 10px;
   border: 2px solid #ddd;
   border-radius: 4px;

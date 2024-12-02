@@ -3,6 +3,10 @@ import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import itImg from "../../assets/itImg.jpg";
 import NaverZ from "../../assets/NaverZ.png";
+import Samsung from "../../assets/samsung.png";
+import Kakao from "../../assets/kakao.png";
+import LG from "../../assets/lg.png";
+import SK from "../../assets/sk.png";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -12,6 +16,10 @@ const Jobpostings = () => {
   const totalSlides = 3;
   const navigate = useNavigate();
   const [jobPostingsData, setJobPostingsData] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,6 +52,24 @@ const Jobpostings = () => {
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
     return `${year}년 ${month}월 ${day}일`;
+  };
+
+  // 회사명에 맞는 이미지를 반환하는 함수
+  const getCompanyImage = (companyName) => {
+    switch (companyName) {
+      case "NAVER Z":
+        return NaverZ;
+      case "SK하이닉스":
+        return SK;
+      case "LG전자":
+        return LG;
+      case "카카오":
+        return Kakao;
+      case "삼성전자":
+        return Samsung;
+      default:
+        return itImg;
+    }
   };
 
   return (
@@ -85,7 +111,11 @@ const Jobpostings = () => {
                 navigate(`/job-postings/${job.id}`, { state: { job } })
               }
             >
-              <JobImg style={{ backgroundImage: `url(${job.imgSrc})` }} />
+              <JobImg
+                style={{
+                  backgroundImage: `url(${getCompanyImage(job.companyName)})`,
+                }}
+              />
               <JobInfoContainer>
                 <JobTitle>{job.companyName}</JobTitle>
                 <JobSubTitle>{job.title}</JobSubTitle>
@@ -123,7 +153,6 @@ const Container = styled.div`
   background-color: #f9f9f9;
   flex-grow: 1;
   border-radius: 8px;
-  height: 100%;
 `;
 
 const SliderWrapper = styled.div`
@@ -230,7 +259,7 @@ const JobImg = styled.div`
 `;
 
 const JobInfoContainer = styled.div`
-  width: 800px;
+  width: 900px;
 `;
 
 const JobTitle = styled.div`
@@ -248,6 +277,7 @@ const DetailTags = styled.div`
   display: flex;
   gap: 8px;
   margin-top: 8px;
+  flex-wrap: wrap;
 `;
 
 const Tag = styled.span`
@@ -260,16 +290,16 @@ const Tag = styled.span`
 `;
 
 const Likelihood = styled.div`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
-  margin-left: 40px;
   margin-bottom: 40px;
 `;
 
 const JobLikelihoodContainer = styled.div`
   font-size: 30px;
+  width:230px;
   font-weight: 700;
-  margin-left: 40px;
+  margin-left: 30px;
   color: #b2efe6;
   text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
     1px 1px 0 black;

@@ -1,16 +1,68 @@
 import Header from "../../components/Header";
 import Navbar from "../../components/Navbar";
 import styled from "styled-components";
+import itImg from "../../assets/itImg.jpg";
 import NaverZ from "../../assets/NaverZ.png";
+import Samsung from "../../assets/samsung.png";
+import Kakao from "../../assets/kakao.png";
+import LG from "../../assets/lg.png";
+import SK from "../../assets/sk.png";
 import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const JobPostingDetail = () => {
   const location = useLocation();
   const job = location.state?.job;
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (!job) {
     return <div>해당 공고를 찾을 수 없습니다.</div>;
   }
+
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}년 ${month}월 ${day}일`;
+  };
+  const getCompanyImage = (companyName) => {
+    switch (companyName) {
+      case "NAVER Z":
+        return NaverZ;
+      case "SK하이닉스":
+        return SK;
+      case "LG전자":
+        return LG;
+      case "카카오":
+        return Kakao;
+      case "삼성전자":
+        return Samsung;
+      default:
+        return itImg;  // 기본 이미지
+    }
+  };
+
+  const getCompanyLink = (companyName) => {
+    switch (companyName) {
+      case "NAVER Z":
+        return "https://recruit.naverz-corp.com/rcrt/view.do?annoId=30002687";
+      case "SK하이닉스":
+        return "https://illinoisksa.org/job/?mod=document&uid=10271";
+      case "LG전자":
+        return "https://linkareer.com/activity/165491";
+      case "카카오":
+        return "https://www.catch.co.kr/NCS/RecruitInfoDetails/359336";
+      case "삼성전자":
+        return "https://linkareer.com/activity/172869";
+      default:
+        return "#";  // 기본 링크
+    }
+  };
 
   const jobPostingsData = [
     {
@@ -44,13 +96,13 @@ const JobPostingDetail = () => {
         <JobPostDetailContainer>
           <JobPostDeatilHeader>{job.title}</JobPostDeatilHeader>
           <TextWrapper>
-            <JobPostDeatilHeader>접수 마감일 {job.endAt}</JobPostDeatilHeader>
-            <JobPostDeatilHeader>{job.likelihood}</JobPostDeatilHeader>
+            <JobPostDeatilHeader>접수 마감일 {formatDate(job.endAt)}</JobPostDeatilHeader>
+            <JobPostDeatilHeader>{job.likelihood === 0 ? "적합도 하" : "적합도 상"}</JobPostDeatilHeader>
           </TextWrapper>
         </JobPostDetailContainer>
         <JobPostingInfoContainer>
           <JobPostBox>
-            <JobImg style={{ backgroundImage: `url(${job.imgSrc})` }} />
+            <JobImg style={{ backgroundImage: `url(${getCompanyImage(job.companyName)})` }} />
             <JobInfoContainer>
               <JobTitle>{job.companyName}</JobTitle>
               <JobSubTitle>{job.title}</JobSubTitle>
@@ -62,6 +114,11 @@ const JobPostingDetail = () => {
             </JobInfoContainer>
           </JobPostBox>
           <JobInfoDetail>상세 정보</JobInfoDetail>
+          <JobLink>
+            <ApplyButton onClick={() => window.open(getCompanyLink(job.companyName), "_blank")}>
+              채용 공고 자세히 보러가기
+            </ApplyButton>
+          </JobLink >
         </JobPostingInfoContainer>
       </Container>
     </Wrapper>
@@ -82,7 +139,6 @@ const Container = styled.div`
   background-color: #f9f9f9;
   flex-grow: 1;
   border-radius: 8px;
-  height: 100%;
 `;
 
 const JobDetailHeader = styled.div`
@@ -181,6 +237,7 @@ const DetailTags = styled.div`
   display: flex;
   gap: 8px;
   margin-top: 8px;
+  flex-wrap: wrap;
 `;
 
 const Tag = styled.span`
@@ -202,4 +259,9 @@ const JobInfoDetail = styled.div`
   font-size: 30px;
   font-weight: 700;
   margin-top: 80px;
+`;
+
+
+const JobLink = styled.div`
+  margin-top:30px;
 `;

@@ -3,9 +3,14 @@ import Navbar from "../../components/Navbar";
 import styled from "styled-components";
 import logo from "../../assets/PickinLogo.png";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const SignupComplete = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <MainWrapper>
@@ -61,7 +66,7 @@ const Text = styled.div`
 
 const JoinBox = styled.div`
   background-color: #e0f7fa;
-  padding: 0px 80px;
+  padding: 0px 65px;
   border-radius: 10px;
 `;
 
@@ -99,9 +104,9 @@ const ButtonContainer = styled.div`
 
 const JoinButton = styled.button`
   width: 400px;
-  margin-top: 70px;
+  margin-top: 30px;
   margin-bottom: 70px;
-  height: 130px;
+  height: 100px;
   padding: 16px 24px;
   font-size: 30px;
   font-weight: 500;
