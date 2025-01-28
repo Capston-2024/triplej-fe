@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Header from "../../../components/Header";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import Button from "../../../components/Button";
 
 const Login = () => {
   return (
@@ -31,11 +32,15 @@ const Login = () => {
                       placeholder="비밀번호를 입력해주세요."
                     />
                   </FormField>
-                  <LoginButton>로그인</LoginButton>
+                  <Button type="fill" status="default" marginTop="6px">
+                    로그인
+                  </Button>
                 </div>
                 <div>
                   <Divider>계정이 없으신가요?</Divider>
-                  <JoinButton>이메일로 회원가입하기</JoinButton>
+                  <Button type="outline" status="default" marginTop="16px">
+                    이메일로 회원가입하기
+                  </Button>
                 </div>
               </LoginForm>
             </LoginContent>
@@ -108,36 +113,6 @@ const Input = styled.input`
   padding: 16px;
   border: 1px solid #e4e7ec;
   border-radius: 12px;
-`;
-
-const LoginButton = styled.button`
-  width: 100%;
-  height: 56px;
-  background-color: #0098ff;
-  border: none;
-  border-radius: 12px;
-  margin-top: 6px;
-  padding: 17px 104px;
-  color: #ffffff;
-  font-size: ${font.body3Title.fontSize};
-  font-weight: ${font.body3Title.fontWeight};
-  line-height: ${font.body3Title.lineHeight};
-  letter-spacing: ${font.body3Title.letterSpacing};
-`;
-
-const JoinButton = styled.button`
-  width: 100%;
-  height: 56px;
-  border: 1px solid #e4e7ec;
-  margin-top: 16px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 17px 80px;
-  color: #667085;
-  font-size: ${font.body3Title.fontSize};
-  font-weight: ${font.body3Title.fontWeight};
-  line-height: ${font.body3Title.lineHeight};
-  letter-spacing: ${font.body3Title.letterSpacing};
 `;
 
 const Divider = styled.div`
