@@ -72,7 +72,7 @@ const fonts = {
     letterSpacing: "-2%",
   },
   caption1: {
-    fontSize: "12px",
+    fontSize: "13px",
     fontWeight: "500",
     lineHeight: "140%",
     letterSpacing: "-2%",
