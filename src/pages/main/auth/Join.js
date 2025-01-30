@@ -1,20 +1,21 @@
 import styled from "styled-components";
 import Header from "../../../components/Header";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import InputBox from "../../../components/InputBox";
 import { useState } from "react";
-import Dropdown from "../../../components/Dropdown";
 import { ReactComponent as PickinCheck } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinCheck.svg";
 import { ReactComponent as Indicator1Activate } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator1Activate.svg";
 import { ReactComponent as Indicator1Disabled } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator1Disabled.svg";
 import { ReactComponent as Indicator2Activate } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator2Activate.svg";
 import { ReactComponent as Indicator2Disabled } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator2Disabled.svg";
 import Button from "../../../components/Button";
+import JoinForm1 from "../../../components/JoinForm1";
+import JoinForm2 from "../../../components/JoinForm2";
 
 const Join = () => {
   const [inputValue, setInputValue] = useState("");
   const [selectedValue, setSelectedValue] = useState("");
   const [status, setStatus] = useState("default");
+  const [currentStep, setCurrentStep] = useState(2);
 
   const handleSelectChange = (value) => {
     setSelectedValue(value);
@@ -35,45 +36,6 @@ const Join = () => {
       setStatus("default");
     }
   };
-
-  const nationalityOptions = [
-    { value: "kr", label: "South Korea" },
-    { value: "us", label: "United States" },
-    { value: "cn", label: "China" },
-    { value: "jp", label: "Japan" },
-    { value: "fr", label: "France" },
-    { value: "de", label: "Germany" },
-    { value: "uk", label: "United Kingdom" },
-    { value: "in", label: "India" },
-    { value: "br", label: "Brazil" },
-    { value: "ca", label: "Canada" },
-    { value: "ru", label: "Russia" },
-    { value: "au", label: "Australia" },
-  ];
-
-  const languageOptions = [
-    { value: "en", label: "English" },
-    { value: "ko", label: "Korean" },
-    { value: "zh", label: "Chinese (Mandarin)" },
-    { value: "es", label: "Spanish" },
-    { value: "fr", label: "French" },
-    { value: "de", label: "German" },
-    { value: "ja", label: "Japanese" },
-    { value: "ru", label: "Russian" },
-    { value: "ar", label: "Arabic" },
-    { value: "hi", label: "Hindi" },
-    { value: "pt", label: "Portuguese" },
-    { value: "it", label: "Italian" },
-    { value: "nl", label: "Dutch" },
-    { value: "sv", label: "Swedish" },
-    { value: "tr", label: "Turkish" },
-    { value: "vi", label: "Vietnamese" },
-    { value: "th", label: "Thai" },
-    { value: "pl", label: "Polish" },
-    { value: "uk", label: "Ukrainian" },
-    { value: "he", label: "Hebrew" },
-  ];
-
   return (
     <div>
       <Header />
@@ -83,97 +45,43 @@ const Join = () => {
           <div>
             <TitleContainer>
               <Title>
-                환영합니다!
-                <br />
-                Pickin'을 시작하기 위한 계정을 생성해주세요.
+                {currentStep === 1 ? (
+                  <>
+                    환영합니다!
+                    <br />
+                    Pickin'을 시작하기 위한 계정을 생성해주세요.
+                  </>
+                ) : (
+                  <>
+                    Weiss 님 안녕하세요!
+                    <br />
+                    기업에 공개할 이력을 작성해주세요.
+                  </>
+                )}
               </Title>
               <IndicatorContainer>
-                <Indicator1Activate />
-                <Indicator2Disabled />
+                {currentStep === 1 ? (
+                  <Indicator1Activate />
+                ) : (
+                  <Indicator1Disabled />
+                )}
+                {currentStep === 2 ? (
+                  <Indicator2Activate />
+                ) : (
+                  <Indicator2Disabled />
+                )}
               </IndicatorContainer>
             </TitleContainer>
-            <InputContainer>
-              <Card>
-                <InputBox
-                  label="이름"
-                  placeholder={"Name"}
-                  size="short"
-                  status={status}
-                  onChange={handleInputChange}
-                ></InputBox>
-                <InputBox
-                  label="성"
-                  placeholder={"Family Name"}
-                  size="short"
-                  status={status}
-                  onChange={handleInputChange}
-                ></InputBox>
-              </Card>
-              <Card>
-                <Dropdown
-                  label="국적"
-                  placeholder="Nationality"
-                  size="short"
-                  status="default"
-                  options={nationalityOptions}
-                ></Dropdown>
-                <Dropdown
-                  label="제 1언어"
-                  placeholder="First Language"
-                  size="short"
-                  status="default"
-                  options={languageOptions}
-                ></Dropdown>
-              </Card>
-              <div>
-                <InputBox
-                  label="이메일"
-                  placeholder={"ex) pickin@gmail.com"}
-                  size="long"
-                  status={status}
-                  onChange={handleInputChange}
-                ></InputBox>
-              </div>
-              <div>
-                <InputBox
-                  label="이메일 중복 체크"
-                  placeholder={"ex) pickin@gmail.com"}
-                  size="long"
-                  status={status}
-                  onChange={handleInputChange}
-                ></InputBox>
-              </div>
-              <div>
-                <InputBox
-                  label="비밀번호"
-                  placeholder={"최소 12~18자/영문, 숫자 혼합"}
-                  size="long"
-                  status={status}
-                  onChange={handleInputChange}
-                ></InputBox>
-              </div>
-            </InputContainer>
+            {currentStep === 1 && <JoinForm1 />}
+            {currentStep === 2 && <JoinForm2 />}
             <ButtonWrapper>
               <Button type="fill" status="default" size="large">
-                다음으로
+                {currentStep === 1 ? "다음으로" : "완료하기"}
               </Button>
             </ButtonWrapper>
           </div>
         </JoinBox>
       </Wrapper>
-      {/* <InputBox
-        placeholder={"Name"}
-        size="long"
-        status={status}
-        onChange={handleInputChange}
-      ></InputBox>
-      <Dropdown
-        placeholder="Select an option"
-        size="long"
-        status={status}
-        options={options}
-        onChange={handleSelectChange}
-      /> */}
     </div>
   );
 };
