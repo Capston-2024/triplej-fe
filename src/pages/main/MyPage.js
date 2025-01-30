@@ -1,12 +1,23 @@
 import Header from "../../components/Header";
 import MyPageNavigationBar from "../../components/MyPageNavigationBar";
+import Profile from "../../components/Profile";
+import styled from "styled-components";
 
 const MyPage = () => {
   return (
     <div>
       <Header />
-      <MyPageNavigationBar />
+      <Wrapper>
+        <MyPageNavigationBar />
+        <Profile />
+      </Wrapper>
     </div>
   );
 };
 export default MyPage;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 430px;
+`;
