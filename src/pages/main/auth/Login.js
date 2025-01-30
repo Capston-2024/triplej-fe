@@ -2,8 +2,15 @@ import styled from "styled-components";
 import Header from "../../../components/Header";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import Button from "../../../components/Button";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleJoin = () => {
+    navigate("/join");
+  };
+
   return (
     <div>
       <Header />
@@ -38,7 +45,12 @@ const Login = () => {
                 </div>
                 <div>
                   <Divider>계정이 없으신가요?</Divider>
-                  <Button type="outline" status="default" marginTop="16px">
+                  <Button
+                    type="outline"
+                    status="default"
+                    marginTop="16px"
+                    onClick={handleJoin}
+                  >
                     이메일로 회원가입하기
                   </Button>
                 </div>

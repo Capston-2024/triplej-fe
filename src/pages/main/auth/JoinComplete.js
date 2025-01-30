@@ -2,7 +2,7 @@ import Button from "../../../components/Button";
 import Header from "../../../components/Header";
 import styled from "styled-components";
 
-const LoginComplete = () => {
+const JoinComplete = () => {
   return (
     <Wrapper>
       <Header />
@@ -16,7 +16,7 @@ const LoginComplete = () => {
     </Wrapper>
   );
 };
-export default LoginComplete;
+export default JoinComplete;
 
 const Wrapper = styled.div`
   display: flex;

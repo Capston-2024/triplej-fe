@@ -44,5 +44,6 @@ const ButtonStyle = styled.button`
   margin-top: ${({ marginTop }) => marginTop || "0px"};
   &:hover {
     opacity: 0.9;
+    cursor: pointer;
   }
 `;

@@ -10,12 +10,14 @@ import { ReactComponent as Indicator2Disabled } from "/Users/jiwon/Desktop/Capst
 import Button from "../../../components/Button";
 import JoinForm1 from "../../../components/JoinForm1";
 import JoinForm2 from "../../../components/JoinForm2";
+import { useNavigate } from "react-router-dom";
 
 const Join = () => {
   const [inputValue, setInputValue] = useState("");
   const [selectedValue, setSelectedValue] = useState("");
   const [status, setStatus] = useState("default");
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
+  const navigate = useNavigate();
 
   const handleSelectChange = (value) => {
     setSelectedValue(value);
@@ -36,6 +38,15 @@ const Join = () => {
       setStatus("default");
     }
   };
+
+  const handleButtonClick = () => {
+    if (currentStep === 1) {
+      setCurrentStep(2);
+    } else if (currentStep === 2) {
+      navigate("/joinComplete");
+    }
+  };
+
   return (
     <div>
       <Header />
@@ -75,7 +86,12 @@ const Join = () => {
             {currentStep === 1 && <JoinForm1 />}
             {currentStep === 2 && <JoinForm2 />}
             <ButtonWrapper>
-              <Button type="fill" status="default" size="large">
+              <Button
+                type="fill"
+                status="default"
+                size="large"
+                onClick={handleButtonClick}
+              >
                 {currentStep === 1 ? "다음으로" : "완료하기"}
               </Button>
             </ButtonWrapper>
