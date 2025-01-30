@@ -6,12 +6,16 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Main />} />
-      </Routes>
+    <div className="app-container">
+      <BrowserRouter>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Main />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
       <Footer />
-    </BrowserRouter>
+    </div>
   );
 }
 
