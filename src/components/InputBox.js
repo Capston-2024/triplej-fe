@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import { ReactComponent as CancelIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Cancel.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-
 const InputBox = ({
+  label,
   placeholder,
   size = "short",
   status = "default",
@@ -11,32 +11,35 @@ const InputBox = ({
   ...props
 }) => {
   const [inputValue, setInputValue] = useState("");
-
   const handleChange = (e) => {
     setInputValue(e.target.value);
     if (onChange) onChange(e.target.value);
   };
-
   const handleClear = () => {
     setInputValue("");
     if (onChange) onChange("");
   };
-
   return (
-    <InputBoxContainer>
-      <InputStyle
-        placeholder={placeholder}
-        size={size}
-        status={status}
-        value={inputValue}
-        onChange={handleChange}
-      />
-      {inputValue && (
-        <ClearButton onClick={handleClear}>
-          <CancelIcon />
-        </ClearButton>
-      )}
-    </InputBoxContainer>
+    <div>
+      <Label>
+        {label}
+        <span>*</span>
+      </Label>
+      <InputBoxContainer>
+        <InputStyle
+          placeholder={placeholder}
+          size={size}
+          status={status}
+          value={inputValue}
+          onChange={handleChange}
+        />
+        {inputValue && (
+          <ClearButton onClick={handleClear}>
+            <CancelIcon />
+          </ClearButton>
+        )}
+      </InputBoxContainer>
+    </div>
   );
 };
 export default InputBox;
@@ -46,19 +49,30 @@ const InputBoxContainer = styled.div`
   display: inline-block;
 `;
 
+const Label = styled.div`
+  color: #1d2939;
+  font-size: ${font.body3Title.fontSize};
+  font-weight: ${font.body3Title.fontWeight};
+  line-height: ${font.body3Title.lineHeight};
+  letter-spacing: ${font.body3Title.letterSpacing};
+  margin-bottom: 8px;
+  span {
+    color: #0098ff;
+    margin-left: 2px;
+  }
+`;
+
 const InputStyle = styled.input`
-  width: ${({ size }) => (size === "short" ? "340px" : "458px")};
+  width: ${({ size }) => (size === "short" ? "308px" : "426px")};
   padding: 16px;
   border-radius: 12px;
   border: ${({ status }) =>
     status === "default" ? "1px solid #E4E7EC" : "#FF3B30"};
-
   font-size: ${font.body3Title.fontSize};
   color: #1d2939;
   font-weight: ${font.body3Title.fontWeight};
   line-height: ${font.body3Title.lineHeight};
   letter-spacing: ${font.body3Title.letterSpacing};
-
   &:focus {
     border-color: ${({ status }) =>
       status === "error" ? "#FF3B30" : "#0098ff"};
@@ -71,7 +85,6 @@ const InputStyle = styled.input`
     letter-spacing: ${font.body3Title.letterSpacing};
   }
 `;
-
 const ClearButton = styled.div`
   position: absolute;
   right: 16px;

@@ -4,6 +4,7 @@ import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import { ReactComponent as Arrow } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/ArrowDown.svg";
 
 const Dropdown = ({
+  label,
   placeholder,
   size = "short",
   status = "default",
@@ -18,24 +19,30 @@ const Dropdown = ({
     if (onChange) onChange(e.target.value);
   };
   return (
-    <DropdownBoxContainer>
-      <SelectStyle
-        size={size}
-        status={status}
-        value={selectedValue}
-        onChange={handleChange}
-        {...props}
-      >
-        <option value="" disabled>
-          {placeholder}
-        </option>
-        {options.map((option, index) => (
-          <option key={index} value={option.value}>
-            {option.label}
+    <div>
+      <Label>
+        {label}
+        <span>*</span>
+      </Label>
+      <DropdownBoxContainer>
+        <SelectStyle
+          size={size}
+          status={status}
+          value={selectedValue}
+          onChange={handleChange}
+          {...props}
+        >
+          <option value="" disabled>
+            {placeholder}
           </option>
-        ))}
-      </SelectStyle>
-    </DropdownBoxContainer>
+          {options.map((option, index) => (
+            <option key={index} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </SelectStyle>
+      </DropdownBoxContainer>
+    </div>
   );
 };
 export default Dropdown;
@@ -43,6 +50,19 @@ export default Dropdown;
 const DropdownBoxContainer = styled.div`
   position: relative;
   display: inline-block;
+`;
+
+const Label = styled.div`
+  color: #1d2939;
+  font-size: ${font.body3Title.fontSize};
+  font-weight: ${font.body3Title.fontWeight};
+  line-height: ${font.body3Title.lineHeight};
+  letter-spacing: ${font.body3Title.letterSpacing};
+  margin-bottom: 8px;
+  span {
+    color: #0098ff;
+    margin-left: 2px;
+  }
 `;
 
 const SelectStyle = styled.select`
@@ -56,12 +76,10 @@ const SelectStyle = styled.select`
   font-weight: ${font.body3Title.fontWeight};
   line-height: ${font.body3Title.lineHeight};
   letter-spacing: ${font.body3Title.letterSpacing};
-  appearance:none;
+  appearance: none;
 
   &:focus {
     border-color: ${({ status }) =>
       status === "error" ? "#FF3B30" : "#0098ff"};
   }
-
-    no-repeat right 16px center;
 `;
