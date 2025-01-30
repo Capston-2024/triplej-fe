@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Main from "./pages/main/main.js";
 import Footer from "./components/Footer";
+import MyPage from "./pages/main/MyPage";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <div className="content">
           <Routes>
-            <Route path="/" element={<Main />} />
+            <Route path="/mypage" element={<MyPage />} />
           </Routes>
         </div>
       </BrowserRouter>
