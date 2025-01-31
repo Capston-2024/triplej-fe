@@ -17,7 +17,7 @@ const Container = styled.div`
   width: 234px;
   height: 264px;
   padding: 8px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.background.white};
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -27,12 +27,12 @@ const Container = styled.div`
 
 const Section = styled.div`
   height: 28px;
-  background-color: #f2f4f7;
+  background-color: ${(props) => props.theme.colors.background.normal};
   border-radius: 8px;
   padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 20px;
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline4.fontSize};
   font-weight: ${font.headline4.fontWeight};
   line-height: ${font.headline4.lineHeight};

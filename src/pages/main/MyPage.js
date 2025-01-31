@@ -10,7 +10,7 @@ const MyPage = () => {
       <Header />
       <Wrapper>
         <MyPageNavigationBar />
-        <ApplyStatus />
+        <Profile />
       </Wrapper>
     </div>
   );

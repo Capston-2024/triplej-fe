@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   padding: 48px 45px 80px;
   gap: 60px;
   width: 700px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.background.white};
   border-radius: 20px;
 `;
 
@@ -51,7 +51,7 @@ const StatusBar = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 84px;
-  background-color: #e1f3ff;
+  background-color: ${(props) => props.theme.colors.background.blue};
   border-radius: 12px;
 `;
 
@@ -66,7 +66,7 @@ const StatusItem = styled.div`
 `;
 
 const StatusTitle = styled.div`
-  color: #475467;
+  color: ${(props) => props.theme.colors.text.neutral};
   font-size: ${font.body3Title.fontSize};
   font-weight: ${font.body3Title.fontWeight};
   line-height: ${font.body3Title.lineHeight};
@@ -74,7 +74,7 @@ const StatusTitle = styled.div`
 `;
 
 const Number = styled.div`
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.display1.fontSize};
   font-weight: ${font.display1.fontWeight};
   line-height: ${font.display1.lineHeight};
@@ -83,13 +83,13 @@ const Number = styled.div`
 
 const TotalStatusText = styled.div`
   padding-bottom: 12px;
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline5.fontSize};
   font-weight: ${font.headline5.fontWeight};
   line-height: ${font.headline5.lineHeight};
   letter-spacing: ${font.headline5.letterSpacing};
   span {
-    color: #0098ff;
+    color: ${(props) => props.theme.colors.primary.normal};
     padding-left: 6px;
   }
 `;

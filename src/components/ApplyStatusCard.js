@@ -31,7 +31,7 @@ const Wrapper = styled.div`
   padding: 20px 20px;
   width: 660px;
   height: 139px;
-  border: 1px solid #e4e7ec;
+  border: 1px solid ${(props) => props.theme.colors.line.normal};
   border-radius: 12px;
 `;
 
@@ -46,7 +46,7 @@ const CompanyName = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.body3Normal.fontSize};
   font-weight: ${font.body3Normal.fontWeight};
   line-height: ${font.body3Normal.lineHeight};
@@ -54,7 +54,7 @@ const CompanyName = styled.div`
 `;
 
 const JobDisc = styled.div`
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline4.fontSize};
   font-weight: ${font.headline4.fontWeight};
   line-height: ${font.headline4.lineHeight};

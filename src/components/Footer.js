@@ -46,7 +46,7 @@ export default Footer;
 const Wrapper = styled.div`
   width: 1920px;
   height: 200px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.background.white};
   display: flex;
   justify-content: center;
 `;
@@ -66,7 +66,7 @@ const RightCard = styled.div`
 `;
 
 const LogoText = styled.div`
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.body4Normal.fontSize};
   font-weight: ${font.body4Normal.fontWeight};
   line-height: ${font.body4Normal.lineHeight};
@@ -75,7 +75,7 @@ const LogoText = styled.div`
 `;
 
 const SubText = styled.div`
-  color: #667085;
+  color: ${(props) => props.theme.colors.text.assistive};
   font-size: ${font.body4Normal.fontSize};
   font-weight: ${font.body4Normal.fontWeight};
   line-height: ${font.body4Normal.lineHeight};
@@ -89,7 +89,7 @@ const LeftCard = styled.div`
 `;
 
 const Title = styled.div`
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.body4Title.fontSize};
   font-weight: ${font.body4Title.fontWeight};
   line-height: ${font.body4Title.lineHeight};

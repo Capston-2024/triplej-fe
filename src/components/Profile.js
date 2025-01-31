@@ -63,7 +63,7 @@ export default Profile;
 const Wrapper = styled.div`
   width: 790px;
   height: 550px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.background.white};
   border-radius: 20px;
   padding: 80px 90px;
 `;
@@ -75,7 +75,7 @@ const TopCard = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-bottom: 38px;
-  border-bottom: 1px solid #e4e7ec;
+  border-bottom: 1px solid ${(props) => props.theme.colors.line.normal};
 `;
 
 const Info = styled.div`
@@ -86,7 +86,7 @@ const Info = styled.div`
 `;
 
 const Name = styled.div`
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline1.fontSize};
   font-weight: ${font.headline1.fontWeight};
   line-height: ${font.headline1.lineHeight};
@@ -95,7 +95,7 @@ const Name = styled.div`
 `;
 
 const Mail = styled.div`
-  color: #667085;
+  color: ${(props) => props.theme.colors.text.assistive};
   font-size: ${font.body1Title.fontSize};
   font-weight: ${font.body1Title.fontWeight};
   line-height: ${font.body1Title.lineHeight};
@@ -109,10 +109,10 @@ const EditButton = styled.button`
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  border: 1px solid #e4e7ec;
+  border: 1px solid ${(props) => props.theme.colors.line.normal};
   border-radius: 8px;
-  background-color: #ffffff;
-  color: #0098ff;
+  background-color: ${(props) => props.theme.colors.background.white};
+  color: ${(props) => props.theme.colors.primary.normal};
   font-size: ${font.body3Normal.fontSize};
   font-weight: ${font.body3Normal.fontWeight};
   line-height: ${font.body3Normal.lineHeight};
@@ -138,7 +138,7 @@ const Section = styled.div`
 `;
 
 const Label = styled.div`
-  color: #667085;
+  color: ${(props) => props.theme.colors.text.assistive};
   font-size: ${font.body3Normal.fontSize};
   font-weight: ${font.body3Normal.fontWeight};
   line-height: ${font.body3Normal.lineHeight};
@@ -146,7 +146,7 @@ const Label = styled.div`
 `;
 
 const Content = styled.div`
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline4.fontSize};
   font-weight: ${font.headline4.fontWeight};
   line-height: ${font.headline4.lineHeight};

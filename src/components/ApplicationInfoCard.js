@@ -50,7 +50,7 @@ const LabelWithIcon = styled.div`
   display: flex;
   align-items: center;
   padding-right: 8px;
-  color: #667085;
+  color: ${(props) => props.theme.colors.text.assistive};
   font-size: ${font.body3Normal.fontSize};
   font-weight: ${font.body3Normal.fontWeight};
   line-height: ${font.body3Normal.lineHeight};
@@ -58,7 +58,7 @@ const LabelWithIcon = styled.div`
 `;
 
 const Label = styled.div`
-  color: #667085;
+  color: ${(props) => props.theme.colors.text.assistive};
   font-size: ${font.body3Normal.fontSize};
   font-weight: ${font.body3Normal.fontWeight};
   line-height: ${font.body3Normal.lineHeight};
@@ -66,7 +66,10 @@ const Label = styled.div`
 `;
 
 const Content = styled.div`
-  color: ${({ content }) => (content === "합격" ? "#0098FF" : "#1d2939")};
+  color: ${({ content }) =>
+    content === "합격"
+      ? (props) => props.theme.colors.primary.normal
+      : (props) => props.theme.colors.text.normal};
   font-size: ${font.headline5.fontSize};
   font-weight: ${font.headline5.fontWeight};
   line-height: ${font.headline5.lineHeight};
