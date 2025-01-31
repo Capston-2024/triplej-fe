@@ -1,3 +1,4 @@
+import ApplyStatus from "../../components/ApplyStatus";
 import Header from "../../components/Header";
 import MyPageNavigationBar from "../../components/MyPageNavigationBar";
 import Profile from "../../components/Profile";
@@ -9,7 +10,7 @@ const MyPage = () => {
       <Header />
       <Wrapper>
         <MyPageNavigationBar />
-        <Profile />
+        <ApplyStatus />
       </Wrapper>
     </div>
   );
