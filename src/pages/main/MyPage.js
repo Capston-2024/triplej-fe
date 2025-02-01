@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import MyPageNavigationBar from "../../components/MyPageNavigationBar";
 import Profile from "../../components/Profile";
 import styled from "styled-components";
+import SavedPost from "../../components/SavedPost";
 
 const MyPage = () => {
   return (
@@ -10,7 +11,7 @@ const MyPage = () => {
       <Header />
       <Wrapper>
         <MyPageNavigationBar />
-        <Profile />
+        <SavedPost />
       </Wrapper>
     </div>
   );
