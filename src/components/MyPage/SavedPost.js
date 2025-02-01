@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PostCardShort from "./PostCardShort";
+import PostCardShort from "../PostCardShort";
 
 const SavedPost = () => {
   return (

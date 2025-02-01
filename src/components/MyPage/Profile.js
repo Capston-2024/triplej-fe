@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as Graphic } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/Graphic.svg";
+import { ReactComponent as Graphic } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/ProfileGraphic.svg";
 import { ReactComponent as Write } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Write.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
@@ -61,37 +61,37 @@ const Profile = () => {
 export default Profile;
 
 const Wrapper = styled.div`
-  width: 790px;
+  padding: 80px 90px;
+  border-radius: 20px;
+  width: 610px;
   height: 550px;
   background-color: ${(props) => props.theme.colors.background.white};
-  border-radius: 20px;
-  padding: 80px 90px;
 `;
 
 const TopCard = styled.div`
-  height: 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 38px;
+  height: 80px;
   border-bottom: 1px solid ${(props) => props.theme.colors.line.normal};
 `;
 
 const Info = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 20px;
   align-items: center;
+  gap: 20px;
 `;
 
 const Name = styled.div`
+  padding-bottom: 4px;
   color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline1.fontSize};
   font-weight: ${font.headline1.fontWeight};
   line-height: ${font.headline1.lineHeight};
   letter-spacing: ${font.headline1.letterSpacing};
-  padding-bottom: 4px;
 `;
 
 const Mail = styled.div`
@@ -103,12 +103,12 @@ const Mail = styled.div`
 `;
 
 const EditButton = styled.button`
-  width: 173px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
   padding: 8px 12px;
+  gap: 8px;
+  width: 173px;
   border: 1px solid ${(props) => props.theme.colors.line.normal};
   border-radius: 8px;
   background-color: ${(props) => props.theme.colors.background.white};
@@ -131,10 +131,10 @@ const Card = styled.div`
 `;
 
 const Section = styled.div`
-  width: 160px;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 160px;
 `;
 
 const Label = styled.div`

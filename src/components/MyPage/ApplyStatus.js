@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import ApplyStatusCard from "./ApplyStatusCard";
+import ApplyStatusCard from "../ApplyStatusCard";
 
 const STATUS_LIST = [
   { title: "지원 완료", count: 0 },
