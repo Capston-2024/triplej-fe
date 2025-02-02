@@ -27,6 +27,7 @@ const JoinForm1 = () => {
           placeholder={"Name"}
           size="short"
           status={status}
+          required="true"
           onChange={handleInputChange}
         ></InputBox>
         <InputBox
@@ -34,6 +35,7 @@ const JoinForm1 = () => {
           placeholder={"Family Name"}
           size="short"
           status={status}
+          required="true"
           onChange={handleInputChange}
         ></InputBox>
       </Card>
@@ -59,6 +61,7 @@ const JoinForm1 = () => {
           placeholder={"ex) pickin@gmail.com"}
           size="long"
           status={status}
+          required="true"
           onChange={handleInputChange}
         ></InputBox>
       </div>
@@ -68,6 +71,7 @@ const JoinForm1 = () => {
           placeholder={"ex) pickin@gmail.com"}
           size="long"
           status={status}
+          required="true"
           onChange={handleInputChange}
         ></InputBox>
       </div>
@@ -77,6 +81,7 @@ const JoinForm1 = () => {
           placeholder={"최소 12~18자/영문, 숫자 혼합"}
           size="long"
           status={status}
+          required="true"
           onChange={handleInputChange}
         ></InputBox>
       </div>
@@ -86,9 +91,9 @@ const JoinForm1 = () => {
 export default JoinForm1;
 
 const InputContainer = styled.div`
-  padding-top: 60px;
   display: flex;
   flex-direction: column;
+  padding-top: 60px;
   gap: 40px;
 `;
 

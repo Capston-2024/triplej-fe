@@ -53,30 +53,29 @@ const DropdownBoxContainer = styled.div`
 `;
 
 const Label = styled.div`
-  color: #1d2939;
+  margin-bottom: 8px;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.body3Title.fontSize};
   font-weight: ${font.body3Title.fontWeight};
   line-height: ${font.body3Title.lineHeight};
   letter-spacing: ${font.body3Title.letterSpacing};
-  margin-bottom: 8px;
   span {
-    color: #0098ff;
+    color: ${(props) => props.theme.colors.primary.normal};
     margin-left: 2px;
   }
 `;
 
 const SelectStyle = styled.select`
-  width: ${({ size }) => (size === "short" ? "340px" : "458px")};
   padding: 16px;
   border-radius: 12px;
+  width: ${({ size }) => (size === "short" ? "340px" : "458px")};
   border: ${({ status }) =>
     status === "default" ? "1px solid #E4E7EC" : "#FF3B30"};
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.body3Title.fontSize};
-  color: #1d2939;
   font-weight: ${font.body3Title.fontWeight};
   line-height: ${font.body3Title.lineHeight};
   letter-spacing: ${font.body3Title.letterSpacing};
-  appearance: none;
 
   &:focus {
     border-color: ${({ status }) =>

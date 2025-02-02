@@ -1,12 +1,9 @@
 import styled from "styled-components";
 import { useState } from "react";
 import Dropdown from "./Dropdown";
-import InputBox from "./InputBox";
 import {
   educationLevelOptions,
-  languageOptions,
   majorOptions,
-  nationalityOptions,
   topikLevelOptions,
   universityOptions,
   visaOptions,
@@ -76,9 +73,9 @@ const JoinForm2 = () => {
 export default JoinForm2;
 
 const InputContainer = styled.div`
-  padding-top: 60px;
   display: flex;
   flex-direction: column;
+  padding-top: 60px;
   gap: 40px;
 `;
 

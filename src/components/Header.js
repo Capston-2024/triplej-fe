@@ -34,7 +34,7 @@ const Container = styled.div`
   width: 1920px;
   height: 56px;
   padding-top: 8px;
-  background-color: #ffffff;
+  background-color: ${(props) => props.theme.colors.background.white};
   display: flex;
   justify-content: center;
 `;
@@ -81,10 +81,10 @@ const LoginButton = styled.button`
   width: 200px;
   align-items: center;
   padding: 8px 12px;
-  border: 1px solid #e4e7ec;
+  border: 1px solid ${(props) => props.theme.colors.line.normal};
   border-radius: 8px;
-  background-color: #ffffff;
-  color: #0098ff;
+  background-color: ${(props) => props.theme.colors.background.white};
+  color: ${(props) => props.theme.colors.primary.normal};
   font-size: ${font.body3Normal.fontSize};
   font-weight: ${font.body3Normal.fontWeight};
   line-height: ${font.body3Normal.lineHeight};
@@ -99,8 +99,8 @@ const CorpButton = styled.button`
   padding: 8px 12px;
   border: none;
   border-radius: 8px;
-  background-color: #f2f4f7;
-  color: #1d2939;
+  background-color: ${(props) => props.theme.colors.background.normal};
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.body3Normal.fontSize};
   font-weight: ${font.body3Normal.fontWeight};
   line-height: ${font.body3Normal.lineHeight};

@@ -108,14 +108,15 @@ const Wrapper = styled.div`
   justify-content: center;
   padding-top: 60px;
   padding-bottom: 44px;
+  background-color: ${(props) => props.theme.colors.background.white};
 `;
 
 const JoinBox = styled.div`
-  width: 700px;
-  height: 932px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  width: 700px;
+  height: 932px;
 `;
 
 const TitleContainer = styled.div`
@@ -124,7 +125,7 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.div`
-  color: #1d2939;
+  color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline1.fontSize};
   font-weight: ${font.headline1.fontWeight};
   line-height: ${font.headline1.lineHeight};
@@ -137,20 +138,8 @@ const IndicatorContainer = styled.div`
   align-items: flex-end;
 `;
 
-const InputContainer = styled.div`
-  padding-top: 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-`;
-
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 100px;
-`;
-
-const Card = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;

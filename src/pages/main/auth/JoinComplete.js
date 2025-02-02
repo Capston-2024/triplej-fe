@@ -26,10 +26,10 @@ const Wrapper = styled.div`
 `;
 
 const Graphic = styled.div`
-  width: 300px;
-  height: 300px;
-  background-color: #1d2939;
-  border-radius: 200px;
   margin-top: 160px;
   margin-bottom: 60px;
+  width: 300px;
+  height: 300px;
+  background-color: ${(props) => props.theme.colors.text.normal};
+  border-radius: 200px;
 `;
