@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/PickinLogoDark.svg";
+import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinLogoDark.svg";
 import { ReactComponent as Instagram } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Instagram.svg";
 import { ReactComponent as Email } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Email.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";

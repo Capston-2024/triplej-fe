@@ -8,8 +8,8 @@ import { ReactComponent as Indicator1Disabled } from "/Users/jiwon/Desktop/Capst
 import { ReactComponent as Indicator2Activate } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator2Activate.svg";
 import { ReactComponent as Indicator2Disabled } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator2Disabled.svg";
 import Button from "../../../components/Button";
-import JoinForm1 from "../../../components/JoinForm1";
-import JoinForm2 from "../../../components/JoinForm2";
+import JoinForm1 from "../../../components/Auth/JoinForm1";
+import JoinForm2 from "../../../components/Auth/JoinForm2";
 import { useNavigate } from "react-router-dom";
 
 const Join = () => {

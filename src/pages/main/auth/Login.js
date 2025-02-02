@@ -80,6 +80,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 100px;
+  padding-bottom: 120px;
 `;
 
 const LoginBox = styled.div`

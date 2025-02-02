@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { useState } from "react";
-import Dropdown from "./Dropdown";
+import Dropdown from "../Dropdown";
 import {
   educationLevelOptions,
   majorOptions,
   topikLevelOptions,
   universityOptions,
   visaOptions,
-} from "../constants/options";
+} from "../../constants/options";
 
 const JoinForm2 = () => {
   const [inputValue, setInputValue] = useState("");
