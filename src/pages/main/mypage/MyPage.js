@@ -1,18 +1,28 @@
-import ApplyStatus from "../../components/MyPage/ApplyStatus";
-import Header from "../../components/Header";
-import MyPageNavigationBar from "../../components/MyPage/MyPageNavigationBar";
-import Profile from "../../components/MyPage/Profile";
+import ApplyStatus from "../../../components/MyPage/ApplyStatus";
+import Header from "../../../components/Header";
+import MyPageNavigationBar from "../../../components/MyPage/MyPageNavigationBar";
+import Profile from "../../../components/MyPage/Profile";
 import styled from "styled-components";
-import SavedPost from "../../components/MyPage/SavedPost";
+import SavedPost from "../../../components/MyPage/SavedPost";
 import { useState } from "react";
+import ProfileEdit from "../../../components/MyPage/ProfileEdit";
 
 const MyPage = () => {
   const [selectedSection, setSelectedSection] = useState("저장한 공고");
+  const [isEditing, setIsEditing] = useState(false);
+
+  const handleSectionChange = (section) => {
+    setSelectedSection(section);
+    setIsEditing(false);
+  };
 
   const renderContent = () => {
+    if (isEditing) {
+      return <ProfileEdit />;
+    }
     switch (selectedSection) {
       case "프로필":
-        return <Profile />;
+        return <Profile setIsEditing={setIsEditing} />;
       case "지원 현황":
         return <ApplyStatus />;
       case "저장한 공고":
@@ -28,7 +38,7 @@ const MyPage = () => {
       <Wrapper>
         <MyPageNavigationBar
           selectedSection={selectedSection}
-          setSelectedSection={setSelectedSection}
+          setSelectedSection={handleSectionChange}
         />
         {renderContent()}
       </Wrapper>

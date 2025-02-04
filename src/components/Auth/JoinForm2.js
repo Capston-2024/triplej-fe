@@ -33,14 +33,14 @@ const JoinForm2 = () => {
           size="short"
           status="default"
           options={educationLevelOptions}
-        ></Dropdown>
+        />
         <Dropdown
           label="대학교"
           placeholder="University"
           size="short"
           status="default"
           options={universityOptions}
-        ></Dropdown>
+        />
       </Card>
       <div>
         <Dropdown
@@ -49,7 +49,7 @@ const JoinForm2 = () => {
           size="long"
           status={status}
           options={majorOptions}
-        ></Dropdown>
+        />
       </div>
       <Card>
         <Dropdown
@@ -58,14 +58,14 @@ const JoinForm2 = () => {
           size="short"
           status="default"
           options={visaOptions}
-        ></Dropdown>
+        />
         <Dropdown
           label="TOPIK 등급"
           placeholder="TOPIK"
           size="short"
           status="default"
           options={topikLevelOptions}
-        ></Dropdown>
+        />
       </Card>
     </InputContainer>
   );

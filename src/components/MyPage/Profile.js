@@ -3,7 +3,7 @@ import { ReactComponent as Graphic } from "/Users/jiwon/Desktop/Capston/triplej-
 import { ReactComponent as Write } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Write.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
-const Profile = () => {
+const Profile = ({ setIsEditing }) => {
   return (
     <Wrapper>
       <TopCard>
@@ -14,7 +14,7 @@ const Profile = () => {
             <Mail>pickin@gmail.com</Mail>
           </div>
         </Info>
-        <EditButton>
+        <EditButton onClick={() => setIsEditing(true)}>
           회원정보 수정하기
           <Write />
         </EditButton>

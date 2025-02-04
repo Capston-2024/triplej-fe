@@ -42,7 +42,7 @@ const Login = () => {
                   size="short"
                   status={status}
                   onChange={handleInputChange}
-                ></InputBox>
+                />
               </FormField>
               <FormField>
                 <InputBox
@@ -51,7 +51,7 @@ const Login = () => {
                   size="short"
                   status={status}
                   onChange={handleInputChange}
-                ></InputBox>
+                />
               </FormField>
               <Button type="fill" status="default" marginTop="6px">
                 로그인

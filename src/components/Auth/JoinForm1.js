@@ -29,7 +29,7 @@ const JoinForm1 = () => {
           status={status}
           required="true"
           onChange={handleInputChange}
-        ></InputBox>
+        />
         <InputBox
           label="성"
           placeholder={"Family Name"}
@@ -37,7 +37,7 @@ const JoinForm1 = () => {
           status={status}
           required="true"
           onChange={handleInputChange}
-        ></InputBox>
+        />
       </Card>
       <Card>
         <Dropdown
@@ -46,14 +46,14 @@ const JoinForm1 = () => {
           size="short"
           status="default"
           options={nationalityOptions}
-        ></Dropdown>
+        />
         <Dropdown
           label="제 1언어"
           placeholder="First Language"
           size="short"
           status="default"
           options={languageOptions}
-        ></Dropdown>
+        />
       </Card>
       <div>
         <InputBox
@@ -63,7 +63,7 @@ const JoinForm1 = () => {
           status={status}
           required="true"
           onChange={handleInputChange}
-        ></InputBox>
+        />
       </div>
       <div>
         <InputBox
@@ -73,7 +73,7 @@ const JoinForm1 = () => {
           status={status}
           required="true"
           onChange={handleInputChange}
-        ></InputBox>
+        />
       </div>
       <div>
         <InputBox
@@ -82,8 +82,7 @@ const JoinForm1 = () => {
           size="long"
           status={status}
           required="true"
-          onChange={handleInputChange}
-        ></InputBox>
+        />
       </div>
     </InputContainer>
   );

@@ -5,7 +5,7 @@ import Login from "./pages/main/auth/Login.js";
 import Join from "./pages/main/auth/Join.js";
 import JoinComplete from "./pages/main/auth/JoinComplete.js";
 import Footer from "./components/Footer";
-import MyPage from "./pages/main/MyPage";
+import MyPage from "./pages/main/mypage/MyPage";
 import theme from "./styles/theme";
 
 function App() {
