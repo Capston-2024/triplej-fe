@@ -47,6 +47,7 @@ const Wrapper = styled.div`
   height: 174px;
   border: 1px solid ${(props) => props.theme.colors.line.normal};
   border-radius: 12px;
+  background-color: ${(props) => props.theme.colors.background.white};
 `;
 
 const TopContainer = styled.div`

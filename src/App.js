@@ -7,6 +7,7 @@ import JoinComplete from "./pages/main/auth/JoinComplete.js";
 import Footer from "./components/Footer";
 import MyPage from "./pages/main/mypage/MyPage";
 import theme from "./styles/theme";
+import Home from "./pages/main/home/Home";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <BrowserRouter>
           <div className="content">
             <Routes>
+              <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/join" element={<Join />} />
               <Route path="/joinComplete" element={<JoinComplete />} />
