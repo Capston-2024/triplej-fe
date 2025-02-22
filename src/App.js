@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import MyPage from "./pages/main/mypage/MyPage";
 import theme from "./styles/theme";
 import Home from "./pages/main/home/Home";
+import JobPost from "./pages/main/JobPost/JobPost";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <div className="content">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/jobpost" element={<JobPost />} />
               <Route path="/login" element={<Login />} />
               <Route path="/join" element={<Join />} />
               <Route path="/joinComplete" element={<JoinComplete />} />

@@ -1,18 +1,29 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinLogoDark.svg";
 import { ReactComponent as Link } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Link.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <HeaderContainer>
         <LogoContainer>
-          <LogoWrapper>
+          <LogoWrapper
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+          >
             <Logo />
           </LogoWrapper>
           <TextContainer>
-            <div>채용 공고</div>
+            <div
+              onClick={() => navigate("/jobpost")}
+              style={{ cursor: "pointer" }}
+            >
+              채용 공고
+            </div>
             <div>커뮤니티</div>
           </TextContainer>
         </LogoContainer>
@@ -31,7 +42,7 @@ const Header = () => {
 export default Header;
 
 const Container = styled.div`
-  width: 1920px;
+  width: 100%;
   height: 56px;
   padding-top: 8px;
   background-color: ${(props) => props.theme.colors.background.white};
@@ -40,7 +51,7 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  width: 1578px;
+  width: 1100px;
   height: 40px;
   display: flex;
   justify-content: space-between;
