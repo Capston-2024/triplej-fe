@@ -4,6 +4,12 @@ import Header from "../../../components/Header";
 import LikablePost from "../../../components/JobPost/LikablePost";
 import HomePostCard from "../../../components/Home/HomePostCard";
 import SearchBar from "../../../components/JobPost/SearchBar";
+import FilterBoxModal from "../../../components/JobPost/FilterBoxModal";
+import {
+  jobOptions,
+  visaOptions,
+  visaSelectOptions,
+} from "../../../constants/options";
 
 const JobPost = () => {
   return (
@@ -17,6 +23,23 @@ const JobPost = () => {
             채용 공고 상세 검색하기
             <SearchBar />
           </SearchContainer>
+          {/* 모달테스트용 여기서부터 */}
+          {/* <Test>
+            <FilterBoxModal
+              size="large"
+              title="직무"
+              options={jobOptions}
+              onApply={(selected) => console.log("선택된 옵션:", selected)}
+            />
+
+            <FilterBoxModal
+              size="small"
+              title="비자"
+              options={visaSelectOptions}
+              onApply={(selected) => console.log("선택된 옵션:", selected)}
+            />
+          </Test> */}
+          {/* 모달테스트용 여기까지 */}
           <CardWrapper>
             <HomePostCard />
             <HomePostCard />
@@ -65,4 +88,10 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 32px;
+`;
+
+// 모달테스트용
+const Test = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

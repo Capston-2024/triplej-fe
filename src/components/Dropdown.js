@@ -56,7 +56,6 @@ const DropdownContainer = styled.div`
         ? (props) => props.theme.colors.text.normal
         : (props) => props.theme.colors.text.disable};
     font-size: ${font.body3Normal.fontSize};
-    font-size: ${font.body3Normal.fontSize};
     font-weight: ${font.body3Normal.fontWeight};
     line-height: ${font.body3Normal.lineHeight};
     letter-spacing: ${font.body3Normal.letterSpacing};

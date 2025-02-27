@@ -9,6 +9,7 @@ import MyPage from "./pages/main/mypage/MyPage";
 import theme from "./styles/theme";
 import Home from "./pages/main/home/Home";
 import JobPost from "./pages/main/JobPost/JobPost";
+import JobPostDetail from "./pages/main/JobPost/JobPostDetail";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/jobpost" element={<JobPost />} />
+              <Route path="/jobpostdetail" element={<JobPostDetail />} />
               <Route path="/login" element={<Login />} />
               <Route path="/join" element={<Join />} />
               <Route path="/joinComplete" element={<JoinComplete />} />

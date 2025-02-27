@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import { ReactComponent as JobIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Job.svg";
@@ -6,6 +7,8 @@ import { ReactComponent as VisaTypeIcon } from "/Users/jiwon/Desktop/Capston/tri
 import { ReactComponent as WorkLocationIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/WorkLocation.svg";
 import { ReactComponent as LanguageIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Language.svg";
 import { ReactComponent as ArrowIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/ArrowDown.svg";
+import FilterBoxModal from "./FilterBoxModal";
+import { jobOptions } from "../../constants/options";
 
 const iconMap = {
   job: { icon: <JobIcon />, text: "직무" },
@@ -17,6 +20,9 @@ const iconMap = {
 
 const FilterLarge = ({ type }) => {
   const { icon, text } = iconMap[type] || { icon: null, text: "추천순" };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
 
   return (
     <Wrapper>
@@ -24,7 +30,7 @@ const FilterLarge = ({ type }) => {
         {icon}
         {text}
       </Type>
-      <ArrowIcon />
+      <ArrowIcon onClick={handleOpenModal} />
     </Wrapper>
   );
 };

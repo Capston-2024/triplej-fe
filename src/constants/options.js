@@ -90,3 +90,24 @@ export const topikLevelOptions = [
   { value: "level5", label: "TOPIK Level 5" },
   { value: "level6", label: "TOPIK Level 6" },
 ];
+
+export const jobOptions = [
+  { value: "all", label: "직군 전체" },
+  { value: "development", label: "개발" },
+  { value: "business", label: "경영, 비즈니스" },
+  { value: "marketing", label: "마케팅, 광고" },
+  { value: "design", label: "디자인" },
+  { value: "planning", label: "기획" },
+  { value: "research", label: "리서치" },
+];
+
+export const visaSelectOptions = [
+  { value: "assist", label: "취업 비자 지원" },
+  { value: "d2", label: "D2" },
+  { value: "d4", label: "D4" },
+  { value: "e7", label: "E7" },
+  { value: "f2", label: "F2" },
+  { value: "f5", label: "F5" },
+  { value: "f6", label: "F6" },
+  { value: "h1", label: "H1" },
+];

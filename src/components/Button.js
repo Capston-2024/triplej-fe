@@ -25,10 +25,10 @@ const Button = ({
 export default Button;
 
 const ButtonStyle = styled.button`
-  padding: 17px 90px;
+  padding: ${({ size }) => (size === "small" ? "8px 12px" : "17px 90px")};
   margin-top: ${({ marginTop }) => marginTop || "0px"};
-  width: 340px;
-  height: 56px;
+  width: ${({ size }) => (size === "small" ? "auto" : "340px")};
+  height: ${({ size }) => (size === "small" ? "40px" : "56px")};
   background-color: ${({ type, status }) =>
     type === "outline"
       ? "#FFFFFF"
@@ -36,7 +36,7 @@ const ButtonStyle = styled.button`
       ? "#0098FF"
       : "#98A2B3"};
   border: ${({ type }) => (type === "outline" ? "1px solid #E4E7EC" : "none")};
-  border-radius: 12px;
+  border-radius: ${({ size }) => (size === "small" ? "8px" : "12px")};
   color: ${({ type }) => (type === "fill" ? "#ffffff" : "#667085")};
   font-size: ${font.body3Title.fontSize};
   font-weight: ${font.body3Title.fontWeight};

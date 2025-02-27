@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import FilterLarge from "./FilterLarge";
+import FilterBoxModal from "./FilterBoxModal";
+import { jobOptions } from "../../constants/options";
 
 const SearchBar = () => {
   return (
