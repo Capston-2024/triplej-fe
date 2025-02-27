@@ -10,6 +10,7 @@ import theme from "./styles/theme";
 import Home from "./pages/main/home/Home";
 import JobPost from "./pages/main/JobPost/JobPost";
 import JobPostDetail from "./pages/main/JobPost/JobPostDetail";
+import Community from "./pages/main/community/Community";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/join" element={<Join />} />
               <Route path="/joinComplete" element={<JoinComplete />} />
               <Route path="/mypage" element={<MyPage />} />
+              <Route path="/community" element={<Community />} />
             </Routes>
           </div>
         </BrowserRouter>

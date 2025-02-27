@@ -24,7 +24,12 @@ const Header = () => {
             >
               채용 공고
             </div>
-            <div>커뮤니티</div>
+            <div
+              onClick={() => navigate("/community")}
+              style={{ cursor: "pointer" }}
+            >
+              커뮤니티
+            </div>
           </TextContainer>
         </LogoContainer>
         <ButtonContainer>
