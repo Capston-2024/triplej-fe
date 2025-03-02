@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import Header from "../../../components/Header";
 import Button from "../../../components/Button";
 
 const Community = () => {
   return (
     <div>
-      <Header />
       <Container>
         <Content>
           <TitleContainer>커뮤니티</TitleContainer>

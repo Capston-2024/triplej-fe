@@ -11,12 +11,14 @@ import Home from "./pages/main/home/Home";
 import JobPost from "./pages/main/JobPost/JobPost";
 import JobPostDetail from "./pages/main/JobPost/JobPostDetail";
 import Community from "./pages/main/community/Community";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="app-container">
       <ThemeProvider theme={theme}>
         <BrowserRouter>
+          <Header />
           <div className="content">
             <Routes>
               <Route path="/" element={<Home />} />

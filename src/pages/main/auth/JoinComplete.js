@@ -1,11 +1,9 @@
 import Button from "../../../components/Button";
-import Header from "../../../components/Header";
 import styled from "styled-components";
 
 const JoinComplete = () => {
   return (
     <Wrapper>
-      <Header />
       <Graphic></Graphic>
       <Button type="fill" status="default">
         로그인하기

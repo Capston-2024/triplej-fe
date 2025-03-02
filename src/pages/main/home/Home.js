@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Header from "../../../components/Header";
 import HomePostCard from "../../../components/Home/HomePostCard";
 import Banner from "../../../components/Home/Banner";
 import PickinBanner from "../../../components/Home/PickinBanner";
@@ -9,7 +8,6 @@ import MemberPostList from "../../../components/Home/MemberPostList";
 const Home = () => {
   return (
     <div>
-      <Header />
       <Container>
         <Content>
           <Banner />

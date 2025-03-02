@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import Header from "../../../components/Header";
 import LikablePost from "../../../components/JobPost/LikablePost";
 import HomePostCard from "../../../components/Home/HomePostCard";
 import SearchBar from "../../../components/JobPost/SearchBar";
@@ -14,7 +13,6 @@ import {
 const JobPost = () => {
   return (
     <div>
-      <Header />
       <Container>
         <Content>
           <LikablePost />

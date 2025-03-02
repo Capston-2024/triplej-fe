@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Header from "../../../components/Header";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import Button from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
@@ -8,26 +7,35 @@ import InputBox from "../../../components/InputBox";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [status, setStatus] = useState("default");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleLogin = () => {
+    const allUsers = { ...localStorage };
+    let foundUser = null;
+
+    Object.values(allUsers).forEach((userData) => {
+      const user = JSON.parse(userData);
+      if (user.Email === email) {
+        foundUser = user;
+      }
+    });
+
+    if (foundUser && foundUser.Password === password) {
+      navigate("/");
+    } else {
+      setStatus("error");
+    }
+  };
 
   const handleJoin = () => {
     navigate("/join");
   };
 
-  const handleInputChange = (value) => {
-    setInputValue(value);
-    // 여기서 에러 조건을 정의 (예: 빈 값이면 에러 처리)
-    if (!value) {
-      setStatus("error");
-    } else {
-      setStatus("default");
-    }
-  };
-
   return (
     <div>
-      <Header />
       <Wrapper>
         <LoginBox>
           <Title>
@@ -41,7 +49,8 @@ const Login = () => {
                   placeholder={"이메일을 입력해주세요."}
                   size="short"
                   status={status}
-                  onChange={handleInputChange}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormField>
               <FormField>
@@ -50,10 +59,16 @@ const Login = () => {
                   placeholder={"비밀번호를 입력해주세요."}
                   size="short"
                   status={status}
-                  onChange={handleInputChange}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </FormField>
-              <Button type="fill" status="default" marginTop="6px">
+              <Button
+                type="fill"
+                status="default"
+                marginTop="6px"
+                onClick={handleLogin}
+              >
                 로그인
               </Button>
             </div>

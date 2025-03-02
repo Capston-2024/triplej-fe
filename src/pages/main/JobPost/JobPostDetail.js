@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import Header from "../../../components/Header";
 import { ReactComponent as Office } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Office.svg";
 import { ReactComponent as Alarm } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Alarm.svg";
 import CorpLogo from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/Kakao.svg";
@@ -12,7 +11,6 @@ import Button from "../../../components/Button";
 const JobPostDetail = () => {
   return (
     <div>
-      <Header />
       <Container>
         <Content>
           <TitleContainer>

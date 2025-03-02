@@ -1,5 +1,4 @@
 import ApplyStatus from "../../../components/MyPage/ApplyStatus";
-import Header from "../../../components/Header";
 import MyPageNavigationBar from "../../../components/MyPage/MyPageNavigationBar";
 import Profile from "../../../components/MyPage/Profile";
 import styled from "styled-components";
@@ -34,7 +33,6 @@ const MyPage = () => {
 
   return (
     <div>
-      <Header />
       <Wrapper>
         <MyPageNavigationBar
           selectedSection={selectedSection}

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Header from "../../../components/Header";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import { useState } from "react";
 import { ReactComponent as PickinCheck } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinCheck.svg";
@@ -70,7 +69,6 @@ const Join = () => {
 
   return (
     <div>
-      <Header />
       <Wrapper>
         <JoinBox>
           <PickinCheck />
