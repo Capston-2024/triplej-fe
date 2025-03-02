@@ -4,18 +4,16 @@ import Dropdown from "../../components/Dropdown.js";
 import InputBox from "../../components/InputBox.js";
 import { languageOptions, nationalityOptions } from "../../constants/options";
 
-const JoinForm1 = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
+const JoinForm1 = ({ formData, setFormData }) => {
   const [status, setStatus] = useState("default");
 
-  const handleInputChange = (value) => {
-    setInputValue(value);
-    // 여기서 에러 조건을 정의 (예: 빈 값이면 에러 처리)
-    if (!value) {
-      setStatus("error");
-    } else {
-      setStatus("default");
+  const handleInputChange = (e) => {
+    if (e.target && e.target.name) {
+      const { name, value } = e.target;
+      setFormData((prev) => {
+        const newData = { ...prev, [name]: value };
+        return newData;
+      });
     }
   };
 
@@ -24,18 +22,22 @@ const JoinForm1 = () => {
       <Card>
         <InputBox
           label="이름"
+          name="FirstName"
           placeholder={"Name"}
           size="short"
           status={status}
           required="true"
+          value={formData.FirstName}
           onChange={handleInputChange}
         />
         <InputBox
           label="성"
+          name="LastName"
           placeholder={"Family Name"}
           size="short"
           status={status}
           required="true"
+          value={formData.LastName}
           onChange={handleInputChange}
         />
       </Card>
@@ -46,6 +48,10 @@ const JoinForm1 = () => {
           size="short"
           status="default"
           options={nationalityOptions}
+          value={formData.Nationality}
+          onChange={(value) =>
+            handleInputChange({ target: { name: "Nationality", value } })
+          }
         />
         <Dropdown
           label="제 1언어"
@@ -53,15 +59,21 @@ const JoinForm1 = () => {
           size="short"
           status="default"
           options={languageOptions}
+          value={formData.Language}
+          onChange={(value) =>
+            handleInputChange({ target: { name: "Language", value } })
+          }
         />
       </Card>
       <div>
         <InputBox
           label="이메일"
+          name="Email"
           placeholder={"ex) pickin@gmail.com"}
           size="long"
           status={status}
           required="true"
+          value={formData.Email}
           onChange={handleInputChange}
         />
       </div>
@@ -72,16 +84,18 @@ const JoinForm1 = () => {
           size="long"
           status={status}
           required="true"
-          onChange={handleInputChange}
         />
       </div>
       <div>
         <InputBox
           label="비밀번호"
+          name="Password"
           placeholder={"최소 12~18자/영문, 숫자 혼합"}
           size="long"
           status={status}
           required="true"
+          value={formData.Password}
+          onChange={handleInputChange}
         />
       </div>
     </InputContainer>

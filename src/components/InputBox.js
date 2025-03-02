@@ -8,19 +8,19 @@ const InputBox = ({
   placeholder,
   size = "short",
   status = "default",
+  value = "",
   required = false,
   onChange,
   ...props
 }) => {
-  const [inputValue, setInputValue] = useState("");
   const handleChange = (e) => {
-    setInputValue(e.target.value);
-    if (onChange) onChange(e.target.value);
+    if (onChange) onChange(e);
   };
+
   const handleClear = () => {
-    setInputValue("");
-    if (onChange) onChange("");
+    if (onChange) onChange({ target: { name: props.name, value: "" } });
   };
+
   return (
     <div>
       <Label>
@@ -29,13 +29,14 @@ const InputBox = ({
       </Label>
       <InputBoxContainer>
         <InputStyle
+          {...props}
           placeholder={placeholder}
           size={size}
           status={status}
-          value={inputValue}
+          value={value}
           onChange={handleChange}
         />
-        {inputValue && (
+        {value && (
           <ClearButton onClick={handleClear}>
             <CancelIcon />
           </ClearButton>

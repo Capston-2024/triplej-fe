@@ -13,36 +13,31 @@ import JoinForm2 from "../../../components/Auth/JoinForm2";
 import { useNavigate } from "react-router-dom";
 
 const Join = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
   const [status, setStatus] = useState("default");
   const [currentStep, setCurrentStep] = useState(1);
   const navigate = useNavigate();
 
-  const handleSelectChange = (value) => {
-    setSelectedValue(value);
-    // 여기서 에러 조건을 정의 (예: 빈 값이면 에러 처리)
-    if (!value) {
-      setStatus("error");
-    } else {
-      setStatus("default");
-    }
-  };
-
-  const handleInputChange = (value) => {
-    setInputValue(value);
-    // 여기서 에러 조건을 정의 (예: 빈 값이면 에러 처리)
-    if (!value) {
-      setStatus("error");
-    } else {
-      setStatus("default");
-    }
-  };
+  const [formData, setFormData] = useState({
+    Email: "",
+    Password: "",
+    FirstName: "",
+    LastName: "",
+    Nationality: "",
+    Language: "",
+    Degree: "",
+    College: "",
+    Major: "",
+    Visa: "",
+    Topik: "",
+  });
 
   const handleButtonClick = () => {
     if (currentStep === 1) {
       setCurrentStep(2);
-    } else if (currentStep === 2) {
+    } else {
+      const userKey = `${formData.FirstName || "default"}`;
+      localStorage.setItem(userKey, JSON.stringify(formData));
+      alert("회원가입이 완료되었습니다.");
       navigate("/joinComplete");
     }
   };
@@ -83,8 +78,12 @@ const Join = () => {
                 )}
               </IndicatorContainer>
             </TitleContainer>
-            {currentStep === 1 && <JoinForm1 />}
-            {currentStep === 2 && <JoinForm2 />}
+            {currentStep === 1 && (
+              <JoinForm1 formData={formData} setFormData={setFormData} />
+            )}
+            {currentStep === 2 && (
+              <JoinForm2 formData={formData} setFormData={setFormData} />
+            )}
             <ButtonWrapper>
               <Button
                 type="fill"

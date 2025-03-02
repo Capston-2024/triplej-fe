@@ -1,7 +1,9 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinLogoDark.svg";
 import { ReactComponent as Link } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Link.svg";
+import { ReactComponent as Profile } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/HeaderProfile.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
 const Header = () => {
@@ -33,8 +35,16 @@ const Header = () => {
           </TextContainer>
         </LogoContainer>
         <ButtonContainer>
-          <LoginButton>로그인/회원가입</LoginButton>
-          <CorpButton>
+          <LoginButton
+            onClick={() => navigate("/login")}
+            style={{ cursor: "pointer" }}
+          >
+            로그인/회원가입
+          </LoginButton>
+          <CorpButton
+            onClick={() => alert("서비스 준비중입니다")}
+            style={{ cursor: "pointer" }}
+          >
             기업 페이지
             <Link />
           </CorpButton>
