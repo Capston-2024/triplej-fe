@@ -4,7 +4,12 @@ import Dropdown from "../../components/Dropdown.js";
 import InputBox from "../../components/InputBox.js";
 import { languageOptions, nationalityOptions } from "../../constants/options";
 
-const JoinForm1 = ({ formData, setFormData }) => {
+const JoinForm1 = ({
+  formData,
+  setFormData,
+  confirmEmail,
+  setConfirmEmail,
+}) => {
   const [status, setStatus] = useState("default");
 
   const handleInputChange = (e) => {
@@ -16,6 +21,13 @@ const JoinForm1 = ({ formData, setFormData }) => {
       });
     }
   };
+
+  const handleConfirmEmailChange = (e) => {
+    const value = e.target.value;
+    setConfirmEmail(value);
+  };
+
+  const isEmailMatch = formData.Email === confirmEmail;
 
   return (
     <InputContainer>
@@ -82,8 +94,12 @@ const JoinForm1 = ({ formData, setFormData }) => {
           label="이메일 중복 체크"
           placeholder={"ex) pickin@gmail.com"}
           size="long"
-          status={status}
-          required="true"
+          status={
+            confirmEmail === "" ? "default" : isEmailMatch ? "default" : "error"
+          }
+          required={true}
+          value={confirmEmail}
+          onChange={handleConfirmEmailChange}
         />
       </div>
       <div>

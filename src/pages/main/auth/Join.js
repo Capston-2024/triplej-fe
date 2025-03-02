@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 const Join = () => {
   const [status, setStatus] = useState("default");
   const [currentStep, setCurrentStep] = useState(1);
+  const [confirmEmail, setConfirmEmail] = useState("");
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -32,6 +33,31 @@ const Join = () => {
   });
 
   const handleButtonClick = () => {
+    const requiredFieldsStep1 = [
+      "FirstName",
+      "LastName",
+      "Nationality",
+      "Language",
+      "Email",
+      "Password",
+    ];
+    const requiredFieldsStep2 = ["Degree", "College", "Major", "Visa", "Topik"];
+
+    const emptyFields = (
+      currentStep === 1 ? requiredFieldsStep1 : requiredFieldsStep2
+    ).filter((field) => !formData[field]);
+
+    if (emptyFields.length > 0) {
+      alert("필수 입력값을 모두 입력해주세요.");
+      setStatus("error");
+      return;
+    }
+
+    if (currentStep === 1 && formData.Email !== confirmEmail) {
+      alert("이메일이 일치하지 않습니다.");
+      return;
+    }
+
     if (currentStep === 1) {
       setCurrentStep(2);
     } else {
@@ -79,7 +105,12 @@ const Join = () => {
               </IndicatorContainer>
             </TitleContainer>
             {currentStep === 1 && (
-              <JoinForm1 formData={formData} setFormData={setFormData} />
+              <JoinForm1
+                formData={formData}
+                setFormData={setFormData}
+                confirmEmail={confirmEmail}
+                setConfirmEmail={setConfirmEmail}
+              />
             )}
             {currentStep === 2 && (
               <JoinForm2 formData={formData} setFormData={setFormData} />

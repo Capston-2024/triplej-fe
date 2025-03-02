@@ -32,7 +32,7 @@ const InputBox = ({
           {...props}
           placeholder={placeholder}
           size={size}
-          status={status}
+          status={status === "error" && !value ? "error" : status}
           value={value}
           onChange={handleChange}
         />
@@ -68,8 +68,8 @@ const InputBoxContainer = styled.div`
 const InputStyle = styled.input`
   padding: 16px;
   border-radius: 12px;
-  border: ${({ status }) =>
-    status === "default" ? "1px solid #E4E7EC" : "#FF3B30"};
+  border: 2px solid
+    ${({ status }) => (status === "error" ? "#FF3B30" : "#E4E7EC")};
   width: ${({ size }) => (size === "short" ? "308px" : "426px")};
   color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.body3Title.fontSize};
