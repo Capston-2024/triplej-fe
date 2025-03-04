@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Login from "./pages/main/auth/Login.js";
@@ -14,11 +15,26 @@ import Community from "./pages/main/community/Community";
 import Header from "./components/Header";
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+    window.location.reload();
+  };
+
   return (
     <div className="app-container">
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Header />
+          <Header isLoggedIn={isLoggedIn} handleLogout={handleLogout} />
           <div className="content">
             <Routes>
               <Route path="/" element={<Home />} />

@@ -18,17 +18,50 @@ const Login = () => {
 
     Object.values(allUsers).forEach((userData) => {
       const user = JSON.parse(userData);
-      if (user.Email === email) {
+      if (user.email === email) {
         foundUser = user;
       }
     });
 
-    if (foundUser && foundUser.Password === password) {
-      navigate("/");
+    if (foundUser && foundUser.password === password) {
+      localStorage.setItem("user", JSON.stringify(foundUser));
+      window.location.reload();
     } else {
       setStatus("error");
     }
   };
+
+  // const handleLogin = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "https://bd2a-1-242-152-73.ngrok-free.app/login",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           email: email,
+  //           password: password,
+  //         }),
+  //       }
+  //     );
+
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       localStorage.setItem("user", JSON.stringify(data));
+  //       window.location.reload();
+  //     } else {
+  //       setStatus("error");
+  //       setErrorMessage(data.message || "로그인 실패");
+  //     }
+  //   } catch (error) {
+  //     console.error("로그인 요청 중 오류 발생:", error);
+  //     setStatus("error");
+  //     setErrorMessage("서버와의 연결이 원활하지 않습니다.");
+  //   }
+  // };
 
   const handleJoin = () => {
     navigate("/join");

@@ -5,8 +5,9 @@ import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/
 import { ReactComponent as Link } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Link.svg";
 import { ReactComponent as Profile } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/HeaderProfile.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import Button from "./Button";
 
-const Header = () => {
+const Header = ({ isLoggedIn, handleLogout }) => {
   const navigate = useNavigate();
 
   return (
@@ -34,13 +35,18 @@ const Header = () => {
             </div>
           </TextContainer>
         </LogoContainer>
+        <Button onClick={handleLogout}>로그아웃</Button>
         <ButtonContainer>
-          <LoginButton
-            onClick={() => navigate("/login")}
-            style={{ cursor: "pointer" }}
-          >
-            로그인/회원가입
-          </LoginButton>
+          {isLoggedIn ? (
+            <Profile
+              onClick={() => navigate("/mypage")}
+              style={{ cursor: "pointer" }}
+            />
+          ) : (
+            <LoginButton onClick={() => navigate("/login")}>
+              로그인/회원가입
+            </LoginButton>
+          )}
           <CorpButton
             onClick={() => alert("서비스 준비중입니다")}
             style={{ cursor: "pointer" }}

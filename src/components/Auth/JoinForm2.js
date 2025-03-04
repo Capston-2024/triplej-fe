@@ -27,66 +27,66 @@ const JoinForm2 = ({ formData, setFormData }) => {
       <Card>
         <Dropdown
           label="최종학력"
-          name="Degree"
+          name="degree"
           placeholder="Final degree name"
           size="short"
           status="default"
           options={educationLevelOptions}
-          value={formData.Degree}
+          value={formData.degree}
           onChange={(value) =>
-            handleInputChange({ target: { name: "Degree", value } })
+            handleInputChange({ target: { name: "degree", value } })
           }
         />
         <Dropdown
           label="대학교"
-          name="College"
+          name="college"
           placeholder="University"
           size="short"
           status="default"
           options={universityOptions}
-          value={formData.College}
+          value={formData.college}
           onChange={(value) =>
-            handleInputChange({ target: { name: "College", value } })
+            handleInputChange({ target: { name: "college", value } })
           }
         />
       </Card>
       <div>
         <Dropdown
           label="전공"
-          name="Major"
+          name="major"
           placeholder={"Field of study and major"}
           size="long"
           status={status}
           options={majorOptions}
-          value={formData.Major}
+          value={formData.major}
           onChange={(value) =>
-            handleInputChange({ target: { name: "Major", value } })
+            handleInputChange({ target: { name: "major", value } })
           }
         />
       </div>
       <Card>
         <Dropdown
           label="현재 소유 비자"
-          name="Visa"
+          name="visa"
           placeholder="Visa"
           size="short"
           status="default"
           options={visaOptions}
-          value={formData.Visa}
+          value={formData.visa}
           onChange={(value) =>
-            handleInputChange({ target: { name: "Visa", value } })
+            handleInputChange({ target: { name: "visa", value } })
           }
         />
         <Dropdown
           label="TOPIK 등급"
-          name="Topik"
+          name="topik"
           placeholder="TOPIK"
           size="short"
           status="default"
           options={topikLevelOptions}
-          value={formData.Topik}
+          value={formData.topik}
           onChange={(value) =>
-            handleInputChange({ target: { name: "Topik", value } })
+            handleInputChange({ target: { name: "topik", value } })
           }
         />
       </Card>

@@ -1,9 +1,44 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { ReactComponent as Graphic } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/ProfileGraphic.svg";
 import { ReactComponent as Write } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Write.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
 const Profile = ({ setIsEditing }) => {
+  const [userInfo, setUserInfo] = useState(null);
+  const email = "test@naver.com";
+
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const response = await fetch(
+          `https://bd2a-1-242-152-73.ngrok-free.app/user-info?email=${encodeURIComponent(
+            email
+          )}`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("서버 응답 데이터:", result); // 🔍 콘솔에서 데이터 확인
+
+        if (result.statusCode === 200) {
+          setUserInfo(result.data); // 🔥 성공적으로 가져오면 userInfo 상태 업데이트
+        } else {
+          console.error("데이터 로드 실패:", result.message);
+        }
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+    };
+
+    fetchUserInfo();
+  }, [email]);
+
+  if (!userInfo) {
+    return <div>로딩 중...</div>; // 데이터 로드 전 로딩 메시지
+  }
   return (
     <Wrapper>
       <TopCard>

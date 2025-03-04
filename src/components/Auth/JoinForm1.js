@@ -27,29 +27,29 @@ const JoinForm1 = ({
     setConfirmEmail(value);
   };
 
-  const isEmailMatch = formData.Email === confirmEmail;
+  const isEmailMatch = formData.email === confirmEmail;
 
   return (
     <InputContainer>
       <Card>
         <InputBox
           label="이름"
-          name="FirstName"
+          name="firstName"
           placeholder={"Name"}
           size="short"
           status={status}
           required="true"
-          value={formData.FirstName}
+          value={formData.firstName}
           onChange={handleInputChange}
         />
         <InputBox
           label="성"
-          name="LastName"
+          name="lastName"
           placeholder={"Family Name"}
           size="short"
           status={status}
           required="true"
-          value={formData.LastName}
+          value={formData.lastName}
           onChange={handleInputChange}
         />
       </Card>
@@ -60,9 +60,9 @@ const JoinForm1 = ({
           size="short"
           status="default"
           options={nationalityOptions}
-          value={formData.Nationality}
+          value={formData.nationality}
           onChange={(value) =>
-            handleInputChange({ target: { name: "Nationality", value } })
+            handleInputChange({ target: { name: "nationality", value } })
           }
         />
         <Dropdown
@@ -71,21 +71,21 @@ const JoinForm1 = ({
           size="short"
           status="default"
           options={languageOptions}
-          value={formData.Language}
+          value={formData.language}
           onChange={(value) =>
-            handleInputChange({ target: { name: "Language", value } })
+            handleInputChange({ target: { name: "language", value } })
           }
         />
       </Card>
       <div>
         <InputBox
           label="이메일"
-          name="Email"
+          name="email"
           placeholder={"ex) pickin@gmail.com"}
           size="long"
           status={status}
           required="true"
-          value={formData.Email}
+          value={formData.email}
           onChange={handleInputChange}
         />
       </div>
@@ -105,12 +105,12 @@ const JoinForm1 = ({
       <div>
         <InputBox
           label="비밀번호"
-          name="Password"
+          name="password"
           placeholder={"최소 12~18자/영문, 숫자 혼합"}
           size="long"
           status={status}
           required="true"
-          value={formData.Password}
+          value={formData.password}
           onChange={handleInputChange}
         />
       </div>
