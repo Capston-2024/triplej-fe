@@ -31,7 +31,7 @@ const Dropdown = ({
         {label}
         <span>*</span>
       </Label>
-      <DropdownWrapper>
+      <DropdownWrapper size={size}>
         <DropDown
           options={options}
           onChange={handleChange}
@@ -112,6 +112,7 @@ const Label = styled.div`
 
 const DropdownWrapper = styled.div`
   position: relative;
+  width: ${({ size }) => (size === "short" ? undefined : "458px")};
 `;
 
 const CustomArrow = styled(Arrow)`

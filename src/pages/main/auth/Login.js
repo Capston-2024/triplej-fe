@@ -89,6 +89,7 @@ const Login = () => {
               <FormField>
                 <InputBox
                   label="비밀번호"
+                  type="password"
                   placeholder={"비밀번호를 입력해주세요."}
                   size="short"
                   status={status}

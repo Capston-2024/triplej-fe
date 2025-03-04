@@ -5,6 +5,7 @@ import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
 const InputBox = ({
   label,
+  type = "text",
   placeholder,
   size = "short",
   status = "default",
@@ -30,6 +31,7 @@ const InputBox = ({
       <InputBoxContainer>
         <InputStyle
           {...props}
+          type={type}
           placeholder={placeholder}
           size={size}
           status={status === "error" && !value ? "error" : status}
@@ -68,7 +70,7 @@ const InputBoxContainer = styled.div`
 const InputStyle = styled.input`
   padding: 16px;
   border-radius: 12px;
-  border: 2px solid
+  border: 1px solid
     ${({ status }) => (status === "error" ? "#FF3B30" : "#E4E7EC")};
   width: ${({ size }) => (size === "short" ? "308px" : "426px")};
   color: ${(props) => props.theme.colors.text.normal};

@@ -164,12 +164,12 @@ const Join = () => {
                 {currentStep === 1 ? (
                   <Indicator1Activate />
                 ) : (
-                  <Indicator1Disabled />
+                  <Indicator1Disabled onClick={() => setCurrentStep(1)} />
                 )}
                 {currentStep === 2 ? (
                   <Indicator2Activate />
                 ) : (
-                  <Indicator2Disabled />
+                  <Indicator2Disabled onClick={() => setCurrentStep(2)} />
                 )}
               </IndicatorContainer>
             </TitleContainer>

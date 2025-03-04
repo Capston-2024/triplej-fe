@@ -105,6 +105,7 @@ const JoinForm1 = ({
       <div>
         <InputBox
           label="비밀번호"
+          type="password"
           name="password"
           placeholder={"최소 12~18자/영문, 숫자 혼합"}
           size="long"
