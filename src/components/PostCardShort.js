@@ -4,10 +4,16 @@ import { ReactComponent as Calendar } from "/Users/jiwon/Desktop/Capston/triplej
 import Tag from "./Tag";
 import CustomScrap from "./CustomScrap";
 import PickinScore from "./PickinScore";
+import { useNavigate } from "react-router-dom";
 
 const PostCardShort = () => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate("/jobpostdetail");
+  };
   return (
-    <Wrapper>
+    <Wrapper onClick={handleCardClick}>
       <TopContainer>
         <LogoContainer>
           <PickinScore />

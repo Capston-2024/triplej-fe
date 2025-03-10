@@ -6,10 +6,16 @@ import { ReactComponent as CorpImg } from "/Users/jiwon/Desktop/Capston/triplej-
 import Tag from "../Tag";
 import PickinScore from "../PickinScore";
 import CustomScrap from "../CustomScrap";
+import { useNavigate } from "react-router-dom";
 
 const HomePostCard = () => {
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate("/jobpostdetail");
+  };
   return (
-    <Wrapper>
+    <Wrapper onClick={handleCardClick}>
       <TopCard>
         <TopContainer>
           <LogoContainer>
