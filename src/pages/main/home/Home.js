@@ -5,15 +5,13 @@ import PickinBanner from "../../../components/Home/PickinBanner";
 import ContentsBar from "../../../components/Home/ContentsBar";
 import MemberPostList from "../../../components/Home/MemberPostList";
 
-const Home = () => {
+const Home = ({ isLoggedIn }) => {
   return (
     <div>
       <Container>
         <Content>
           <Banner />
-          <PickinBanner />
-          {/* 로그인하면 */}
-          {/* <MemberPostList /> */}
+          {isLoggedIn ? <MemberPostList /> : <PickinBanner />}
           <div>
             <ContentsBar />
             <CardWrapper>

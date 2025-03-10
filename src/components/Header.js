@@ -35,7 +35,7 @@ const Header = ({ isLoggedIn, handleLogout }) => {
             </div>
           </TextContainer>
         </LogoContainer>
-        <Button onClick={handleLogout}>로그아웃</Button>
+        <div onClick={handleLogout}>로그아웃</div>
         <ButtonContainer>
           {isLoggedIn ? (
             <Profile
