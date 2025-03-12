@@ -24,6 +24,11 @@ function App() {
     }
   }, []);
 
+  const handleLogin = (userData) => {
+    localStorage.setItem("user", JSON.stringify(userData));
+    setIsLoggedIn(true);
+  };
+
   const handleLogout = () => {
     localStorage.removeItem("user");
     setIsLoggedIn(false);
@@ -40,7 +45,7 @@ function App() {
               <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
               <Route path="/jobpost" element={<JobPost />} />
               <Route path="/jobpostdetail" element={<JobPostDetail />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<Login onLogin={handleLogin} />} />
               <Route path="/join" element={<Join />} />
               <Route path="/joinComplete" element={<JoinComplete />} />
               <Route path="/mypage" element={<MyPage />} />

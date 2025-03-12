@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import InputBox from "../../../components/InputBox";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,7 +25,8 @@ const Login = () => {
 
     if (foundUser && foundUser.password === password) {
       localStorage.setItem("user", JSON.stringify(foundUser));
-      window.location.reload();
+      onLogin(foundUser);
+      navigate("/");
     } else {
       setStatus("error");
     }
@@ -51,7 +52,7 @@ const Login = () => {
 
   //     if (response.ok) {
   //       localStorage.setItem("user", JSON.stringify(data));
-  //       window.location.reload();
+  //       navigate("/");
   //     } else {
   //       setStatus("error");
   //       setErrorMessage(data.message || "로그인 실패");
