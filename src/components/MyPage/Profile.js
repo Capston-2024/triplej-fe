@@ -4,11 +4,13 @@ import { ReactComponent as Graphic } from "/Users/jiwon/Desktop/Capston/triplej-
 import { ReactComponent as Write } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Write.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
-const Profile = ({ setIsEditing }) => {
+const Profile = ({ setIsEditing, email }) => {
   // 로컬스토리지 연결
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {
+    if (!email) return; // email이 없으면 실행하지 않음
+
     const storedUserInfo = localStorage.getItem("user");
 
     if (storedUserInfo) {
@@ -17,18 +19,20 @@ const Profile = ({ setIsEditing }) => {
         setUserInfo(parsedUserInfo);
       } catch (error) {
         console.error("로컬스토리지 파싱 에러:", error);
+        setUserInfo(null); // 에러 발생 시 null로 설정
       }
     } else {
-      console.error("로컬스토리지에 사용자 정보가 없습니다.");
+      console.warn("로컬스토리지에 사용자 정보가 없습니다.");
+      setUserInfo(null);
     }
-  }, []);
+  }, [email]);
 
   if (!userInfo) {
     return <div>로딩 중...</div>;
   }
   // 백 API 연결
   // const [userInfo, setUserInfo] = useState(null);
-  // const email = "test@naver.com";
+  // const email = {email};
 
   // useEffect(() => {
   //   const fetchUserInfo = async () => {

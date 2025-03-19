@@ -11,8 +11,21 @@ const LABELS = {
 
 const isViewOrEditType = (type) => type === "View" || type === "Edit";
 
+const getStatusLabel = (status) => {
+  switch (status) {
+    case "APPLIED":
+    case "IN_PROGRESS":
+      return "검토 중";
+    case "HIRED":
+      return "합격";
+    default:
+      return status;
+  }
+};
+
 const ApplicationInfoCard = ({ type, content }) => {
   const isViewOrEdit = isViewOrEditType(type);
+  const displayContent = type === "Status" ? getStatusLabel(content) : content;
 
   return (
     <InfoCard type={type} isViewOrEdit={isViewOrEdit}>
@@ -23,8 +36,8 @@ const ApplicationInfoCard = ({ type, content }) => {
       ) : (
         <Label>{LABELS[type] || ""}</Label>
       )}
-      <Content content={content}>
-        {isViewOrEdit ? LABELS[type] : content}
+      <Content content={displayContent}>
+        {isViewOrEdit ? LABELS[type] : displayContent}
       </Content>
     </InfoCard>
   );
@@ -66,10 +79,10 @@ const Label = styled.div`
 `;
 
 const Content = styled.div`
-  color: ${({ content }) =>
+  color: ${({ content, theme }) =>
     content === "합격"
-      ? (props) => props.theme.colors.primary.normal
-      : (props) => props.theme.colors.text.normal};
+      ? theme.colors.primary.normal
+      : theme.colors.text.normal};
   font-size: ${font.headline5.fontSize};
   font-weight: ${font.headline5.fontWeight};
   line-height: ${font.headline5.lineHeight};

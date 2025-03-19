@@ -3,12 +3,20 @@ import MyPageNavigationBar from "../../../components/MyPage/MyPageNavigationBar"
 import Profile from "../../../components/MyPage/Profile";
 import styled from "styled-components";
 import SavedPost from "../../../components/MyPage/SavedPost";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProfileEdit from "../../../components/MyPage/ProfileEdit";
 
 const MyPage = () => {
   const [selectedSection, setSelectedSection] = useState("저장한 공고");
   const [isEditing, setIsEditing] = useState(false);
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    if (userData && userData.email) {
+      setEmail(userData.email);
+    }
+  }, []);
 
   const handleSectionChange = (section) => {
     setSelectedSection(section);
@@ -21,9 +29,9 @@ const MyPage = () => {
     }
     switch (selectedSection) {
       case "프로필":
-        return <Profile setIsEditing={setIsEditing} />;
+        return <Profile setIsEditing={setIsEditing} email={email} />;
       case "지원 현황":
-        return <ApplyStatus />;
+        return <ApplyStatus email={email} />;
       case "저장한 공고":
         return <SavedPost />;
       default:
