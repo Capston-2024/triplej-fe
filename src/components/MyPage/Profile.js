@@ -67,10 +67,7 @@ const Profile = ({ setIsEditing }) => {
         <Info>
           <Graphic />
           <div>
-            <Name>
-              {userInfo.firstName}
-              {userInfo.lastName}
-            </Name>
+            <Name>{`${userInfo.firstName} ${userInfo.lastName}`}</Name>
             <Mail>{userInfo.email}</Mail>
           </div>
         </Info>
@@ -107,11 +104,11 @@ const Profile = ({ setIsEditing }) => {
         <Card>
           <Section>
             <Label>현재 소유 비자</Label>
-            <Content>{userInfo.visa}</Content>
+            <Content>{userInfo.visa.split(" (")[0]}</Content>
           </Section>
           <Section>
             <Label>TOPIK 등급</Label>
-            <Content>{userInfo.topik}</Content>
+            <Content>{userInfo.topik.replace(/[^0-9]/g, "")}</Content>
           </Section>
         </Card>
       </BottomCard>
