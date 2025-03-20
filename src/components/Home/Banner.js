@@ -33,6 +33,7 @@ const Label = styled.div`
 `;
 
 const Content = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -44,15 +45,37 @@ const Content = styled.div`
   line-height: ${font.headline4.lineHeight};
   letter-spacing: ${font.headline4.letterSpacing};
   border-radius: 8px;
-  background: linear-gradient(
-      90deg,
-      rgba(255, 223, 0, 1) 0%,
-      rgba(255, 183, 0, 1) 100%
-    ),
-    url(${BannerImg});
+  overflow: hidden;
+  background: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(255, 200, 0, 1) 45%,
+      rgba(255, 183, 0, 0.7) 60%,
+      rgba(255, 183, 0, 0.6) 70%,
+      rgba(255, 183, 0, 0) 100%
+    );
+    z-index: 1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    background: url(${BannerImg}) no-repeat center / cover;
+    z-index: 0;
+  }
 `;
 
 const Corp = styled.div`
+  position: relative;
+  z-index: 2;
   padding-bottom: 6px;
   color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline4.fontSize};
@@ -62,6 +85,8 @@ const Corp = styled.div`
 `;
 
 const Title = styled.div`
+  position: relative;
+  z-index: 2;
   color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline1.fontSize};
   font-weight: ${font.headline1.fontWeight};
@@ -70,6 +95,8 @@ const Title = styled.div`
 `;
 
 const Date = styled.div`
+  position: relative;
+  z-index: 2;
   color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.headline5.fontSize};
   font-weight: ${font.headline5.fontWeight};
