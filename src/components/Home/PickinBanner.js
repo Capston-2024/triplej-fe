@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinLogoDark.svg";
+import { useNavigate } from "react-router-dom";
 
 const PickinBanner = () => {
+  const navigate = useNavigate();
+
   return (
     <Wrapper>
       <div>
@@ -12,7 +15,7 @@ const PickinBanner = () => {
           에서 찾아보세요
         </Text>
       </div>
-      <Button>회원 가입하러 가기</Button>
+      <Button onClick={() => navigate("/join")}>회원 가입하러 가기</Button>
     </Wrapper>
   );
 };
