@@ -15,10 +15,10 @@ const Home = ({ isLoggedIn }) => {
           <div>
             <ContentsBar />
             <CardWrapper>
-              <HomePostCard />
-              <HomePostCard />
-              <HomePostCard />
-              <HomePostCard />
+              <HomePostCard isLoggedIn={isLoggedIn} />
+              <HomePostCard isLoggedIn={isLoggedIn} />
+              <HomePostCard isLoggedIn={isLoggedIn} />
+              <HomePostCard isLoggedIn={isLoggedIn} />
             </CardWrapper>
           </div>
         </Content>

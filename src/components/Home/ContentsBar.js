@@ -2,15 +2,17 @@ import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import { ReactComponent as Arrow } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Right.svg";
 import FilterSmall from "./FilterSmall";
+import { useNavigate } from "react-router-dom";
 
 const ContentsBar = () => {
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <LeftText>
         <div>채용 공고 둘러보기</div>
         <FilterSmall />
       </LeftText>
-      <RightText>
+      <RightText onClick={() => navigate("/jobpost")}>
         더보기
         <Arrow />
       </RightText>

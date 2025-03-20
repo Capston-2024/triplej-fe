@@ -8,7 +8,7 @@ import PickinScore from "../PickinScore";
 import CustomScrap from "../CustomScrap";
 import { useNavigate } from "react-router-dom";
 
-const HomePostCard = () => {
+const HomePostCard = ({ isLoggedIn }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -19,7 +19,13 @@ const HomePostCard = () => {
       <TopCard>
         <TopContainer>
           <LogoContainer>
-            <PickinScore />
+            {isLoggedIn ? (
+              <PickinScore />
+            ) : (
+              <NonUserPickinScore>
+                로그인하여 Pickin 지수를 확인하세요!
+              </NonUserPickinScore>
+            )}
             <CustomScrap type="scrap" />
           </LogoContainer>
           <Content>
@@ -184,4 +190,18 @@ const Text = styled.div`
 const TagWrapper = styled.div`
   display: flex;
   gap: 8px;
+`;
+
+const NonUserPickinScore = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 2px 10px;
+  background-color: ${(props) => props.theme.colors.background.normal};
+  border-radius: 100px;
+  color: ${(props) => props.theme.colors.text.assistive};
+  font-size: ${font.body4Title.fontSize};
+  font-weight: ${font.body4Title.fontWeight};
+  line-height: ${font.body4Title.lineHeight};
+  letter-spacing: ${font.body4Title.letterSpacing};
+  height: 28px;
 `;
