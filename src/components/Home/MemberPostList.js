@@ -2,14 +2,18 @@ import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import PostCardShort from "../PostCardShort";
 
-const MemberPostList = () => {
+const MemberPostList = ({ posts }) => {
+  const likedPosts = posts.filter((post) => post.user.liked);
+
   return (
     <Wrapper>
       <Title>회원님이 저장한 공고</Title>
       <PostCardShortContainer>
-        <PostCardShort />
-        <PostCardShort />
-        <PostCardShort />
+        {likedPosts.length > 0 ? (
+          likedPosts.map((post) => <PostCardShort key={post.id} post={post} />)
+        ) : (
+          <p>저장한 공고가 없습니다.</p>
+        )}
       </PostCardShortContainer>
     </Wrapper>
   );

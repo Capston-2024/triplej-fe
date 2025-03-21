@@ -7,8 +7,30 @@ import Tag from "../Tag";
 import PickinScore from "../PickinScore";
 import CustomScrap from "../CustomScrap";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+const HomePostCard = ({ isLoggedIn, post }) => {
+  // 로컬스토리지 연결
+  const [userInfo, setUserInfo] = useState(null);
 
-const HomePostCard = ({ isLoggedIn }) => {
+  useEffect(() => {
+    if (!isLoggedIn) return;
+
+    const storedUserInfo = localStorage.getItem("user");
+
+    if (storedUserInfo) {
+      try {
+        const parsedUserInfo = JSON.parse(storedUserInfo);
+        setUserInfo(parsedUserInfo);
+      } catch (error) {
+        console.error("로컬스토리지 파싱 에러:", error);
+        setUserInfo(null);
+      }
+    } else {
+      console.warn("로컬스토리지에 사용자 정보가 없습니다.");
+      setUserInfo(null);
+    }
+  });
+
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -20,30 +42,28 @@ const HomePostCard = ({ isLoggedIn }) => {
         <TopContainer>
           <LogoContainer>
             {isLoggedIn ? (
-              <PickinScore />
+              <PickinScore score={post.user.pickinScore} />
             ) : (
               <NonUserPickinScore>
                 로그인하여 Pickin 지수를 확인하세요!
               </NonUserPickinScore>
             )}
-            <CustomScrap type="scrap" />
+            <CustomScrap type={post.user.liked ? "scrap" : "line"} />
           </LogoContainer>
           <Content>
             <div>
-              <JobTitle>
-                [계약직] 인도네시아 콘텐츠 로컬라이징 & 사업개발 매니저
-              </JobTitle>
+              <JobTitle>{post.jobTitle}</JobTitle>
               <SubTitle>
                 <Corp>
                   <Office />
-                  카카오스타일
+                  {post.company.name}
                 </Corp>
-                <Location>경기 판교 대면 근무</Location>
+                <Location>{post.employments.join(" · ")}</Location>
               </SubTitle>
               <BottomContainer>
                 <TagContainer>
-                  <Tag type="default" content="계약직" />
-                  <Tag type="default" content="마케팅/광고/홍보" />
+                  <Tag type="default" content={post.works.join(" / ")} />
+                  <Tag type="default" content={post.employments.join(" · ")} />
                 </TagContainer>
                 <IconWrapper>
                   <Calendar />
@@ -60,16 +80,36 @@ const HomePostCard = ({ isLoggedIn }) => {
           <Text>사용 언어</Text>
           <TagWrapper>
             <Tag type="language" content="한국어" level="고급" />
-            <Tag type="language" content="인도네시아어" />
-            <Tag type="language" content="홍콩어" />
-            <Tag type="language" content="대만어" />
+            {post.languages.map((lang, index) => (
+              <Tag key={index} type="language" content={lang} />
+            ))}
           </TagWrapper>
         </Section>
         <Section>
           <Text>지원 가능 요건</Text>
           <TagWrapper>
-            <Tag type="visa" content="비자" level="D-2 D-4" />
-            <Tag type="visa-invalid" content="비자" level="D-2 D-4" />
+            {/* <Tag type="visa-invalid" content="비자" level="D-2 D-4" />
+            {post.visas.map((visa, index) => (
+              <Tag key={index} type="visa" content="비자" level={visa} />
+            ))} */}
+            {userInfo && post.visas && userInfo.visa ? (
+              post.visas.includes(userInfo.visa.split(" (")[0]) ? (
+                post.visas.map((visa, index) => (
+                  <Tag
+                    key={index}
+                    type="visa"
+                    content="비자"
+                    level={userInfo.visa.split(" (")[0]}
+                  />
+                ))
+              ) : (
+                <Tag
+                  type="visa-invalid"
+                  content="비자"
+                  level={userInfo.visa.split(" (")[0]}
+                />
+              )
+            ) : null}
           </TagWrapper>
         </Section>
       </BottomCard>

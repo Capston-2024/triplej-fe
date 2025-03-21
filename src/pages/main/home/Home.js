@@ -4,21 +4,27 @@ import Banner from "../../../components/Home/Banner";
 import PickinBanner from "../../../components/Home/PickinBanner";
 import ContentsBar from "../../../components/Home/ContentsBar";
 import MemberPostList from "../../../components/Home/MemberPostList";
+import { dummyPosts } from "../../../constants/mockData";
+import { useState } from "react";
 
 const Home = ({ isLoggedIn }) => {
+  const [posts] = useState(dummyPosts);
   return (
     <div>
       <Container>
         <Content>
           <Banner />
-          {isLoggedIn ? <MemberPostList /> : <PickinBanner />}
+          {isLoggedIn ? <MemberPostList posts={posts} /> : <PickinBanner />}
           <div>
             <ContentsBar />
             <CardWrapper>
-              <HomePostCard isLoggedIn={isLoggedIn} />
-              <HomePostCard isLoggedIn={isLoggedIn} />
-              <HomePostCard isLoggedIn={isLoggedIn} />
-              <HomePostCard isLoggedIn={isLoggedIn} />
+              {posts.map((post) => (
+                <HomePostCard
+                  key={post.id}
+                  isLoggedIn={isLoggedIn}
+                  post={post}
+                />
+              ))}
             </CardWrapper>
           </div>
         </Content>

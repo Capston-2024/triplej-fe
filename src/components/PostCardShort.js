@@ -6,7 +6,7 @@ import CustomScrap from "./CustomScrap";
 import PickinScore from "./PickinScore";
 import { useNavigate } from "react-router-dom";
 
-const PostCardShort = () => {
+const PostCardShort = ({ post }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -16,23 +16,20 @@ const PostCardShort = () => {
     <Wrapper onClick={handleCardClick}>
       <TopContainer>
         <LogoContainer>
-          <PickinScore />
-          <CustomScrap type="scrap" />
+          <PickinScore score={post.user.pickinScore} />
+          <CustomScrap type={post.user.liked ? "scrap" : "line"} />
         </LogoContainer>
         <div>
-          <JobTitle>
-            [계약직] 인도네시아 콘텐츠 로컬라이징 & 사업개발 매니저
-          </JobTitle>
+          <JobTitle>{post.jobTitle}</JobTitle>
           <SubTitle>
-            <Corp>카카오스타일</Corp>
-            <Location>경기 판교 대면 근무</Location>
+            <Corp>{post.company.name}</Corp>
+            <Location>{post.employments.join(" · ")}</Location>
           </SubTitle>
         </div>
       </TopContainer>
       <BottomContainer>
         <TagContainer>
-          <Tag type="default" content="계약직" />
-          <Tag type="default" content="마케팅/광고/홍보" />
+          <Tag type="default" content={post.works.join(" / ")} />
         </TagContainer>
         <IconWrapper>
           <Calendar />
