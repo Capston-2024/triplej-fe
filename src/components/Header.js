@@ -35,13 +35,15 @@ const Header = ({ isLoggedIn, handleLogout }) => {
             </div>
           </TextContainer>
         </LogoContainer>
-        <div onClick={handleLogout}> 테스트 로그아웃</div>
         <ButtonContainer>
           {isLoggedIn ? (
-            <Profile
-              onClick={() => navigate("/mypage")}
-              style={{ cursor: "pointer" }}
-            />
+            <LoginWrapper>
+              <Profile
+                onClick={() => navigate("/mypage")}
+                style={{ cursor: "pointer" }}
+              />
+              <CorpButton onClick={handleLogout}>로그아웃</CorpButton>
+            </LoginWrapper>
           ) : (
             <LoginButton onClick={() => navigate("/login")}>
               로그인/회원가입
@@ -140,4 +142,10 @@ const CorpButton = styled.button`
   svg {
     margin-left: 10px;
   }
+`;
+
+const LoginWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
