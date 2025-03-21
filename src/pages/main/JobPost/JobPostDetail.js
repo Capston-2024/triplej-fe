@@ -7,8 +7,11 @@ import { ReactComponent as CorpImg } from "/Users/jiwon/Desktop/Capston/triplej-
 import Tag from "../../../components/Tag";
 import CustomScrap from "../../../components/CustomScrap";
 import Button from "../../../components/Button";
+import { useLocation } from "react-router-dom";
 
 const JobPostDetail = () => {
+  const location = useLocation();
+  const { post } = location.state;
   return (
     <div>
       <Container>
@@ -17,9 +20,9 @@ const JobPostDetail = () => {
             <div>
               <Corp>
                 <Office />
-                카카오스타일
+                {post.company.name}
               </Corp>
-              <JobTitle>콘텐츠 로컬라이징 & 사업개발 매니저</JobTitle>
+              <JobTitle>{post.jobTitle}</JobTitle>
             </div>
             <Date>D-13</Date>
           </TitleContainer>
@@ -29,27 +32,34 @@ const JobPostDetail = () => {
                 <InfoWrapper>
                   <InfoType>근무 정보</InfoType>
                   <TagWrapper>
-                    <Tag type="default" content="계약직" />
-                    <Tag type="default" content="경기 판교" />
-                    <Tag type="default" content="대면 근무" />
+                    {post.employments.map((lang, index) => (
+                      <Tag key={index} type="default" content={lang} />
+                    ))}
                   </TagWrapper>
                 </InfoWrapper>
                 <InfoWrapper>
                   <InfoType>자격 요건</InfoType>
                   <TagWrapper>
-                    <Tag type="default" content="비자 D2, D4, D6" />
+                    <Tag
+                      type="default"
+                      content={`비자 ${
+                        post.visas && post.visas.length > 0
+                          ? post.visas.join(" ")
+                          : "없음"
+                      }`}
+                    />
                   </TagWrapper>
                 </InfoWrapper>
                 <InfoWrapper>
                   <InfoType>우대 사항</InfoType>
                   <TagWrapper>
-                    <Tag type="default" content="해외대 우대" />
+                    <Tag type="default" content={post.preferences} />
                   </TagWrapper>
                 </InfoWrapper>
                 <InfoWrapper>
                   <InfoType>필요 언어</InfoType>
                   <TagWrapper>
-                    <Tag type="default" content="영미권" />
+                    <Tag type="default" content={post.languages.join(" ")} />
                   </TagWrapper>
                 </InfoWrapper>
               </div>
@@ -60,22 +70,19 @@ const JobPostDetail = () => {
                   <CorpLeft>
                     <CorpImgContainer />
                     <div>
-                      <CorpName>카카오스타일</CorpName>
-                      <CorpType>패션 뷰티 라이프</CorpType>
+                      <CorpName>{post.company.name}</CorpName>
+                      <CorpType>{post.company.tags.join(" · ")}</CorpType>
                     </div>
                   </CorpLeft>
                   <Tag type="default" content="관심 기업 등록하기" />
                 </CorpDetailContainer>
-                <CorpText>
-                  지그재그를 운영하는 크로키닷컴이 카카오스타일로 새로운 도약을
-                  시작합니다. <br /> 모두가더 편하게 나만의 스타일을 찾을 수
-                  있도록 일상의 모든 순간에 함께하겠습니다.
-                </CorpText>
+                <CorpText>{post.company.info}</CorpText>
               </div>
               <Divider />
               <div>
                 <SubTitle>상세 내용</SubTitle>
                 <CorpText>
+                  {post.jobInfo}
                   지그재그를 운영하는 크로키닷컴이 카카오스타일로 새로운 도약을
                   시작합니다. <br /> 모두가더 편하게 나만의 스타일을 찾을 수
                   있도록 일상의 모든 순간에 함께하겠습니다.지그재그를 운영하는

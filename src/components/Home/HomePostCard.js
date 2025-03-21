@@ -34,7 +34,7 @@ const HomePostCard = ({ isLoggedIn, post }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    navigate("/jobpostdetail");
+    navigate("/jobpostdetail", { state: { post } });
   };
   return (
     <Wrapper onClick={handleCardClick}>
