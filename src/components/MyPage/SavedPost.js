@@ -1,17 +1,14 @@
 import styled from "styled-components";
 import PostCardShort from "../PostCardShort";
 
-const SavedPost = () => {
+const SavedPost = ({ posts }) => {
   return (
     <Wrapper>
-      <PostCardShort />
-      <PostCardShort />
-      <PostCardShort />
-      <PostCardShort />
-      <PostCardShort />
-      <PostCardShort />
-      <PostCardShort />
-      <PostCardShort />
+      {posts.length > 0 ? (
+        posts.map((post) => <PostCardShort key={post.id} post={post} />)
+      ) : (
+        <p>저장한 공고가 없습니다.</p>
+      )}
     </Wrapper>
   );
 };

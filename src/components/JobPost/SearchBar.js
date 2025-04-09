@@ -27,7 +27,6 @@ const Wrapper = styled.div`
   padding: 20px;
   border-radius: 12px;
   background-color: ${(props) => props.theme.colors.background.blue};
-  width: 100%;
   height: 49px;
 `;
 

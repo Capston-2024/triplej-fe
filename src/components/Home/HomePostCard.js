@@ -29,7 +29,7 @@ const HomePostCard = ({ isLoggedIn, post }) => {
       console.warn("로컬스토리지에 사용자 정보가 없습니다.");
       setUserInfo(null);
     }
-  });
+  }, [isLoggedIn]);
 
   const navigate = useNavigate();
 

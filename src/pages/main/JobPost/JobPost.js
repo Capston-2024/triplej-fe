@@ -3,19 +3,22 @@ import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import LikablePost from "../../../components/JobPost/LikablePost";
 import HomePostCard from "../../../components/Home/HomePostCard";
 import SearchBar from "../../../components/JobPost/SearchBar";
+import { dummyPosts } from "../../../constants/mockData";
 import FilterBoxModal from "../../../components/JobPost/FilterBoxModal";
 import {
   jobOptions,
   visaOptions,
   visaSelectOptions,
 } from "../../../constants/options";
+import { useState } from "react";
 
-const JobPost = () => {
+const JobPost = ({ isLoggedIn }) => {
+  const [posts] = useState(dummyPosts);
   return (
     <div>
       <Container>
         <Content>
-          <LikablePost />
+          <LikablePost posts={posts} />
           <Divider />
           <SearchContainer>
             채용 공고 상세 검색하기
@@ -39,10 +42,9 @@ const JobPost = () => {
           </Test> */}
           {/* 모달테스트용 여기까지 */}
           <CardWrapper>
-            <HomePostCard />
-            <HomePostCard />
-            <HomePostCard />
-            <HomePostCard />
+            {posts.map((post) => (
+              <HomePostCard key={post.id} isLoggedIn={isLoggedIn} post={post} />
+            ))}
           </CardWrapper>
         </Content>
       </Container>

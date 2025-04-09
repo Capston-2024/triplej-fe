@@ -3,13 +3,16 @@ import MyPageNavigationBar from "../../../components/MyPage/MyPageNavigationBar"
 import Profile from "../../../components/MyPage/Profile";
 import styled from "styled-components";
 import SavedPost from "../../../components/MyPage/SavedPost";
+import { dummyPosts } from "../../../constants/mockData";
 import { useState, useEffect } from "react";
 import ProfileEdit from "../../../components/MyPage/ProfileEdit";
+import PostCardShort from "../../../components/PostCardShort";
 
 const MyPage = () => {
   const [selectedSection, setSelectedSection] = useState("저장한 공고");
   const [isEditing, setIsEditing] = useState(false);
   const [email, setEmail] = useState("");
+  const [posts] = useState(dummyPosts);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem("user"));
@@ -33,7 +36,7 @@ const MyPage = () => {
       case "지원 현황":
         return <ApplyStatus email={email} />;
       case "저장한 공고":
-        return <SavedPost />;
+        return <SavedPost posts={posts} />;
       default:
         return <SavedPost />;
     }

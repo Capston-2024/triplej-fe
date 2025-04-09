@@ -43,7 +43,10 @@ function App() {
           <div className="content">
             <Routes>
               <Route path="/" element={<Home isLoggedIn={isLoggedIn} />} />
-              <Route path="/jobpost" element={<JobPost />} />
+              <Route
+                path="/jobpost"
+                element={<JobPost isLoggedIn={isLoggedIn} />}
+              />
               <Route path="/jobpostdetail" element={<JobPostDetail />} />
               <Route path="/login" element={<Login onLogin={handleLogin} />} />
               <Route path="/join" element={<Join />} />
