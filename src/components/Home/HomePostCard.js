@@ -92,24 +92,20 @@ const HomePostCard = ({ isLoggedIn, post }) => {
             {post.visas.map((visa, index) => (
               <Tag key={index} type="visa" content="비자" level={visa} />
             ))} */}
-            {userInfo && post.visas && userInfo.visa ? (
-              post.visas.includes(userInfo.visa.split(" (")[0]) ? (
-                post.visas.map((visa, index) => (
-                  <Tag
-                    key={index}
-                    type="visa"
-                    content="비자"
-                    level={userInfo.visa.split(" (")[0]}
-                  />
-                ))
-              ) : (
-                <Tag
-                  type="visa-invalid"
-                  content="비자"
-                  level={userInfo.visa.split(" (")[0]}
-                />
-              )
-            ) : null}
+            {userInfo && post.visas && userInfo.visa
+              ? post.visas.includes(userInfo.visa.split(" (")[0])
+                ? post.visas.map((visa, index) => (
+                    <Tag key={index} type="visa" content="비자" level={visa} />
+                  ))
+                : post.visas.map((visa, index) => (
+                    <Tag
+                      type="visa-invalid"
+                      key={index}
+                      content="비자"
+                      level={visa}
+                    />
+                  ))
+              : null}
           </TagWrapper>
         </Section>
       </BottomCard>
