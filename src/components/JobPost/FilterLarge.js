@@ -17,7 +17,7 @@ const iconMap = {
   language: { icon: <LanguageIcon />, text: "언어" },
 };
 
-const FilterLarge = ({ type, onSelect }) => {
+const FilterLarge = ({ type, onSelect, options = [] }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const { icon, text } = iconMap[type] || { icon: null, text: "추천순" };
@@ -40,7 +40,7 @@ const FilterLarge = ({ type, onSelect }) => {
         <ArrowIcon onClick={handleToggle} />
         {isOpen && (
           <Dropdown>
-            {visaSelectOptions.map((option) => (
+            {options.map((option) => (
               <Option key={option} onClick={() => handleSelect(option)}>
                 {option.label}
               </Option>

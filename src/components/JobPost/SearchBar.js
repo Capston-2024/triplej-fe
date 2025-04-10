@@ -2,7 +2,11 @@ import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import FilterLarge from "./FilterLarge";
 import FilterBoxModal from "./FilterBoxModal";
-import { jobOptions } from "../../constants/options";
+import {
+  jobOptions,
+  languageOptions,
+  visaSelectOptions,
+} from "../../constants/options";
 
 const SearchBar = ({ onFilterChange }) => {
   const handleSelect = (type, value) => {
@@ -11,11 +15,23 @@ const SearchBar = ({ onFilterChange }) => {
   return (
     <Wrapper>
       <FilterContainer>
-        <FilterLarge type="job" onSelect={handleSelect} />
-        <FilterLarge type="jobtype" onSelect={handleSelect} />
-        <FilterLarge type="visatype" onSelect={handleSelect} />
-        <FilterLarge type="worklocation" onSelect={handleSelect} />
-        <FilterLarge type="language" onSelect={handleSelect} />
+        <FilterLarge type="job" options={jobOptions} onSelect={handleSelect} />
+        {/* <FilterLarge
+          type="jobtype"
+          options={jobOptions}
+          onSelect={handleSelect}
+        /> */}
+        <FilterLarge
+          type="visatype"
+          options={visaSelectOptions}
+          onSelect={handleSelect}
+        />
+        {/* <FilterLarge type="worklocation" onSelect={handleSelect} /> */}
+        <FilterLarge
+          type="language"
+          options={languageOptions}
+          onSelect={handleSelect}
+        />
       </FilterContainer>
       <FilterLarge />
     </Wrapper>

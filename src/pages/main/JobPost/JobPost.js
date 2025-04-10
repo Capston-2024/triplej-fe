@@ -6,6 +6,8 @@ import SearchBar from "../../../components/JobPost/SearchBar";
 import { dummyPosts } from "../../../constants/mockData";
 import FilterBoxModal from "../../../components/JobPost/FilterBoxModal";
 import {
+  nationalityOptions,
+  languageOptions,
   jobOptions,
   visaOptions,
   visaSelectOptions,
