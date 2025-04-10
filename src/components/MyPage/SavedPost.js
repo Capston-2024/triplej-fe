@@ -2,10 +2,11 @@ import styled from "styled-components";
 import PostCardShort from "../PostCardShort";
 
 const SavedPost = ({ posts }) => {
+  const likedPosts = posts.filter((post) => post.user.liked);
   return (
     <Wrapper>
-      {posts.length > 0 ? (
-        posts.map((post) => <PostCardShort key={post.id} post={post} />)
+      {likedPosts.length > 0 ? (
+        likedPosts.map((post) => <PostCardShort key={post.id} post={post} />)
       ) : (
         <p>저장한 공고가 없습니다.</p>
       )}

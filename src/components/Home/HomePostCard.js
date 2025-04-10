@@ -48,7 +48,9 @@ const HomePostCard = ({ isLoggedIn, post }) => {
                 로그인하여 Pickin 지수를 확인하세요!
               </NonUserPickinScore>
             )}
-            <CustomScrap type={post.user.liked ? "scrap" : "line"} />
+            <CustomScrap
+              type={isLoggedIn && post.user.liked ? "scrap" : "line"}
+            />
           </LogoContainer>
           <Content>
             <div>
@@ -92,20 +94,28 @@ const HomePostCard = ({ isLoggedIn, post }) => {
             {post.visas.map((visa, index) => (
               <Tag key={index} type="visa" content="비자" level={visa} />
             ))} */}
-            {userInfo && post.visas && userInfo.visa
-              ? post.visas.includes(userInfo.visa.split(" (")[0])
-                ? post.visas.map((visa, index) => (
-                    <Tag key={index} type="visa" content="비자" level={visa} />
-                  ))
+            {post.visas &&
+              (userInfo && userInfo.visa
+                ? post.visas.includes(userInfo.visa.split(" (")[0])
+                  ? post.visas.map((visa, index) => (
+                      <Tag
+                        key={index}
+                        type="visa"
+                        content="비자"
+                        level={visa}
+                      />
+                    ))
+                  : post.visas.map((visa, index) => (
+                      <Tag
+                        key={index}
+                        type="visa-invalid"
+                        content="비자"
+                        level={visa}
+                      />
+                    ))
                 : post.visas.map((visa, index) => (
-                    <Tag
-                      type="visa-invalid"
-                      key={index}
-                      content="비자"
-                      level={visa}
-                    />
-                  ))
-              : null}
+                    <Tag key={index} type="visa" content="비자" level={visa} />
+                  )))}
           </TagWrapper>
         </Section>
       </BottomCard>
