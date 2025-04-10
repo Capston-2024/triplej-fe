@@ -17,7 +17,7 @@ const iconMap = {
   language: { icon: <LanguageIcon />, text: "언어" },
 };
 
-const FilterLarge = ({ type }) => {
+const FilterLarge = ({ type, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const { icon, text } = iconMap[type] || { icon: null, text: "추천순" };
@@ -27,6 +27,7 @@ const FilterLarge = ({ type }) => {
   const handleSelect = (option) => {
     setSelected(option);
     setIsOpen(false);
+    onSelect?.(type, option.value);
   };
 
   return (

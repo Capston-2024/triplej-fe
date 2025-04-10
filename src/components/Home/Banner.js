@@ -9,9 +9,9 @@ const Banner = () => {
       <Content>
         <div>
           <Corp>카카오스타일</Corp>
-          <Title>2024 카카오 스타일 집중 채용</Title>
+          <Title>2025 카카오 스타일 집중 채용</Title>
         </div>
-        <Date>12월 31일까지</Date>
+        <Date>4월 14일까지</Date>
       </Content>
     </Wrapper>
   );

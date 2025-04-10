@@ -14,6 +14,20 @@ import { useState } from "react";
 
 const JobPost = ({ isLoggedIn }) => {
   const [posts] = useState(dummyPosts);
+  const [filters, setFilters] = useState({}); // 선택된 필터
+
+  const handleFilterChange = (type, value) => {
+    setFilters((prev) => ({ ...prev, [type]: value }));
+  };
+
+  // 필터링된 포스트
+  const filteredPosts = posts.filter((post) => {
+    if (filters.visatype) {
+      // post.visatype은 문자열 또는 배열이라고 가정
+      return post.visas?.includes(filters.visatype);
+    }
+    return true;
+  });
   return (
     <div>
       <Container>
@@ -22,7 +36,7 @@ const JobPost = ({ isLoggedIn }) => {
           <Divider />
           <SearchContainer>
             채용 공고 상세 검색하기
-            <SearchBar />
+            <SearchBar onFilterChange={handleFilterChange} />
           </SearchContainer>
           {/* 모달테스트용 여기서부터 */}
           {/* <Test>
@@ -42,7 +56,7 @@ const JobPost = ({ isLoggedIn }) => {
           </Test> */}
           {/* 모달테스트용 여기까지 */}
           <CardWrapper>
-            {posts.map((post) => (
+            {filteredPosts.map((post) => (
               <HomePostCard key={post.id} isLoggedIn={isLoggedIn} post={post} />
             ))}
           </CardWrapper>

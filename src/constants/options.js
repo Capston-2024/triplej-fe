@@ -106,11 +106,11 @@ export const jobOptions = [
 
 export const visaSelectOptions = [
   { value: "취업 비자 지원", label: "취업 비자 지원" },
-  { value: "D2", label: "D2" },
-  { value: "D4", label: "D4" },
-  { value: "E7", label: "E7" },
-  { value: "F2", label: "F2" },
-  { value: "F5", label: "F5" },
-  { value: "F6", label: "F6" },
-  { value: "H1", label: "H1" },
+  { value: "D-2", label: "D-2" },
+  { value: "D-4", label: "D-4" },
+  { value: "E-7", label: "E-7" },
+  { value: "F-2", label: "F-2" },
+  { value: "F-5", label: "F-5" },
+  { value: "F-6", label: "F-6" },
+  { value: "H-1", label: "H-1" },
 ];
