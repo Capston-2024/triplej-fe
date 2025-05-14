@@ -14,10 +14,17 @@ const MyPage = () => {
   const [email, setEmail] = useState("");
   const [posts] = useState(dummyPosts);
 
+  // useEffect(() => {
+  //   const userData = JSON.parse(localStorage.getItem("user"));
+  //   if (userData && userData.email) {
+  //     setEmail(userData.email);
+  //   }
+  // }, []);
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem("user"));
-    if (userData && userData.email) {
-      setEmail(userData.email);
+    const userEmail = localStorage.getItem("userEmail");
+    console.log(userEmail);
+    if (userEmail) {
+      setEmail(userEmail);
     }
   }, []);
 
