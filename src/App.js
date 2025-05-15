@@ -14,6 +14,7 @@ import JobPostDetail from "./pages/main/JobPost/JobPostDetail";
 import Community from "./pages/main/community/Community";
 import Header from "./components/Header";
 import Apply from "./pages/main/JobPost/Apply";
+import Feedback from "./pages/main/JobPost/Feedback";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -50,6 +51,7 @@ function App() {
               />
               <Route path="/jobpostdetail" element={<JobPostDetail />} />
               <Route path="/apply" element={<Apply />} />
+              <Route path="/feedback" element={<Feedback />} />
               <Route path="/login" element={<Login onLogin={handleLogin} />} />
               <Route path="/join" element={<Join />} />
               <Route path="/joinComplete" element={<JoinComplete />} />
