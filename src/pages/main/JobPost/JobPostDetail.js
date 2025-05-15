@@ -8,9 +8,14 @@ import Tag from "../../../components/Tag";
 import CustomScrap from "../../../components/CustomScrap";
 import Button from "../../../components/Button";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const JobPostDetail = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const handleSubmit = () => {
+    navigate("/apply");
+  };
   const { post } = location.state;
   return (
     <div>
@@ -115,7 +120,12 @@ const JobPostDetail = () => {
                 <Button type="outline" status="default" size="large">
                   스크랩하기
                 </Button>
-                <Button type="fill" status="default" size="large">
+                <Button
+                  onClick={handleSubmit}
+                  type="fill"
+                  status="default"
+                  size="large"
+                >
                   지원하기
                 </Button>
               </ButtonContainer>

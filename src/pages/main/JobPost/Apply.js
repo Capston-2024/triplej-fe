@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import AiFooter from "./AiFooter";
+import { useNavigate } from "react-router-dom";
 
 const Apply = () => {
+  const navigate = useNavigate();
   const [inputText, setInputText] = useState("");
   const textareaRef = useRef(null);
 
@@ -50,6 +53,7 @@ const Apply = () => {
           </Content>
         </Wrapper>
       </Container>
+      <AiFooter />
     </div>
   );
 };

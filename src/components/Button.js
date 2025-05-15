@@ -25,10 +25,13 @@ const Button = ({
 export default Button;
 
 const ButtonStyle = styled.button`
-  padding: ${({ size }) => (size === "small" ? "8px 12px" : "17px 90px")};
+  padding: ${({ size }) =>
+    size === "small" ? "8px 12px" : size === "ai" ? "17px 30px" : "17px 90px"};
   margin-top: ${({ marginTop }) => marginTop || "0px"};
-  width: ${({ size }) => (size === "small" ? "auto" : "340px")};
-  height: ${({ size }) => (size === "small" ? "40px" : "56px")};
+  width: ${({ size }) =>
+    size === "small" ? "auto" : size === "ai" ? "170px" : "340px"};
+  height: ${({ size }) =>
+    size === "small" || size === "ai" ? "56px" : "56px"};
   background-color: ${({ type, status }) =>
     type === "outline"
       ? "#FFFFFF"
@@ -37,7 +40,8 @@ const ButtonStyle = styled.button`
       : "#98A2B3"};
   border: ${({ type }) => (type === "outline" ? "1px solid #E4E7EC" : "none")};
   border-radius: ${({ size }) => (size === "small" ? "8px" : "12px")};
-  color: ${({ type }) => (type === "fill" ? "#ffffff" : "#667085")};
+  color: ${({ size, type }) =>
+    size === "ai" ? "#1D2939" : type === "fill" ? "#ffffff" : "#667085"};
   font-size: ${font.body3Title.fontSize};
   font-weight: ${font.body3Title.fontWeight};
   line-height: ${font.body3Title.lineHeight};
