@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinLogoDark.svg";
+import font from "../../styles/fonts.js";
+import { ReactComponent as Logo } from "../../assets/img/PickinLogoDark.svg";
 import { useNavigate } from "react-router-dom";
 
 const PickinBanner = () => {

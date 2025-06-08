@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import font from "../styles/fonts.js";
 import { useState } from "react";
-import { ReactComponent as IconWhite } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PickinLogoWhite.svg";
-import { ReactComponent as IconBlack } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PickinLogoBlack.svg";
+import { ReactComponent as IconWhite } from "../assets/icon/PickinLogoWhite.svg";
+import { ReactComponent as IconBlack } from "../assets/icon/PickinLogoBlack.svg";
 
 const PickinScore = ({ score }) => {
   const [isHovered, setIsHovered] = useState(false);

@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinLogoDark.svg";
-import { ReactComponent as Link } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Link.svg";
-import { ReactComponent as Profile } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/HeaderProfile.svg";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import { ReactComponent as Logo } from "../assets/img/PickinLogoDark.svg";
+import { ReactComponent as Link } from "../assets/icon/Link.svg";
+import { ReactComponent as Profile } from "../assets/icon/HeaderProfile.svg";
+import font from "../styles/fonts.js";
 import Button from "./Button";
 
 const Header = ({ isLoggedIn, handleLogout }) => {

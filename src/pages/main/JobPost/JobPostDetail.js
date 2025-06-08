@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as Office } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Office.svg";
-import { ReactComponent as Alarm } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Alarm.svg";
-import { ReactComponent as CorpImg } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/Kakao.svg";
+import font from "../../../styles/fonts.js";
+import { ReactComponent as Office } from "../../../assets/icon/Office.svg";
+import { ReactComponent as Alarm } from "../../../assets/icon/Alarm.svg";
+import { ReactComponent as CorpImg } from "../../../assets/Kakao.svg";
 import Tag from "../../../components/Tag";
 import CustomScrap from "../../../components/CustomScrap";
 import Button from "../../../components/Button";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as AIicon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/AI.svg";
+import font from "../../../styles/fonts.js";
+import { ReactComponent as AIicon } from "../../../assets/icon/AI.svg";
 import Button from "../../../components/Button";
 import Balloon from "../../../components/Balloon";
 import { useNavigate } from "react-router-dom";

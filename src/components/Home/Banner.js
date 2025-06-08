@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import BannerImg from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/BannerImg.png";
+import font from "../../styles/fonts.js";
+import BannerImg from "../../assets/BannerImg.png";
 
 const Banner = () => {
   return (

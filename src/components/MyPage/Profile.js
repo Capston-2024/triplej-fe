@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { ReactComponent as Graphic } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/ProfileGraphic.svg";
-import { ReactComponent as Write } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Write.svg";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import { ReactComponent as Graphic } from "../../assets/ProfileGraphic.svg";
+import { ReactComponent as Write } from "../../assets/icon/Write.svg";
+import font from "../../styles/fonts.js";
 
 const Profile = ({ setIsEditing, email }) => {
   // 로컬스토리지 연결

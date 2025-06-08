@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinLogoDark.svg";
-import { ReactComponent as Instagram } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Instagram.svg";
-import { ReactComponent as Email } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Email.svg";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import { ReactComponent as Logo } from "../assets/img/PickinLogoDark.svg";
+import { ReactComponent as Instagram } from "../assets/icon/Instagram.svg";
+import { ReactComponent as Email } from "../assets/icon/Email.svg";
+import font from "../styles/fonts.js";
 
 const Footer = () => {
   return (

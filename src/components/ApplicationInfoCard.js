@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as DocumentIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Document.svg";
+import font from "../styles/fonts";
+import { ReactComponent as DocumentIcon } from "../assets/icon/Document.svg";
 
 const LABELS = {
   Date: "지원일",

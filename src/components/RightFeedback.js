@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import font from "../styles/fonts.js";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { ReactComponent as AIicon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PickinAI.svg";
+import { ReactComponent as AIicon } from "../assets/icon/PickinAI.svg";
 
 const RightFeedback = ({ data }) => {
   return (
