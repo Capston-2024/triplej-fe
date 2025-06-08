@@ -1,43 +1,49 @@
 export const dummyPosts = [
   {
     jobId: 1,
-    jobTitle:
-      "[주 1~2 출근, 재택업무] 해외 마켓플레이스(아마존 등) 입점, 운영, 마케팅",
-    employments: ["대면 근무", "계약직", "경기 판교"],
-    works: ["마케팅", "광고", "홍보"],
-    languages: ["인도네시아어", "홍콩어", "대만어"],
-    visas: ["D-2", "D-4", "E-7"],
-    preferences: ["해외대 우대"],
+    jobTitle: "삼성전자 글로벌 마케팅 인턴 (고객 전략)",
+    employments: ["하이브리드 근무", "인턴", "서울"],
+    works: ["마케팅", "기획", "전략"],
+    languages: ["영어", "중국어"],
+    visas: ["D-2", "D-10", "F-2", "F-4", "F-5"],
+    preferences: [
+      "글로벌 커뮤니케이션 역량",
+      "다국적 팀 협업 경험",
+      "문화 다양성에 대한 이해",
+    ],
     jobInfo:
-      "AI 기술을 기반으로 선호 쇼핑몰, 관심 상품, 구매 이력 등에 따른 개인 맞춤형 추천 상품을 제공하여 유저들의 구매 여정을 유의미한 경험으로 만들어가고 있습니다.",
+      "삼성전자 글로벌 마케팅팀 인턴으로서, 전 세계 고객의 니즈를 심층 분석하고 이에 기반한 맞춤형 마케팅 전략을 기획 및 실행합니다. 현지 시장의 문화적, 경제적 특성에 맞춘 콘텐츠 현지화 작업과 다국적 팀과의 긴밀한 협업을 통해 글로벌 브랜드 경쟁력을 강화하는 데 핵심적인 역할을 수행합니다. 또한, 시장 트렌드와 경쟁사 동향을 분석하여 혁신적인 마케팅 방안을 제시하고, 데이터 기반 의사결정 과정에 참여합니다. 다양한 채널과 플랫폼을 활용한 캠페인 운영 경험을 쌓으며, 고객 경험 개선과 브랜드 가치 제고에 기여할 수 있는 인재를 찾고 있습니다. 변화무쌍한 글로벌 시장 환경에서 적극적이고 창의적인 문제 해결 능력, 뛰어난 커뮤니케이션 스킬, 그리고 문화 다양성에 대한 깊은 이해를 갖춘 분들의 많은 지원 바랍니다. 이 인턴십은 글로벌 마케팅 전문가로 성장할 수 있는 귀중한 기회이며, 삼성전자의 미래를 함께 만들어갈 열정 넘치는 인재를 기다립니다.",
+
     company: {
-      name: "카카오스타일",
-      info: "지그재그를 운영하는 크로키닷컴이 카카오스타일로 새로운 도약을 시작합니다.",
-      tags: ["패션", "뷰티", "라이프"],
+      name: "삼성전자",
+      info: "삼성전자는 혁신적인 기술과 디자인을 바탕으로 전 세계 고객의 삶의 질 향상을 추구합니다.",
+      tags: ["전자", "글로벌", "소비자중심"],
+      imageUrl: "https://logo.clearbit.com/samsung.com",
     },
     user: {
-      liked: false,
-      pickinScore: 72,
+      liked: true,
+      pickinScore: 91,
     },
   },
   {
     jobId: 2,
-    jobTitle: "[신입 가능] 글로벌 쇼핑몰 운영 및 고객 관리",
+    jobTitle: "[Anua_아누아] 글로벌 시딩 마케팅 단기인턴 (제2외국어 가능자)",
     employments: ["대면 근무", "정규직", "서울 강남"],
-    works: ["운영", "고객 상담", "CS"],
-    languages: ["영어", "중국어"],
-    visas: ["D-2", "F-4"],
-    preferences: ["중국어 가능자 우대"],
+    works: ["운영", "리서치"],
+    languages: ["아랍어", "프랑스어"],
+    visas: ["D-10", "F-2", "F-4", "F-6"],
+    preferences: ["인플루언서 마케팅 및 시딩 경험 보유"],
     jobInfo:
-      "해외 유저 대상 글로벌 쇼핑몰 운영 및 고객 상담 업무를 담당할 인재를 찾습니다.",
+      "스킨케어 시장, 경쟁사, 콘텐츠 트렌드 조사, 시딩 주제 제안 및 콘텐츠 가이드 기획, 인플루언서 검색, 컨택, 출고 및 협업 커뮤니케이션 진행,시딩 결과 지표 관리 및 프로세스 개선",
     company: {
-      name: "글로벌커머스",
-      info: "해외 고객을 대상으로 다양한 상품을 판매하는 글로벌 쇼핑몰 운영 기업입니다.",
+      name: "(주)더파운더즈",
+      info: "더파운더즈는 'Global No.1 Brand Builder'라는 목표를 가지고 스킨케어 브랜드 '아누아(Anua)', 반려동물 용품 '프로젝트21', 더마 헤어케어 '프롬랩스'를 운영하며 130여 개국 이상의 고객들에게 사랑받고 있는 글로벌 커머스 스타트업입니다.",
       tags: ["이커머스", "고객 상담", "해외 영업"],
+      imageUrl: "https://logo.clearbit.com/anua.kr",
     },
     user: {
       liked: true,
-      pickinScore: 65,
+      pickinScore: 85,
     },
   },
   {
@@ -45,7 +51,7 @@ export const dummyPosts = [
     jobTitle: "[AI 스타트업] 데이터 분석 및 머신러닝 엔지니어 모집",
     employments: ["재택 근무", "정규직", "서울 마포"],
     works: ["머신러닝", "AI 모델 개발"],
-    languages: ["Python", "SQL"],
+    languages: ["베트남어", "말레이시아어"],
     visas: ["D-10", "E-7"],
     preferences: ["석사 이상 우대"],
     jobInfo:
@@ -54,10 +60,11 @@ export const dummyPosts = [
       name: "AI Labs",
       info: "최첨단 AI 연구 및 솔루션 개발을 목표로 하는 스타트업입니다.",
       tags: ["AI", "머신러닝", "데이터 사이언스"],
+      imageUrl: "https://logo.clearbit.com/globalit.com",
     },
     user: {
       liked: true,
-      pickinScore: 85,
+      pickinScore: 78,
     },
   },
   {
@@ -74,15 +81,16 @@ export const dummyPosts = [
       name: "글로벌IT",
       info: "혁신적인 IT 서비스를 제공하는 글로벌 기업입니다.",
       tags: ["UI/UX", "IT", "디자인"],
+      imageUrl: "https://logo.clearbit.com/globalit.com",
     },
     user: {
       liked: false,
-      pickinScore: 78,
+      pickinScore: 65,
     },
   },
   {
     jobId: 5,
-    jobTitle: "[게임 회사] 해외 마케팅 담당자 모집",
+    jobTitle: "해외 마케팅 담당자 모집",
     employments: ["하이브리드 근무", "정규직", "경기 성남"],
     works: ["마케팅", "PR", "해외 영업"],
     languages: ["영어", "일본어"],
@@ -94,10 +102,32 @@ export const dummyPosts = [
       name: "GameX",
       info: "국내외 히트 게임을 다수 보유한 게임 개발 및 퍼블리싱 기업입니다.",
       tags: ["게임", "마케팅", "글로벌"],
+      imageUrl: "https://logo.clearbit.com/ubisoft.com",
     },
     user: {
       liked: true,
-      pickinScore: 88,
+      pickinScore: 61,
+    },
+  },
+  {
+    jobId: 6,
+    jobTitle: "공동주택 소음측정 엔지니어 인턴사원 모집",
+    employments: ["대면 근무", "계약직", "경기 성남"],
+    works: ["엔지니어링", "건설"],
+    languages: ["베트남어", "대만어"],
+    visas: ["D-10", "F-2", "F-4", "F-5"],
+    preferences: ["야간근무", "건설 현장 유경험자"],
+    jobInfo:
+      "국내 공동주택(아파트) 현장에서 바닥 성능 측정 업무 수행, 정밀 소음 측정 장비를 활용한 현장 소음 측정 (측정교육 별도 진행예정),한국인 직원과 협업하며 현장 측정 진행 (중상 수준의 한국어 능력 필요),전국 공동주택 건설 현장을 방문하여 건설사 요청에 따라 바닥 성능 측정",
+    company: {
+      name: "(주)메타이노텍",
+      info: "META INNOTECH은 층간소음 문제를 해결하는 혁신적인 기업으로, 보다 평온한 삶을 위한 창의적인 솔루션을 제공합니다.",
+      tags: ["패션", "뷰티", "라이프"],
+      imageUrl: "https://logo.clearbit.com/capcom.com",
+    },
+    user: {
+      liked: false,
+      pickinScore: 55,
     },
   },
 ];

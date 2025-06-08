@@ -11,7 +11,7 @@ const Banner = () => {
           <Corp>카카오스타일</Corp>
           <Title>2025 카카오 스타일 집중 채용</Title>
         </div>
-        <Date>4월 14일까지</Date>
+        <Date>채용 시 마감</Date>
       </Content>
     </Wrapper>
   );

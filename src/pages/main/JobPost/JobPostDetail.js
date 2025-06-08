@@ -2,7 +2,6 @@ import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import { ReactComponent as Office } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Office.svg";
 import { ReactComponent as Alarm } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Alarm.svg";
-import CorpLogo from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/Kakao.svg";
 import { ReactComponent as CorpImg } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/Kakao.svg";
 import Tag from "../../../components/Tag";
 import CustomScrap from "../../../components/CustomScrap";
@@ -29,7 +28,7 @@ const JobPostDetail = () => {
               </Corp>
               <JobTitle>{post.jobTitle}</JobTitle>
             </div>
-            <Date>D-13</Date>
+            <Date>채용시 마감</Date>
           </TitleContainer>
           <BoxContainer>
             <InfoBox>
@@ -58,7 +57,10 @@ const JobPostDetail = () => {
                 <InfoWrapper>
                   <InfoType>우대 사항</InfoType>
                   <TagWrapper>
-                    <Tag type="default" content={post.preferences} />
+                    <Tag
+                      type="default"
+                      content={post.preferences.slice(0, 1)}
+                    />
                   </TagWrapper>
                 </InfoWrapper>
                 <InfoWrapper>
@@ -73,7 +75,17 @@ const JobPostDetail = () => {
                 <SubTitle>기업 소개</SubTitle>
                 <CorpDetailContainer>
                   <CorpLeft>
-                    <CorpImgContainer />
+                    {post.company.imageUrl && (
+                      <img
+                        src={post.company.imageUrl}
+                        alt={`${post.company.name} 로고`}
+                        style={{
+                          width: "90px",
+                          height: "60px",
+                          objectFit: "cover",
+                        }}
+                      />
+                    )}
                     <div>
                       <CorpName>{post.company.name}</CorpName>
                       <CorpType>{post.company.tags.join(" · ")}</CorpType>
@@ -86,33 +98,16 @@ const JobPostDetail = () => {
               <Divider />
               <div>
                 <SubTitle>상세 내용</SubTitle>
-                <CorpText>
-                  {post.jobInfo}
-                  지그재그를 운영하는 크로키닷컴이 카카오스타일로 새로운 도약을
-                  시작합니다. <br /> 모두가더 편하게 나만의 스타일을 찾을 수
-                  있도록 일상의 모든 순간에 함께하겠습니다.지그재그를 운영하는
-                  크로키닷컴이 카카오스타일로 새로운 도약을 시작합니다. <br />{" "}
-                  모두가더 편하게 나만의 스타일을 찾을 수 있도록 일상의 모든
-                  순간에 함께하겠습니다.지그재그를 운영하는 크로키닷컴이
-                  카카오스타일로 새로운 도약을 시작합니다. <br /> 모두가더
-                  편하게 나만의 스타일을 찾을 수 있도록 일상의 모든 순간에
-                  함께하겠습니다.지그재그를 운영하는 크로키닷컴이 카카오스타일로
-                  새로운 도약을 시작합니다. <br /> 모두가더 편하게 나만의
-                  스타일을 찾을 수 있도록 일상의 모든 순간에
-                  함께하겠습니다.지그재그를 운영하는 크로키닷컴이 카카오스타일로
-                  새로운 도약을 시작합니다. <br /> 모두가더 편하게 나만의
-                  스타일을 찾을 수 있도록 일상의 모든 순간에
-                  함께하겠습니다.지그재그를 운영하는 크로키닷컴이 카카오스타일로
-                  새로운 도약을 시작합니다. <br /> 모두가더 편하게 나만의
-                  스타일을 찾을 수 있도록 일상의 모든 순간에 함께하겠습니다.
-                </CorpText>
+                <CorpText>{post.jobInfo}</CorpText>
               </div>
             </InfoBox>
             <RightBox>
               <PossibilityBox>
-                <PossibilityTitle>Sarah님을 Pick할 가능성</PossibilityTitle>
+                <PossibilityTitle>
+                  김이화님을 Pick할 가능성 91%
+                </PossibilityTitle>
                 <PossibilityText>
-                  이 기업에서 Sarah님을 관심있어 할 확률이 높게 나타납니다.
+                  이 기업에서 김이화님을 관심있어 할 확률이 높게 나타납니다.
                   지원서 작성을 통해 합격률을 더 높여볼 수 있어요.
                 </PossibilityText>
               </PossibilityBox>
@@ -244,16 +239,6 @@ const CorpDetailContainer = styled.div`
   margin-bottom: 12px;
   border: 1px solid ${(props) => props.theme.colors.line.normal};
   border-radius: 12px;
-`;
-
-const CorpImgContainer = styled.div`
-  width: 90px;
-  height: 60px;
-  border-radius: 8px;
-  background-image: url(${CorpLogo});
-  background-size: stretch;
-  background-repeat: no-repeat;
-  background-position: center;
 `;
 
 const CorpLeft = styled.div`

@@ -17,6 +17,10 @@ const AiFooter = () => {
       navigate("/feedback");
     }, 3000);
   };
+
+  const handleApply = () => {
+    navigate("/");
+  };
   return (
     <>
       {loading && (
@@ -49,7 +53,12 @@ const AiFooter = () => {
               <Button type="outline" status="default" size="ai">
                 임시저장
               </Button>
-              <Button type="fill" status="default" size="ai">
+              <Button
+                type="fill"
+                status="default"
+                size="ai"
+                onClick={handleApply}
+              >
                 지원하기
               </Button>
             </RightButton>

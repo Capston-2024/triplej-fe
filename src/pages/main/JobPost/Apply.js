@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import AiFooter from "./AiFooter";
-import { ReactComponent as AIicon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PickinAI.svg";
 
 const Apply = () => {
   const [inputText, setInputText] = useState("");
@@ -33,9 +32,9 @@ const Apply = () => {
               <Title>자기소개서</Title>
               <SubBox>
                 <SubTitle>
-                  카카오스타일에 자신을 소개하는 글을 작성해주세요.
+                  삼성전자에 자신을 소개하는 글을 작성해주세요.
                 </SubTitle>
-                <Date>마지막 수정 2024.05.12</Date>
+                {/* <Date>마지막 수정 2024.05.12</Date> */}
               </SubBox>
             </TitleBox>
             <InputWrapper>

@@ -11,7 +11,7 @@ const Profile = ({ setIsEditing, email }) => {
   useEffect(() => {
     if (!email) return; // email이 없으면 실행하지 않음
 
-    const storedUserInfo = localStorage.getItem("user");
+    const storedUserInfo = localStorage.getItem("이화");
 
     if (storedUserInfo) {
       try {

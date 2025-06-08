@@ -14,7 +14,7 @@ const Feedback = () => {
               <Title>자기소개서</Title>
               <SubBox>
                 <SubTitle>
-                  카카오스타일에 자신을 소개하는 글을 작성해주세요.
+                  삼성전자에 자신을 소개하는 글을 작성해주세요.
                 </SubTitle>
               </SubBox>
             </TitleBox>

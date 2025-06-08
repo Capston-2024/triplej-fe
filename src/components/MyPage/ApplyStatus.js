@@ -27,9 +27,9 @@ const ApplyStatus = ({ email }) => {
     // 더미 데이터 생성
     const dummyData = {
       applicationStats: {
-        applied: 0,
-        inProgress: 1,
-        hired: 20,
+        applied: 1,
+        inProgress: 5,
+        hired: 2,
         rejected: 1,
       },
       applicationList: [

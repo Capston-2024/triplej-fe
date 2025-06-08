@@ -69,11 +69,21 @@ const HomePostCard = ({ isLoggedIn, post }) => {
                 </TagContainer>
                 <IconWrapper>
                   <Calendar />
-                  D-14
+                  채용시 마감
                 </IconWrapper>
               </BottomContainer>
             </div>
-            <CorpImg />
+            {post.company.imageUrl && (
+              <img
+                src={post.company.imageUrl}
+                alt={`${post.company.name} 로고`}
+                style={{
+                  width: "240px",
+                  height: "100px",
+                  objectFit: "cover",
+                }}
+              />
+            )}
           </Content>
         </TopContainer>
       </TopCard>

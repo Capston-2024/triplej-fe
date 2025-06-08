@@ -10,7 +10,9 @@ const MemberPostList = ({ posts }) => {
       <Title>회원님이 저장한 공고</Title>
       <PostCardShortContainer>
         {likedPosts.length > 0 ? (
-          likedPosts.map((post) => <PostCardShort key={post.id} post={post} />)
+          likedPosts
+            .slice(0, 3)
+            .map((post) => <PostCardShort key={post.id} post={post} />)
         ) : (
           <p>저장한 공고가 없습니다.</p>
         )}

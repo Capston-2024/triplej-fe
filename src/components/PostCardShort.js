@@ -33,7 +33,7 @@ const PostCardShort = ({ post }) => {
         </TagContainer>
         <IconWrapper>
           <Calendar />
-          D-14
+          채용시 마감
         </IconWrapper>
       </BottomContainer>
     </Wrapper>
