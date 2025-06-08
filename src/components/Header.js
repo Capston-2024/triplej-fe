@@ -1,24 +1,58 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as Logo } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinLogoDark.svg";
 import { ReactComponent as Link } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Link.svg";
+import { ReactComponent as Profile } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/HeaderProfile.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import Button from "./Button";
 
-const Header = () => {
+const Header = ({ isLoggedIn, handleLogout }) => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <HeaderContainer>
         <LogoContainer>
-          <LogoWrapper>
+          <LogoWrapper
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+          >
             <Logo />
           </LogoWrapper>
           <TextContainer>
-            <div>채용 공고</div>
-            <div>커뮤니티</div>
+            <div
+              onClick={() => navigate("/jobpost")}
+              style={{ cursor: "pointer" }}
+            >
+              채용 공고
+            </div>
+            <div
+              onClick={() => navigate("/community")}
+              style={{ cursor: "pointer" }}
+            >
+              커뮤니티
+            </div>
           </TextContainer>
         </LogoContainer>
         <ButtonContainer>
-          <LoginButton>로그인/회원가입</LoginButton>
-          <CorpButton>
+          {isLoggedIn ? (
+            <LoginWrapper>
+              <Profile
+                onClick={() => navigate("/mypage")}
+                style={{ cursor: "pointer" }}
+              />
+              <CorpButton onClick={handleLogout}>로그아웃</CorpButton>
+            </LoginWrapper>
+          ) : (
+            <LoginButton onClick={() => navigate("/login")}>
+              로그인/회원가입
+            </LoginButton>
+          )}
+          <CorpButton
+            onClick={() => alert("서비스 준비중입니다")}
+            style={{ cursor: "pointer" }}
+          >
             기업 페이지
             <Link />
           </CorpButton>
@@ -31,7 +65,7 @@ const Header = () => {
 export default Header;
 
 const Container = styled.div`
-  width: 1920px;
+  width: 100%;
   height: 56px;
   padding-top: 8px;
   background-color: ${(props) => props.theme.colors.background.white};
@@ -40,7 +74,7 @@ const Container = styled.div`
 `;
 
 const HeaderContainer = styled.div`
-  width: 1578px;
+  width: 1100px;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -108,4 +142,10 @@ const CorpButton = styled.button`
   svg {
     margin-left: 10px;
   }
+`;
+
+const LoginWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;

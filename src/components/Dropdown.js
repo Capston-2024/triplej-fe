@@ -31,7 +31,7 @@ const Dropdown = ({
         {label}
         <span>*</span>
       </Label>
-      <DropdownWrapper>
+      <DropdownWrapper size={size}>
         <DropDown
           options={options}
           onChange={handleChange}
@@ -55,7 +55,6 @@ const DropdownContainer = styled.div`
       selectedValue
         ? (props) => props.theme.colors.text.normal
         : (props) => props.theme.colors.text.disable};
-    font-size: ${font.body3Normal.fontSize};
     font-size: ${font.body3Normal.fontSize};
     font-weight: ${font.body3Normal.fontWeight};
     line-height: ${font.body3Normal.lineHeight};
@@ -113,6 +112,7 @@ const Label = styled.div`
 
 const DropdownWrapper = styled.div`
   position: relative;
+  width: ${({ size }) => (size === "short" ? undefined : "458px")};
 `;
 
 const CustomArrow = styled(Arrow)`

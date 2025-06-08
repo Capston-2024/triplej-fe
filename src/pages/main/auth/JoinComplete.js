@@ -1,16 +1,28 @@
 import Button from "../../../components/Button";
-import Header from "../../../components/Header";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const JoinComplete = () => {
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  const handleHome = () => {
+    navigate("/");
+  };
+
   return (
     <Wrapper>
-      <Header />
       <Graphic></Graphic>
-      <Button type="fill" status="default">
+      <Button type="fill" status="default" onClick={handleLogin}>
         로그인하기
       </Button>
-      <Button type="outline" status="default" marginTop="12px">
+      <Button
+        type="outline"
+        status="default"
+        marginTop="12px"
+        onClick={handleHome}
+      >
         홈으로 가기
       </Button>
     </Wrapper>
@@ -23,6 +35,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 160px;
 `;
 
 const Graphic = styled.div`

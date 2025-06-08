@@ -1,33 +1,75 @@
 import styled from "styled-components";
-import Header from "../../../components/Header";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import Button from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import InputBox from "../../../components/InputBox";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [status, setStatus] = useState("default");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleLogin = () => {
+    const allUsers = { ...localStorage };
+    let foundUser = null;
+
+    Object.values(allUsers).forEach((userData) => {
+      const user = JSON.parse(userData);
+      if (user.email === email) {
+        foundUser = user;
+      }
+    });
+
+    if (foundUser && foundUser.password === password) {
+      localStorage.setItem("user", JSON.stringify(foundUser));
+      onLogin(foundUser);
+      navigate("/");
+    } else {
+      setStatus("error");
+    }
+  };
+
+  // const handleLogin = async () => {
+  //   try {
+  //     const response = await fetch(
+  //       "https://bd2a-1-242-152-73.ngrok-free.app/login",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({
+  //           email: email,
+  //           password: password,
+  //         }),
+  //       }
+  //     );
+
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       localStorage.setItem("user", JSON.stringify(data));
+  //       navigate("/");
+  //     } else {
+  //       setStatus("error");
+  //       setErrorMessage(data.message || "로그인 실패");
+  //     }
+  //   } catch (error) {
+  //     console.error("로그인 요청 중 오류 발생:", error);
+  //     setStatus("error");
+  //     setErrorMessage("서버와의 연결이 원활하지 않습니다.");
+  //   }
+  // };
 
   const handleJoin = () => {
     navigate("/join");
   };
 
-  const handleInputChange = (value) => {
-    setInputValue(value);
-    // 여기서 에러 조건을 정의 (예: 빈 값이면 에러 처리)
-    if (!value) {
-      setStatus("error");
-    } else {
-      setStatus("default");
-    }
-  };
-
   return (
     <div>
-      <Header />
       <Wrapper>
         <LoginBox>
           <Title>
@@ -41,19 +83,27 @@ const Login = () => {
                   placeholder={"이메일을 입력해주세요."}
                   size="short"
                   status={status}
-                  onChange={handleInputChange}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </FormField>
               <FormField>
                 <InputBox
                   label="비밀번호"
+                  type="password"
                   placeholder={"비밀번호를 입력해주세요."}
                   size="short"
                   status={status}
-                  onChange={handleInputChange}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </FormField>
-              <Button type="fill" status="default" marginTop="6px">
+              <Button
+                type="fill"
+                status="default"
+                marginTop="6px"
+                onClick={handleLogin}
+              >
                 로그인
               </Button>
             </div>

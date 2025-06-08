@@ -1,17 +1,78 @@
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { ReactComponent as Graphic } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/ProfileGraphic.svg";
 import { ReactComponent as Write } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Write.svg";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
-const Profile = ({ setIsEditing }) => {
+const Profile = ({ setIsEditing, email }) => {
+  // 로컬스토리지 연결
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    if (!email) return; // email이 없으면 실행하지 않음
+
+    const storedUserInfo = localStorage.getItem("이화");
+
+    if (storedUserInfo) {
+      try {
+        const parsedUserInfo = JSON.parse(storedUserInfo);
+        setUserInfo(parsedUserInfo);
+      } catch (error) {
+        console.error("로컬스토리지 파싱 에러:", error);
+        setUserInfo(null); // 에러 발생 시 null로 설정
+      }
+    } else {
+      console.warn("로컬스토리지에 사용자 정보가 없습니다.");
+      setUserInfo(null);
+    }
+  }, [email]);
+
+  if (!userInfo) {
+    return <div>로딩 중...</div>;
+  }
+  // 백 API 연결
+  // const [userInfo, setUserInfo] = useState(null);
+  // const email = {email};
+
+  // useEffect(() => {
+  //   const fetchUserInfo = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `https://bd2a-1-242-152-73.ngrok-free.app/user-info?email=${encodeURIComponent(
+  //           email
+  //         )}`
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! Status: ${response.status}`);
+  //       }
+
+  //       const result = await response.json();
+  //       console.log("서버 응답 데이터:", result); // 🔍 콘솔에서 데이터 확인
+
+  //       if (result.statusCode === 200) {
+  //         setUserInfo(result.data);
+  //       } else {
+  //         console.error("데이터 로드 실패:", result.message);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching user info:", error);
+  //     }
+  //   };
+
+  //   fetchUserInfo();
+  // }, [email]);
+
+  if (!userInfo) {
+    return <div>로딩 중...</div>; // 데이터 로드 전 로딩 메시지
+  }
   return (
     <Wrapper>
       <TopCard>
         <Info>
           <Graphic />
           <div>
-            <Name>Sarah Weiss</Name>
-            <Mail>pickin@gmail.com</Mail>
+            <Name>{`${userInfo.firstName} ${userInfo.lastName}`}</Name>
+            <Mail>{userInfo.email}</Mail>
           </div>
         </Info>
         <EditButton onClick={() => setIsEditing(true)}>
@@ -23,35 +84,35 @@ const Profile = ({ setIsEditing }) => {
         <Card>
           <Section>
             <Label>국적</Label>
-            <Content>영국</Content>
+            <Content>{userInfo.nationality}</Content>
           </Section>
           <Section>
             <Label>제1언어</Label>
-            <Content>German</Content>
+            <Content>{userInfo.language}</Content>
           </Section>
         </Card>
         <Card>
           <Section>
             <Label>최종학력</Label>
-            <Content>학사</Content>
+            <Content>{userInfo.degree}</Content>
           </Section>
           <Section>
             <Label>대학</Label>
-            <Content>서울가톨릭대학교</Content>
+            <Content>{userInfo.college}</Content>
           </Section>
           <Section>
             <Label>전공</Label>
-            <Content>컴퓨터공학과</Content>
+            <Content>{userInfo.major}</Content>
           </Section>
         </Card>
         <Card>
           <Section>
             <Label>현재 소유 비자</Label>
-            <Content>D2</Content>
+            <Content>{userInfo.visa.split(" (")[0]}</Content>
           </Section>
           <Section>
             <Label>TOPIK 등급</Label>
-            <Content>5</Content>
+            <Content>{userInfo.topik.replace(/[^0-9]/g, "")}</Content>
           </Section>
         </Card>
       </BottomCard>

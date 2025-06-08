@@ -3,19 +3,19 @@ import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import { ReactComponent as CompanyIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Company.svg";
 import ApplicationInfoCard from "./ApplicationInfoCard";
 
-const ApplyStatusCard = () => {
+const ApplyStatusCard = ({ application }) => {
   return (
     <Wrapper>
       <Title>
         <CompanyName>
           <CompanyIcon />
-          카카오스타일
+          {application.companyName}
         </CompanyName>
-        <JobDisc>인도네시아 콘텐츠 로컬라이징 & 사업개발 매니저</JobDisc>
+        <JobDisc>{application.title}</JobDisc>
       </Title>
       <CardWrapper>
         <ApplicationInfoCard type="Date" content="2024.12.31" />
-        <ApplicationInfoCard type="Status" content="검토 중" />
+        <ApplicationInfoCard type="Status" content={application.status} />
         <ApplicationInfoCard type="View" />
       </CardWrapper>
     </Wrapper>

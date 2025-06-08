@@ -4,7 +4,7 @@ import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 const MyPageNavigationBar = ({ selectedSection, setSelectedSection }) => {
   return (
     <Container>
-      {["프로필", "지원 현황", "저장한 공고", "로그아웃"].map((section) => (
+      {["프로필", "지원 현황", "저장한 공고"].map((section) => (
         <Section
           key={section}
           onClick={() => setSelectedSection(section)}

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ReactComponent as IconWhite } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PickinLogoWhite.svg";
 import { ReactComponent as IconBlack } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PickinLogoBlack.svg";
 
-const PickinScore = () => {
+const PickinScore = ({ score }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <Wrapper
@@ -13,7 +13,7 @@ const PickinScore = () => {
     >
       {isHovered ? <IconBlack /> : <IconWhite />}
       {isHovered && <Text>Pickin 지수</Text>}
-      <Score>90%</Score>
+      <Score>{score}%</Score>
     </Wrapper>
   );
 };

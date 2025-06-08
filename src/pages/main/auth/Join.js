@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Header from "../../../components/Header";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import { useState } from "react";
 import { ReactComponent as PickinCheck } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinCheck.svg";
@@ -13,43 +12,134 @@ import JoinForm2 from "../../../components/Auth/JoinForm2";
 import { useNavigate } from "react-router-dom";
 
 const Join = () => {
-  const [inputValue, setInputValue] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
   const [status, setStatus] = useState("default");
   const [currentStep, setCurrentStep] = useState(1);
+  const [confirmEmail, setConfirmEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleSelectChange = (value) => {
-    setSelectedValue(value);
-    // 여기서 에러 조건을 정의 (예: 빈 값이면 에러 처리)
-    if (!value) {
-      setStatus("error");
-    } else {
-      setStatus("default");
-    }
-  };
-
-  const handleInputChange = (value) => {
-    setInputValue(value);
-    // 여기서 에러 조건을 정의 (예: 빈 값이면 에러 처리)
-    if (!value) {
-      setStatus("error");
-    } else {
-      setStatus("default");
-    }
-  };
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    nationality: "",
+    language: "",
+    degree: "",
+    college: "",
+    major: "",
+    visa: "",
+    topik: "",
+  });
 
   const handleButtonClick = () => {
+    const requiredFieldsStep1 = [
+      "firstName",
+      "lastName",
+      "nationality",
+      "language",
+      "email",
+      "password",
+    ];
+    const requiredFieldsStep2 = ["degree", "college", "major", "visa", "topik"];
+
+    const emptyFields = (
+      currentStep === 1 ? requiredFieldsStep1 : requiredFieldsStep2
+    ).filter((field) => !formData[field]);
+
+    if (emptyFields.length > 0) {
+      alert("필수 입력값을 모두 입력해주세요.");
+      setStatus("error");
+      return;
+    }
+
+    if (currentStep === 1 && formData.email !== confirmEmail) {
+      alert("이메일이 일치하지 않습니다.");
+      return;
+    }
+
     if (currentStep === 1) {
       setCurrentStep(2);
-    } else if (currentStep === 2) {
+    } else {
+      const userKey = `${formData.firstName || "default"}`;
+      localStorage.setItem(userKey, JSON.stringify(formData));
+      alert("회원가입이 완료되었습니다.");
       navigate("/joinComplete");
     }
   };
 
+  // const handleButtonClick = async () => {
+  //   const requiredFieldsStep1 = [
+  //     "firstName",
+  //     "lastName",
+  //     "nationality",
+  //     "language",
+  //     "email",
+  //     "password",
+  //   ];
+  //   const requiredFieldsStep2 = ["degree", "college", "major", "visa", "topik"];
+
+  //   const emptyFields = (
+  //     currentStep === 1 ? requiredFieldsStep1 : requiredFieldsStep2
+  //   ).filter((field) => !formData[field]);
+
+  //   if (emptyFields.length > 0) {
+  //     alert("필수 입력값을 모두 입력해주세요.");
+  //     setStatus("error");
+  //     return;
+  //   }
+
+  //   if (currentStep === 1 && formData.email !== confirmEmail) {
+  //     alert("이메일이 일치하지 않습니다.");
+  //     return;
+  //   }
+
+  //   if (currentStep === 1) {
+  //     setCurrentStep(2);
+  //   } else {
+  //     const formattedData = {
+  //       email: String(formData.email || "").trim(),
+  //       password: String(formData.password || "").trim(),
+  //       firstName: String(formData.firstName || "").trim(),
+  //       lastName: String(formData.lastName || "").trim(),
+  //       nationality: String(formData.nationality || "").trim(),
+  //       language: String(formData.language || "").trim(),
+  //       degree: String(formData.degree || "").trim(),
+  //       college: String(formData.college || "").trim(),
+  //       major: String(formData.major || "").trim(),
+  //       visa: String(formData.visa || "").trim(),
+  //       topik: String(formData.topik || "").trim(),
+  //     };
+
+  //     console.log("전송할 데이터:", formattedData);
+  //     try {
+  //       const response = await fetch(
+  //         "https://bd2a-1-242-152-73.ngrok-free.app/sign-up",
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify(formattedData),
+  //         }
+  //       );
+
+  //       const data = await response.json();
+
+  //       if (response.ok) {
+  //         alert("회원가입이 완료되었습니다.");
+  //         navigate("/joinComplete");
+  //       } else {
+  //         alert(data.message || "회원가입 실패");
+  //       }
+  //     } catch (error) {
+  //       console.error("회원가입 요청 중 오류 발생:", error);
+  //       alert("서버와의 연결이 원활하지 않습니다.");
+  //     }
+  //   }
+  // };
+
   return (
     <div>
-      <Header />
       <Wrapper>
         <JoinBox>
           <PickinCheck />
@@ -64,7 +154,7 @@ const Join = () => {
                   </>
                 ) : (
                   <>
-                    Weiss 님 안녕하세요!
+                    이화 님 안녕하세요!
                     <br />
                     기업에 공개할 이력을 작성해주세요.
                   </>
@@ -74,17 +164,26 @@ const Join = () => {
                 {currentStep === 1 ? (
                   <Indicator1Activate />
                 ) : (
-                  <Indicator1Disabled />
+                  <Indicator1Disabled onClick={() => setCurrentStep(1)} />
                 )}
                 {currentStep === 2 ? (
                   <Indicator2Activate />
                 ) : (
-                  <Indicator2Disabled />
+                  <Indicator2Disabled onClick={() => setCurrentStep(2)} />
                 )}
               </IndicatorContainer>
             </TitleContainer>
-            {currentStep === 1 && <JoinForm1 />}
-            {currentStep === 2 && <JoinForm2 />}
+            {currentStep === 1 && (
+              <JoinForm1
+                formData={formData}
+                setFormData={setFormData}
+                confirmEmail={confirmEmail}
+                setConfirmEmail={setConfirmEmail}
+              />
+            )}
+            {currentStep === 2 && (
+              <JoinForm2 formData={formData} setFormData={setFormData} />
+            )}
             <ButtonWrapper>
               <Button
                 type="fill"

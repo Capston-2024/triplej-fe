@@ -1,15 +1,66 @@
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import ApplyStatusCard from "../ApplyStatusCard";
+import { useState, useEffect } from "react";
 
-const STATUS_LIST = [
-  { title: "지원 완료", count: 0 },
-  { title: "채용 진행 중", count: 1 },
-  { title: "최종 합격", count: 2 },
-  { title: "불합격", count: 1 },
-];
+const ApplyStatus = ({ email }) => {
+  //로컬 스토리지
+  // 더미 데이터 저장용 state
+  const [applicationData, setApplicationData] = useState({
+    applicationStats: { applied: 0, inProgress: 0, hired: 0, rejected: 0 },
+    applicationList: [],
+  });
+  const [loading, setLoading] = useState(true);
+  const STATUS_LIST = [
+    { title: "지원 완료", count: applicationData.applicationStats.applied },
+    {
+      title: "채용 진행 중",
+      count: applicationData.applicationStats.inProgress,
+    },
+    { title: "최종 합격", count: applicationData.applicationStats.hired },
+    { title: "불합격", count: applicationData.applicationStats.rejected },
+  ];
 
-const ApplyStatus = () => {
+  useEffect(() => {
+    if (!email) return;
+
+    // 더미 데이터 생성
+    const dummyData = {
+      applicationStats: {
+        applied: 1,
+        inProgress: 5,
+        hired: 2,
+        rejected: 1,
+      },
+      applicationList: [
+        {
+          jobId: 1,
+          companyName: "현대건설 HYUNDAI E&C",
+          title: "2025 상반기 외국인 유학생 채용",
+          status: "APPLIED",
+        },
+        {
+          jobId: 2,
+          companyName: "삼양 라운드 스퀘어 Samyang Roundsquare",
+          title: "외국인 유학생(Global Talent) 채용",
+          status: "IN_PROGRESS",
+        },
+        {
+          jobId: 3,
+          companyName: "삼성전자",
+          title: "Full-time opportunity for international students",
+          status: "HIRED",
+        },
+      ],
+    };
+
+    // 마치 API 요청이 있는 것처럼 setTimeout 사용
+    setTimeout(() => {
+      console.log(`더미 데이터 로드 완료:`, dummyData);
+      setApplicationData(dummyData);
+      setLoading(false);
+    }, 1000);
+  }, [email]);
   return (
     <Wrapper>
       <StatusBar>
@@ -22,12 +73,21 @@ const ApplyStatus = () => {
       </StatusBar>
       <StatusDetail>
         <TotalStatusText>
-          전체 지원 현황 <span>3</span>
+          전체 지원 현황{" "}
+          <span>
+            {applicationData.applicationStats.applied +
+              applicationData.applicationStats.inProgress +
+              applicationData.applicationStats.hired +
+              applicationData.applicationStats.rejected}
+          </span>
         </TotalStatusText>
         <CardWrapper>
-          <ApplyStatusCard />
-          <ApplyStatusCard />
-          <ApplyStatusCard />
+          {applicationData.applicationList.map((application) => (
+            <ApplyStatusCard
+              key={application.jobId}
+              application={application}
+            />
+          ))}
         </CardWrapper>
       </StatusDetail>
     </Wrapper>

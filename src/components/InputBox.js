@@ -5,22 +5,23 @@ import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 
 const InputBox = ({
   label,
+  type = "text",
   placeholder,
   size = "short",
   status = "default",
+  value = "",
   required = false,
   onChange,
   ...props
 }) => {
-  const [inputValue, setInputValue] = useState("");
   const handleChange = (e) => {
-    setInputValue(e.target.value);
-    if (onChange) onChange(e.target.value);
+    if (onChange) onChange(e);
   };
+
   const handleClear = () => {
-    setInputValue("");
-    if (onChange) onChange("");
+    if (onChange) onChange({ target: { name: props.name, value: "" } });
   };
+
   return (
     <div>
       <Label>
@@ -29,13 +30,15 @@ const InputBox = ({
       </Label>
       <InputBoxContainer>
         <InputStyle
+          {...props}
+          type={type}
           placeholder={placeholder}
           size={size}
-          status={status}
-          value={inputValue}
+          status={status === "error" && !value ? "error" : status}
+          value={value}
           onChange={handleChange}
         />
-        {inputValue && (
+        {value && (
           <ClearButton onClick={handleClear}>
             <CancelIcon />
           </ClearButton>
@@ -67,8 +70,8 @@ const InputBoxContainer = styled.div`
 const InputStyle = styled.input`
   padding: 16px;
   border-radius: 12px;
-  border: ${({ status }) =>
-    status === "default" ? "1px solid #E4E7EC" : "#FF3B30"};
+  border: 1px solid
+    ${({ status }) => (status === "error" ? "#FF3B30" : "#E4E7EC")};
   width: ${({ size }) => (size === "short" ? "308px" : "426px")};
   color: ${(props) => props.theme.colors.text.normal};
   font-size: ${font.body3Title.fontSize};
