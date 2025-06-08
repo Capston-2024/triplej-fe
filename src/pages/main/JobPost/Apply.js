@@ -2,8 +2,11 @@ import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
 import AiFooter from "./AiFooter";
+import { useLocation } from "react-router-dom";
 
 const Apply = () => {
+  const location = useLocation();
+  const companyName = location.state?.companyName || "회사";
   const [inputText, setInputText] = useState("");
   const textareaRef = useRef(null);
 
@@ -32,7 +35,7 @@ const Apply = () => {
               <Title>자기소개서</Title>
               <SubBox>
                 <SubTitle>
-                  삼성전자에 자신을 소개하는 글을 작성해주세요.
+                  {companyName}에 자신을 소개하는 글을 작성해주세요.
                 </SubTitle>
                 {/* <Date>마지막 수정 2024.05.12</Date> */}
               </SubBox>

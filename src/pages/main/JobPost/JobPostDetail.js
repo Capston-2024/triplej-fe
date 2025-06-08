@@ -13,7 +13,7 @@ const JobPostDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const handleSubmit = () => {
-    navigate("/apply");
+    navigate("/apply", { state: { companyName: post.company.name } });
   };
   const { post } = location.state;
   return (
