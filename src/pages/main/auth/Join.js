@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import font from "../../../styles/fonts.js";
 import { useState } from "react";
-import { ReactComponent as PickinCheck } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/img/PickinCheck.svg";
-import { ReactComponent as Indicator1Activate } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator1Activate.svg";
-import { ReactComponent as Indicator1Disabled } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator1Disabled.svg";
-import { ReactComponent as Indicator2Activate } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator2Activate.svg";
-import { ReactComponent as Indicator2Disabled } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/PageIndicator2Disabled.svg";
+import { ReactComponent as PickinCheck } from "../../../assets/img/PickinCheck.svg";
+import { ReactComponent as Indicator1Activate } from "../../../assets/icon/PageIndicator1Activate.svg";
+import { ReactComponent as Indicator1Disabled } from "../../../assets/icon/PageIndicator1Disabled.svg";
+import { ReactComponent as Indicator2Activate } from "../../../assets/icon/PageIndicator2Activate.svg";
+import { ReactComponent as Indicator2Disabled } from "../../../assets/icon/PageIndicator2Disabled.svg";
 import Button from "../../../components/Button";
 import JoinForm1 from "../../../components/Auth/JoinForm1";
 import JoinForm2 from "../../../components/Auth/JoinForm2";

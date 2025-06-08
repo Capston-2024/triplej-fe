@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { ReactComponent as CancelIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Cancel.svg";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import { ReactComponent as CancelIcon } from "../assets/icon/Cancel.svg";
+import font from "../styles/fonts.js";
 
 const InputBox = ({
   label,

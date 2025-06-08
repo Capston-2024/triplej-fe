@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { useState } from "react";
 import DropDown from "react-dropdown";
 import "react-dropdown/style.css";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as Arrow } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/ArrowDown.svg";
+import font from "../styles/fonts.js";
+import { ReactComponent as Arrow } from "../assets/icon/ArrowDown.svg";
 
 const Dropdown = ({
   label,

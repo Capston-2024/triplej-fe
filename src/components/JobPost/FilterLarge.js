@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as JobIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Job.svg";
-import { ReactComponent as JobTypeIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/JobType.svg";
-import { ReactComponent as VisaTypeIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/VisaType.svg";
-import { ReactComponent as WorkLocationIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/WorkLocation.svg";
-import { ReactComponent as LanguageIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Language.svg";
-import { ReactComponent as ArrowIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/ArrowDown.svg";
+import font from "../../styles/fonts.js";
+import { ReactComponent as JobIcon } from "../../assets/icon/Job.svg";
+import { ReactComponent as JobTypeIcon } from "../../assets/icon/JobType.svg";
+import { ReactComponent as VisaTypeIcon } from "../../assets/icon/VisaType.svg";
+import { ReactComponent as WorkLocationIcon } from "../../assets/icon/WorkLocation.svg";
+import { ReactComponent as LanguageIcon } from "../../assets/icon/Language.svg";
+import { ReactComponent as ArrowIcon } from "../../assets/icon/ArrowDown.svg";
 import { visaSelectOptions } from "../../constants/options";
 
 const iconMap = {

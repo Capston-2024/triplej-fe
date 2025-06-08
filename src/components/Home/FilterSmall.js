@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as FilterIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Filter.svg";
-import { ReactComponent as ArrowIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/ArrowDown.svg";
+import font from "../../styles/fonts.js";
+import { ReactComponent as FilterIcon } from "../../assets/icon/Filter.svg";
+import { ReactComponent as ArrowIcon } from "../../assets/icon/ArrowDown.svg";
 
 const FilterSmall = () => {
   return (

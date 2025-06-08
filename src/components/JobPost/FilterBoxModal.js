@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as ResetIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Reset.svg";
-import { ReactComponent as DeleteIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Delete.svg";
+import font from "../../styles/fonts.js";
+import { ReactComponent as ResetIcon } from "../../assets/icon/Reset.svg";
+import { ReactComponent as DeleteIcon } from "../../assets/icon/Delete.svg";
 import Button from "../Button";
 
 const FilterBoxModal = ({ size = "large", title, options, onApply }) => {

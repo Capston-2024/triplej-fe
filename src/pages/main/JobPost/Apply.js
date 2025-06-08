@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import font from "../../../styles/fonts.js";
 import AiFooter from "./AiFooter";
 import { useLocation } from "react-router-dom";
 

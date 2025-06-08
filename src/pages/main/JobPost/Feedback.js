@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import font from "../../../styles/fonts.js";
 import AiFooter from "./AiFooter";
 import { mockFeedbackData } from "../../../constants/mockData";
 import RightFeedback from "../../../components/RightFeedback";

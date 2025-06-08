@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import font from "../../../styles/fonts.js";
 import LikablePost from "../../../components/JobPost/LikablePost";
 import HomePostCard from "../../../components/Home/HomePostCard";
 import SearchBar from "../../../components/JobPost/SearchBar";

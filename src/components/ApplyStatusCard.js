@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as CompanyIcon } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Company.svg";
+import font from "../styles/fonts.js";
+import { ReactComponent as CompanyIcon } from "../assets/icon/Company.svg";
 import ApplicationInfoCard from "./ApplicationInfoCard";
 
 const ApplyStatusCard = ({ application }) => {

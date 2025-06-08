@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
-import { ReactComponent as Calendar } from "/Users/jiwon/Desktop/Capston/triplej-fe/src/assets/icon/Calendar.svg";
+import font from "../styles/fonts.js";
+import { ReactComponent as Calendar } from "../assets/icon/Calendar.svg";
 import Tag from "./Tag";
 import CustomScrap from "./CustomScrap";
 import PickinScore from "./PickinScore";

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Button from "../Button";
-import font from "/Users/jiwon/Desktop/Capston/triplej-fe/src/styles/fonts.js";
+import font from "../../styles/fonts.js";
 import JoinForm2 from "../Auth/JoinForm2";
 import InputBox from "../InputBox";
 
