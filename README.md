@@ -20,7 +20,7 @@ Triple J 프론트엔드 레포지토리입니다.
 ## How to Install
 ```bash
 $ npm install
-``원
+``
 
 ## How to Run (Development)
 
