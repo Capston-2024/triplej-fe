@@ -5,65 +5,47 @@ import { ReactComponent as Write } from "../../assets/icon/Write.svg";
 import font from "../../styles/fonts.js";
 
 const Profile = ({ setIsEditing, email }) => {
-  // 로컬스토리지 연결
-  const [userInfo, setUserInfo] = useState(null);
-
-  useEffect(() => {
-    if (!email) return; // email이 없으면 실행하지 않음
-
-    const storedUserInfo = localStorage.getItem("이화");
-
-    if (storedUserInfo) {
-      try {
-        const parsedUserInfo = JSON.parse(storedUserInfo);
-        setUserInfo(parsedUserInfo);
-      } catch (error) {
-        console.error("로컬스토리지 파싱 에러:", error);
-        setUserInfo(null); // 에러 발생 시 null로 설정
-      }
-    } else {
-      console.warn("로컬스토리지에 사용자 정보가 없습니다.");
-      setUserInfo(null);
-    }
-  }, [email]);
-
-  if (!userInfo) {
-    return <div>로딩 중...</div>;
-  }
+  
   // 백 API 연결
-  // const [userInfo, setUserInfo] = useState(null);
-  // const email = {email};
+  const [userInfo, setUserInfo] = useState(null)
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const response = await fetch(
+          `https://ded1-1-242-152-73.ngrok-free.app/user-info?email=${encodeURIComponent(
+            email         )}`,
+          {
+            method: "GET",
+            headers: {
+              "ngrok-skip-browser-warning": "true",
+            },
+          }
+        );
+        console.log("response", response)
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+           }
+          
+        console.log("respone", response)
 
-  // useEffect(() => {
-  //   const fetchUserInfo = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         `https://bd2a-1-242-152-73.ngrok-free.app/user-info?email=${encodeURIComponent(
-  //           email
-  //         )}`
-  //       );
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! Status: ${response.status}`);
-  //       }
+        const result = await response.json();
+        console.log("서버 응답 데이터:", result); // 🔍 콘솔에서 데이터 확인
 
-  //       const result = await response.json();
-  //       console.log("서버 응답 데이터:", result); // 🔍 콘솔에서 데이터 확인
+        if (result.statusCode === 200) {
+        setUserInfo(result.data);
+        } else {
+          console.error("데이터 로드 실패:", result.message);
+        }
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+    };
 
-  //       if (result.statusCode === 200) {
-  //         setUserInfo(result.data);
-  //       } else {
-  //         console.error("데이터 로드 실패:", result.message);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error fetching user info:", error);
-  //     }
-  //   };
+    fetchUserInfo();
+   }, [email]);
 
-  //   fetchUserInfo();
-  // }, [email]);
-
-  if (!userInfo) {
-    return <div>로딩 중...</div>; // 데이터 로드 전 로딩 메시지
+   if (!userInfo) {
+    return <div>로딩 중...</div>;
   }
   return (
     <Wrapper>

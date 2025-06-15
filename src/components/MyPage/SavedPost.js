@@ -6,7 +6,9 @@ const SavedPost = ({ posts }) => {
   return (
     <Wrapper>
       {likedPosts.length > 0 ? (
-        likedPosts.map((post) => <PostCardShort key={post.id} post={post} />)
+        likedPosts.map((post, index) => (
+          <PostCardShort key={post.id || index} post={post} />
+        ))
       ) : (
         <p>저장한 공고가 없습니다.</p>
       )}

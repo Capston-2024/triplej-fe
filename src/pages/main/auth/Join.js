@@ -31,112 +31,78 @@ const Join = () => {
     topik: "",
   });
 
-  const handleButtonClick = () => {
-    const requiredFieldsStep1 = [
-      "firstName",
-      "lastName",
-      "nationality",
-      "language",
-      "email",
-      "password",
-    ];
-    const requiredFieldsStep2 = ["degree", "college", "major", "visa", "topik"];
+  
 
-    const emptyFields = (
-      currentStep === 1 ? requiredFieldsStep1 : requiredFieldsStep2
-    ).filter((field) => !formData[field]);
+   const handleButtonClick = async () => {
+     const requiredFieldsStep1 = [
+       "firstName",
+       "lastName",
+       "nationality",
+       "language",
+       "email",
+       "password",
+     ];
+     const requiredFieldsStep2 = ["degree", "college", "major", "visa", "topik"];
 
-    if (emptyFields.length > 0) {
-      alert("필수 입력값을 모두 입력해주세요.");
-      setStatus("error");
-      return;
-    }
+     const emptyFields = (
+       currentStep === 1 ? requiredFieldsStep1 : requiredFieldsStep2
+     ).filter((field) => !formData[field]);
 
-    if (currentStep === 1 && formData.email !== confirmEmail) {
-      alert("이메일이 일치하지 않습니다.");
-      return;
-    }
+     if (emptyFields.length > 0) {
+       alert("필수 입력값을 모두 입력해주세요.");
+       setStatus("error");
+       return;
+     }
 
-    if (currentStep === 1) {
-      setCurrentStep(2);
-    } else {
-      const userKey = `${formData.firstName || "default"}`;
-      localStorage.setItem(userKey, JSON.stringify(formData));
-      alert("회원가입이 완료되었습니다.");
-      navigate("/joinComplete");
-    }
-  };
+     if (currentStep === 1 && formData.email !== confirmEmail) {
+       alert("이메일이 일치하지 않습니다.");
+       return;
+     }
 
-  // const handleButtonClick = async () => {
-  //   const requiredFieldsStep1 = [
-  //     "firstName",
-  //     "lastName",
-  //     "nationality",
-  //     "language",
-  //     "email",
-  //     "password",
-  //   ];
-  //   const requiredFieldsStep2 = ["degree", "college", "major", "visa", "topik"];
+     if (currentStep === 1) {
+       setCurrentStep(2);
+     } else {
+       const formattedData = {
+         email: String(formData.email || "").trim(),
+         password: String(formData.password || "").trim(),
+         firstName: String(formData.firstName || "").trim(),
+         lastName: String(formData.lastName || "").trim(),
+         nationality: String(formData.nationality || "").trim(),
+         language: String(formData.language || "").trim(),
+         degree: String(formData.degree || "").trim(),
+         college: String(formData.college || "").trim(),
+         major: String(formData.major || "").trim(),
+         visa: String(formData.visa || "").trim(),
+         topik: String(formData.topik || "").trim(),
+       };
 
-  //   const emptyFields = (
-  //     currentStep === 1 ? requiredFieldsStep1 : requiredFieldsStep2
-  //   ).filter((field) => !formData[field]);
+       console.log("전송할 데이터:", formattedData);
+       try {
+         const response = await fetch(
+           "https://2295-1-242-152-73.ngrok-free.app/sign-up",
+           {
+             method: "POST",
+             headers: {
+               "Content-Type": "application/json",
+             },
+             body: JSON.stringify(formattedData),
+           }
+         );
 
-  //   if (emptyFields.length > 0) {
-  //     alert("필수 입력값을 모두 입력해주세요.");
-  //     setStatus("error");
-  //     return;
-  //   }
+         const data = await response.json();
 
-  //   if (currentStep === 1 && formData.email !== confirmEmail) {
-  //     alert("이메일이 일치하지 않습니다.");
-  //     return;
-  //   }
-
-  //   if (currentStep === 1) {
-  //     setCurrentStep(2);
-  //   } else {
-  //     const formattedData = {
-  //       email: String(formData.email || "").trim(),
-  //       password: String(formData.password || "").trim(),
-  //       firstName: String(formData.firstName || "").trim(),
-  //       lastName: String(formData.lastName || "").trim(),
-  //       nationality: String(formData.nationality || "").trim(),
-  //       language: String(formData.language || "").trim(),
-  //       degree: String(formData.degree || "").trim(),
-  //       college: String(formData.college || "").trim(),
-  //       major: String(formData.major || "").trim(),
-  //       visa: String(formData.visa || "").trim(),
-  //       topik: String(formData.topik || "").trim(),
-  //     };
-
-  //     console.log("전송할 데이터:", formattedData);
-  //     try {
-  //       const response = await fetch(
-  //         "https://bd2a-1-242-152-73.ngrok-free.app/sign-up",
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify(formattedData),
-  //         }
-  //       );
-
-  //       const data = await response.json();
-
-  //       if (response.ok) {
-  //         alert("회원가입이 완료되었습니다.");
-  //         navigate("/joinComplete");
-  //       } else {
-  //         alert(data.message || "회원가입 실패");
-  //       }
-  //     } catch (error) {
-  //       console.error("회원가입 요청 중 오류 발생:", error);
-  //       alert("서버와의 연결이 원활하지 않습니다.");
-  //     }
-  //   }
-  // };
+         if (response.ok) {
+           alert("회원가입이 완료되었습니다.");
+           navigate("/joinComplete");
+         } else {
+           alert(data.message || "회원가입 실패");
+         }
+       } catch (error) {
+         console.error("회원가입 요청 중 오류 발생:", error);
+         alert("서버와의 연결이 원활하지 않습니다.");
+       }
+     }
+   };
 
   return (
     <div>

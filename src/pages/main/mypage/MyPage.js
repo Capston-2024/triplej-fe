@@ -15,18 +15,12 @@ const MyPage = () => {
   const [posts] = useState(dummyPosts);
 
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem("user"));
-    if (userData && userData.email) {
-      setEmail(userData.email);
-    }
-  }, []);
-  // useEffect(() => {
-  //   const userEmail = localStorage.getItem("userEmail");
-  //   console.log(userEmail);
-  //   if (userEmail) {
-  //     setEmail(userEmail);
-  //   }
-  // }, []);
+     const userEmail = localStorage.getItem("user");
+     console.log(userEmail);
+     if (userEmail) {
+       setEmail(userEmail);
+     }
+   }, []);
 
   const handleSectionChange = (section) => {
     setSelectedSection(section);

@@ -11,6 +11,52 @@ const ApplyStatus = ({ email }) => {
     applicationList: [],
   });
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!email) {
+      setLoading(false);
+      return;
+    }
+
+    const fetchApplicationStatus = async () => {
+      setLoading(true);
+      try {
+        const params = new URLSearchParams();
+        params.append("email", email);
+        const response = await fetch(
+          `https://ded1-1-242-152-73.ngrok-free.app/application-status-list?${params}`,
+          {
+            method: "GET",
+            headers: {
+              "ngrok-skip-browser-warning": "true",
+              "Content-type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        if (result.data) {
+          setApplicationData(result.data);
+        } else {
+          console.error(
+            "API response is missing the 'data' property.",
+            result
+          );
+        }
+      } catch (error) {
+        console.error("Failed to fetch application status:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchApplicationStatus();
+  }, [email]);
+
   const STATUS_LIST = [
     { title: "지원 완료", count: applicationData.applicationStats.applied },
     {
@@ -21,46 +67,10 @@ const ApplyStatus = ({ email }) => {
     { title: "불합격", count: applicationData.applicationStats.rejected },
   ];
 
-  useEffect(() => {
-    if (!email) return;
+  if (loading) {
+    return <Wrapper>Loading...</Wrapper>;
+  }
 
-    // 더미 데이터 생성
-    const dummyData = {
-      applicationStats: {
-        applied: 1,
-        inProgress: 5,
-        hired: 2,
-        rejected: 1,
-      },
-      applicationList: [
-        {
-          jobId: 1,
-          companyName: "현대건설 HYUNDAI E&C",
-          title: "2025 상반기 외국인 유학생 채용",
-          status: "APPLIED",
-        },
-        {
-          jobId: 2,
-          companyName: "삼양 라운드 스퀘어 Samyang Roundsquare",
-          title: "외국인 유학생(Global Talent) 채용",
-          status: "IN_PROGRESS",
-        },
-        {
-          jobId: 3,
-          companyName: "삼성전자",
-          title: "Full-time opportunity for international students",
-          status: "HIRED",
-        },
-      ],
-    };
-
-    // 마치 API 요청이 있는 것처럼 setTimeout 사용
-    setTimeout(() => {
-      console.log(`더미 데이터 로드 완료:`, dummyData);
-      setApplicationData(dummyData);
-      setLoading(false);
-    }, 1000);
-  }, [email]);
   return (
     <Wrapper>
       <StatusBar>
