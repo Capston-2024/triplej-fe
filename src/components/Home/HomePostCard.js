@@ -9,7 +9,6 @@ import CustomScrap from "../CustomScrap";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 const HomePostCard = ({ isLoggedIn, post }) => {
-  // 로컬스토리지 연결
   const [userInfo, setUserInfo] = useState(null);
 
   useEffect(() => {

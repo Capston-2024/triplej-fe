@@ -79,7 +79,7 @@ const Join = () => {
        console.log("전송할 데이터:", formattedData);
        try {
          const response = await fetch(
-           "https://2295-1-242-152-73.ngrok-free.app/sign-up",
+           "https://0214-1-242-152-73.ngrok-free.app/sign-up",
            {
              method: "POST",
              headers: {

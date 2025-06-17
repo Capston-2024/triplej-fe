@@ -12,10 +12,10 @@ import { useNavigate } from "react-router-dom";
 const JobPostDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { post } = location.state;
   const handleSubmit = () => {
     navigate("/apply", { state: { companyName: post.company.name } });
   };
-  const { post } = location.state;
   return (
     <div>
       <Container>
@@ -44,14 +44,13 @@ const JobPostDetail = () => {
                 <InfoWrapper>
                   <InfoType>자격 요건</InfoType>
                   <TagWrapper>
-                    <Tag
-                      type="default"
-                      content={`비자 ${
-                        post.visas && post.visas.length > 0
-                          ? post.visas.join(" ")
-                          : "없음"
-                      }`}
-                    />
+                  {post.visas && post.visas.length > 0 ? (
+                    post.visas.map((visa, index) => (
+                      <Tag key={index} type="default" content={`${visa}`} />
+                    ))
+                  ) : (
+                    <Tag type="default" content="비자 없음" />
+                  )}
                   </TagWrapper>
                 </InfoWrapper>
                 <InfoWrapper>
@@ -66,7 +65,13 @@ const JobPostDetail = () => {
                 <InfoWrapper>
                   <InfoType>필요 언어</InfoType>
                   <TagWrapper>
-                    <Tag type="default" content={post.languages.join(" ")} />
+                  {post.languages && post.languages.length > 0 ? (
+                      post.languages.map((lang, index) => (
+                        <Tag key={index} type="default" content={lang} />
+                      ))
+                    ) : (
+                      <Tag type="default" content="언어 정보 없음" />
+                    )}
                   </TagWrapper>
                 </InfoWrapper>
               </div>

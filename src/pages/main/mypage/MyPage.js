@@ -60,5 +60,5 @@ export default MyPage;
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 80px 430px;
+  padding: 80px 200px;
 `;

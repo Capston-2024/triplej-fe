@@ -4,8 +4,6 @@ import ApplyStatusCard from "../ApplyStatusCard";
 import { useState, useEffect } from "react";
 
 const ApplyStatus = ({ email }) => {
-  //로컬 스토리지
-  // 더미 데이터 저장용 state
   const [applicationData, setApplicationData] = useState({
     applicationStats: { applied: 0, inProgress: 0, hired: 0, rejected: 0 },
     applicationList: [],
@@ -24,7 +22,7 @@ const ApplyStatus = ({ email }) => {
         const params = new URLSearchParams();
         params.append("email", email);
         const response = await fetch(
-          `https://ded1-1-242-152-73.ngrok-free.app/application-status-list?${params}`,
+          `https://0214-1-242-152-73.ngrok-free.app/application-status-list?${params}`,
           {
             method: "GET",
             headers: {

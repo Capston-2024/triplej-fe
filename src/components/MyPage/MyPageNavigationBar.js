@@ -20,6 +20,7 @@ export default MyPageNavigationBar;
 
 const Container = styled.div`
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   margin-right: 20px;
   padding: 8px;
