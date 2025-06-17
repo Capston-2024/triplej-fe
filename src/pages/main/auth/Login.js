@@ -36,7 +36,7 @@ const Login = ({ onLogin }) => {
   const handleLogin = async () => {
      try {
      const response = await fetch(
-       "https://0214-1-242-152-73.ngrok-free.app/login",
+       "http://3.38.102.95:8080/login",
        {
          method: "POST",
          headers: {

@@ -16,12 +16,13 @@ const Balloon = () => {
 export default Balloon;
 
 const BalloonBox = styled.div`
+left: 15%;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   bottom: 85px;
-  left: 380px;
   background: #ffffff;
   border: 1px solid ${(props) => props.theme.colors.line.dark};
   border-radius: 30px;

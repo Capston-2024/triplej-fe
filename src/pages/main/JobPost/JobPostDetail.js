@@ -109,10 +109,10 @@ const JobPostDetail = () => {
             <RightBox>
               <PossibilityBox>
                 <PossibilityTitle>
-                  김이화님을 Pick할 가능성 91%
+                  회원님을 Pick할 가능성 {post.user.pickinScore}%
                 </PossibilityTitle>
                 <PossibilityText>
-                  이 기업에서 김이화님을 관심있어 할 확률이 높게 나타납니다.
+                  이 기업에서 김이화님을 관심있어 할 확률이 높게 나타납니다원
                   지원서 작성을 통해 합격률을 더 높여볼 수 있어요.
                 </PossibilityText>
               </PossibilityBox>

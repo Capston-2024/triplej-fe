@@ -22,7 +22,7 @@ const ApplyStatus = ({ email }) => {
         const params = new URLSearchParams();
         params.append("email", email);
         const response = await fetch(
-          `https://0214-1-242-152-73.ngrok-free.app/application-status-list?${params}`,
+          `http://3.38.102.95:8080/application-status-list?${params}`,
           {
             method: "GET",
             headers: {
