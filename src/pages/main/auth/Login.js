@@ -12,31 +12,10 @@ const Login = ({ onLogin }) => {
   const [status, setStatus] = useState("default");
   const [errorMessage, setErrorMessage] = useState("");
 
-  //const handleLogin = () => {
-  //  const allUsers = { ...localStorage };
-  //  let foundUser = null;
-
-  //  Object.values(allUsers).forEach((userData) => {
-  //    const user = JSON.parse(userData);
-  
-  //if (user.email === email) {
-  //      foundUser = user;
-  //    }
-  //  });
-
-  //  if (foundUser && foundUser.password === password) {
-  //    localStorage.setItem("user", JSON.stringify(foundUser));
-  //    onLogin(foundUser);
-  //    navigate("/");
-  //  } else {
-  //    setStatus("error");
-  //  }
-  //};
-
   const handleLogin = async () => {
      try {
      const response = await fetch(
-       "http://3.38.102.95:8080/login",
+       "https://f581-3-38-102-95.ngrok-free.app/login",
        {
          method: "POST",
          headers: {

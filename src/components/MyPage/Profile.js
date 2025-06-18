@@ -12,7 +12,7 @@ const Profile = ({ setIsEditing, email }) => {
     const fetchUserInfo = async () => {
       try {
         const response = await fetch(
-          `http://3.38.102.95:8080/user-info?email=${encodeURIComponent(
+          `https://f581-3-38-102-95.ngrok-free.app/user-info?email=${encodeURIComponent(
             email         )}`,
           {
             method: "GET",
