@@ -53,8 +53,8 @@ const Profile = ({ setIsEditing, email }) => {
         <Info>
           <Graphic />
           <div>
-            <Name>{`${userInfo.firstName} ${userInfo.lastName}`}</Name>
-            <Mail>{userInfo.email}</Mail>
+            <Name>{`${userInfo.firstName || ''} ${userInfo.lastName || ''}`}</Name>
+            <Mail>{userInfo.email || ''}</Mail>
           </div>
         </Info>
         <EditButton onClick={() => setIsEditing(true)}>
@@ -66,35 +66,35 @@ const Profile = ({ setIsEditing, email }) => {
         <Card>
           <Section>
             <Label>국적</Label>
-            <Content>{userInfo.nationality}</Content>
+            <Content>{userInfo.nationality || "정보 없음"}</Content>
           </Section>
           <Section>
             <Label>제1언어</Label>
-            <Content>{userInfo.language}</Content>
+            <Content>{userInfo.language || "정보 없음"}</Content>
           </Section>
         </Card>
         <Card>
           <Section>
             <Label>최종학력</Label>
-            <Content>{userInfo.degree}</Content>
+            <Content>{userInfo.degree || "정보 없음"}</Content>
           </Section>
           <Section>
             <Label>대학</Label>
-            <Content>{userInfo.college}</Content>
+            <Content>{userInfo.college || "정보 없음"}</Content>
           </Section>
           <Section>
             <Label>전공</Label>
-            <Content>{userInfo.major}</Content>
+            <Content>{userInfo.major || "정보 없음"}</Content>
           </Section>
         </Card>
         <Card>
           <Section>
             <Label>현재 소유 비자</Label>
-            <Content>{userInfo.visa.split(" (")[0]}</Content>
+            <Content>{userInfo.visa ? userInfo.visa.split(" (")[0] : "정보 없음"}</Content>
           </Section>
           <Section>
             <Label>TOPIK 등급</Label>
-            <Content>{userInfo.topik.replace(/[^0-9]/g, "")}</Content>
+            <Content>{userInfo.topik ? userInfo.topik.replace(/[^0-9]/g, "") : "정보 없음"}</Content>
           </Section>
         </Card>
       </BottomCard>

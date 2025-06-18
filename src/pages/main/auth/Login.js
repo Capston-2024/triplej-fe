@@ -31,8 +31,8 @@ const Login = ({ onLogin }) => {
        const data = await response.json();
 
        if (response.ok) {
-         localStorage.setItem("user", email);
-         navigate("/");
+        onLogin(email);
+        navigate("/");
        } else {
          setStatus("error");
          setErrorMessage(data.message || "로그인 실패");

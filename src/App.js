@@ -26,9 +26,9 @@ function App() {
     }
   }, []);
 
-  const handleLogin = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
-    setIsLoggedIn(true);
+  const handleLogin = (email) => {
+    localStorage.setItem("user", email);
+    setIsLoggedIn(true); 
   };
 
   const handleLogout = () => {
